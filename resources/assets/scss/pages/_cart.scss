@@ -1,0 +1,159 @@
+/*===============================
+Start Cart Page Wrapper
+=================================*/
+
+// Cart Table Style
+.cart-table {
+  & .table {
+    margin: 0;
+    white-space: nowrap;
+
+    // Head
+    & thead {
+      background-color: $brand-color;
+
+      & tr {
+        & th {
+          border-color: $brand-color;
+          border-bottom: 0 solid transparent;
+          color: $white;
+          @include font-size(15);
+          font-weight: 600;
+          padding: 15px 20px;
+          text-align: center;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    // Body
+    & tbody {
+      & tr {
+        & td {
+          border-color: lighten($gray-color, 20%);
+          text-align: center;
+          padding: 10px 20px;
+          vertical-align: middle;
+          font-weight: 600;
+          color: $black-soft;
+
+          a {
+            color: $black-soft;
+
+            &:hover {
+              color: $brand-color;
+            }
+
+            &.btn {
+              color: $white;
+              &:hover {
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    tr {
+      .pro-thumbnail, .pro-price, .pro-quantity, .pro-subtotal, .pro-remove {
+        width: 140px;
+      }
+
+      .pro-remove {
+        i.fa {
+          @include font-noline(22);
+          @include transition(0.4s);
+
+          &:hover {
+            color: $red;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Cart Update Option
+.cart-update-option {
+  border: 1px solid lighten($gray-color, 20%);
+  margin-top: 15px;
+  padding: 15px 20px;
+  @include align-items(center);
+  @include justify-content(space-between);
+
+  @media #{$desktop-device,$laptop-device} {
+    margin-top: 0;
+    border-top: 0 solid transparent;
+  }
+
+  .apply-coupon-wrapper {
+    width: 55%;
+
+    @media #{$large-mobile, $tablet-device} {
+      width: auto;
+    }
+
+    form {
+      @include align-items(center);
+      @include justify-content(center);
+      white-space: nowrap;
+
+      input {
+        border: 2px solid lighten($gray-color, 20%);
+        @include font-size(16);
+        padding: 15px 25px;
+        outline: none;
+        @include transition(0.4s);
+        margin-right: 15px;
+        width: 100%;
+
+        &:focus, &:active {
+          border-color: $brand-color;
+        }
+      }
+    }
+  }
+
+  .btn-brand {
+    padding: 18px 30px;
+
+    @media #{$large-mobile} {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+    }
+  }
+}
+
+.cart-calculator-wrapper {
+  margin-top: 30px;
+  background-color: $light-gray;
+  h3 {
+    color: $black;
+    @include font-noline(18);
+    font-weight: 500;
+    padding: 27px 15px 25px;
+    margin-bottom: 0;
+  }
+  .cart-calculate-items {
+    font-weight: 500;
+
+    .table {
+      margin-bottom: 0;
+      tr {
+        td {
+          padding: 15px 20px;
+          &:nth-child(2) {
+            color: $black;
+            text-align: right;
+          }
+          &.total-amount {
+            color: $brand-color-dark;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+}

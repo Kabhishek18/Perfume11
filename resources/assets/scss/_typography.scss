@@ -1,0 +1,712 @@
+/*===============================
+Typography Style Start
+================================*/
+html {
+  font-size: 62.5%;
+}
+
+body {
+  @include font-size($font-size-base);
+  font-weight: 400;
+  font-family: $font-family-base;
+  color: $paragraph;
+}
+
+a {
+  @include transition(0.4s);
+
+  &:hover,
+  &:focus {
+    color: $brand-color;
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-weight: 700;
+  font-family: $font-family-base;
+  color: $black-soft;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+strong {
+  font-weight: 700;
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+// Search Box Sidebar Style
+.search-form-sidebar {
+  form {
+    position: relative;
+
+    input[type='search'] {
+      width: 100%;
+      border: 2px solid $brand-color;
+      padding: 15px 60px 15px 15px;
+      outline: none;
+      @include transition(0.4s);
+
+      &:focus {
+        border-color: $brand-color;
+      }
+    }
+
+    button {
+      background-color: $brand-color;
+      border: none;
+      color: $white;
+      cursor: pointer;
+      right: 0;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      @include transition(0.4s);
+      height: 100% !important;
+      width: 60px;
+    }
+  }
+}
+
+// Button Style
+.btn, button {
+  border: none;
+  @include transition(0.4s);
+  padding: 15px 25px;
+  @include font-noline(14);
+  text-transform: capitalize;
+  @include border-radius(0);
+  cursor: pointer;
+
+  &:active, &:focus {
+    outline: none;
+    @include box-shadow(none);
+  }
+
+  i.fa {
+    margin-right: 5px;
+  }
+
+  &.btn-small {
+    padding: 8px 20px;
+  }
+
+  &.btn-full {
+    width: 100%;
+  }
+
+  &.btn-round {
+    @include border-radius(50%);
+    padding: 0;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+
+    i.fa {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &.btn-semi-round {
+    @include border-radius(100px);
+  }
+
+  &.btn-brand {
+    background-color: $brand-color;
+    color: $white;
+    @include transition(0.3s);
+    &:hover {
+      background-color: $brand-color-dark;
+    }
+  }
+
+  &.btn-transparent {
+    background-color: transparent;
+    border: 1px solid $brand-color;
+    color: $black-soft;
+
+    &:hover {
+      background-color: $brand-color;
+      color: $white;
+    }
+  }
+
+  &.btn-black {
+    background-color: $black-soft;
+    color: $white;
+
+    &:hover {
+      background-color: $brand-color;
+    }
+  }
+}
+
+// Product Quantity Increment & Decrement
+.pro-qty {
+  border: 1px solid lighten($gray-color, 20%);
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  width: 115px;
+
+  input {
+    font-weight: 600;
+    @include font-size(14);
+    text-align: center;
+    padding: 0 30px;
+    outline: none;
+    width: 100%;
+    border: none;
+    height: 100%;
+  }
+
+  a {
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    font-weight: normal;
+    text-align: center;
+    @include font-noline(20);
+    line-height: 38px;
+    color: $black;
+
+    &:hover {
+      color: $brand-color;
+    }
+
+    &.inc {
+      border-right: 1px solid lighten($gray-color, 20%);
+      top: 0;
+      left: 0;
+
+    }
+
+    &.dec {
+      top: 0;
+      right: 0;
+      border-left: 1px solid lighten($gray-color, 20%);
+      padding-left: 2px;
+    }
+  }
+}
+
+// Responsive Table Scrollbar Style
+.table-responsive, .list {
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    border: 0;
+    background-color: $brand-color;
+  }
+
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 5px;
+    @include bg-rgba($brand-color, 0.3);
+  }
+
+}
+
+// Input Filed Style
+.single-input-item {
+  margin-top: 20px;
+  label {
+    color: $black-soft;
+    font-weight: 500;
+    text-transform: capitalize;
+    @include font-size(14);
+
+    &.required {
+      &:after {
+        content: '*';
+        color: $red;
+        @include font-noline(15);
+        margin-left: 3px;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  input, textarea {
+    background-color: $light-gray;
+    border: 1px solid lighten($gray-color, 20%);
+    @include font-size(14);
+    padding: 15px 20px;
+    outline: none;
+    @include transition(0.4s);
+    width: 100%;
+
+    &:active, &:focus {
+      border-color: $brand-color;
+      background-color: $white;
+    }
+  }
+
+  .forget-pwd {
+    color: $brand-color;
+    @include font-size(14);
+
+    @media #{$extra-small-mobile} {
+      @include font-size(13);
+    }
+  }
+
+  .nice-select {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: $light-white;
+    border: 1px solid lighten($gray-color, 20%);
+
+    .list {
+      max-height: 200px;
+      overflow: auto;
+    }
+  }
+}
+
+// Nice Select Menu Style
+.nice-select {
+  @include border-radius(0px);
+  float: none;
+  height: auto;
+  text-transform: capitalize;
+  line-height: inherit;
+  padding: 8px 30px 8px 15px;
+  width: 200px;
+
+  @media #{$extra-small-mobile,$small-mobile} {
+    width: 160px;
+  }
+
+  span.current {
+    font-weight: 600;
+    @include font-noline(13);
+  }
+
+  .list {
+    @include border-radius(0px);
+    width: 100%;
+
+    .option {
+      line-height: 30px;
+      min-height: 30px;
+    }
+  }
+}
+
+// Custom Checkbox Style
+.custom-checkbox, .custom-radio {
+  label, .custom-control-label {
+    color: $black-soft;
+    @include font-noline(14);
+    line-height: 1;
+    padding-left: 10px;
+    cursor: pointer;
+
+    @media #{$extra-small-mobile} {
+      @include font-noline(13);
+    }
+
+    &:before {
+      background-color: transparent;
+      border: 1px solid lighten($gray-color, 10%);
+      @include border-radius(0);
+      height: 15px;
+      top: 0;
+      width: 15px;
+    }
+
+    &:after {
+      background-size: 10px 10px;
+      height: 15px;
+      top: 0;
+      width: 15px;
+    }
+
+    a {
+      color: $black-soft;
+      font-weight: 500;
+
+      &:hover {
+        color: $brand-color;
+      }
+    }
+  }
+
+  input, .custom-control-input {
+    outline: none;
+
+    &:focus {
+      ~ .custom-control-label, label {
+        &:before {
+          @include box-shadow(none);
+        }
+      }
+    }
+
+    &:checked {
+      ~ .custom-control-label, label {
+        &:before {
+          background-color: $brand-color;
+          border-color: $brand-color;
+        }
+      }
+    }
+  }
+}
+
+// Custom Radio Button Style
+.custom-radio {
+  label, .custom-control-label {
+    &:before {
+      @include border-radius(50%);
+      height: 14px;
+      width: 14px;
+    }
+
+    &:after {
+      background-position: 1px 1px;
+      background-size: 9px 8px;
+      left: -13px;
+      top: 2px;
+      height: 10px;
+      width: 10px;
+    }
+  }
+}
+
+// Fieldset Style;
+fieldset {
+  margin-top: 30px;
+  legend {
+    border-bottom: 1px solid lighten($gray-color, 20%);
+    color: $black;
+    @include font-size(24);
+    padding-bottom: 10px;
+    text-transform: capitalize;
+  }
+}
+
+// Slick Slider Arrow Style
+.slick-slider {
+  margin-bottom: 0;
+  @include transition(0.4s);
+  &:hover {
+    .slick-arrow {
+      @include opacity(1);
+      visibility: visible;
+      pointer-events: visible;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .slick-slide > div > div {
+    vertical-align: middle;
+  }
+
+  // Slick Arrow Style
+  .slick-arrow {
+    background-color: $white;
+    color: $brand-color;
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+    height: 45px;
+    width: 45px;
+    z-index: 1;
+    @include border-radius(3px);
+    @include transition(0.4s);
+    @include box-shadow(0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.1));
+    @include font-noline(16);
+    @include opacity(0);
+    @include translate(0, -50%);
+
+    &.slick-next {
+      left: auto;
+      right: 0;
+    }
+
+    &:hover {
+      background-color: $brand-color;
+      color: $white;
+    }
+
+    * {
+      margin: 0;
+    }
+  }
+
+  // Slick Dots Style
+  .slick-dots {
+    margin-top: 35px;
+    text-align: center;
+    li {
+      border: 1px solid $brand-color;
+      background-color: transparent;
+      @include border-radius(50%);
+      cursor: pointer;
+      display: inline-block;
+      @include transition(0.4s);
+      margin: 0 3px;
+      height: 12px;
+      width: 12px;
+
+      &:hover, &.slick-active {
+        background-color: $brand-color;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  }
+
+  // Vertical Slick Slider Arrow
+  &.slick-vertical {
+    .slick-arrow {
+      top: 5px;
+      left: 50%;
+      @include translate(-50%, 0);
+
+      &.slick-prev {
+        top: auto;
+        bottom: 10px;
+      }
+    }
+  }
+}
+
+// Selection Style
+::-moz-selection {
+  color: $white;
+  background: $brand-color;
+}
+
+::selection {
+  color: $white;
+  background: $brand-color;
+}
+
+// Container Fluid Reduce
+.container-fluid {
+  padding: 0 30px;
+  @media #{$small-mobile} {
+    padding: 0 15px;
+  }
+}
+
+// Section Title Style
+.section-title-wrap {
+  color: #666666;
+  @include font-noline(15);
+  line-height: 26px;
+  margin-bottom: 44px;
+  h2 {
+    text-transform: uppercase;
+    @include font-noline(28);
+    line-height: 1.2;
+    font-weight: 900;
+    margin-top: -6px;
+    margin-bottom: 20px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+
+  &.style-two {
+    position: relative;
+    z-index: 1;
+    &:before {
+      background-color: $border-color;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      @include translate(0, -50%);
+      height: 1px;
+      width: 100%;
+      z-index: -1;
+    }
+    h2 {
+      background-color: $white;
+      @include font-noline(18);
+      line-height: 1;
+      display: inline-block;
+      padding-right: 15px;
+      margin-bottom: 0;
+      letter-spacing: 1.4px;
+    }
+  }
+}
+
+// Tooltip Style
+.tooltip {
+  margin-right: 15px;
+  .tooltip-inner {
+    @include font-noline(13);
+    line-height: 1;
+    text-shadow: none;
+    padding: 8px 15px 10px;
+    @include border-radius(0);
+  }
+}
+
+// Modal Customize Style
+.modal {
+  display: block !important;
+  @include opacity(0);
+  visibility: hidden;
+  pointer-events: none;
+  z-index: -99;
+
+  &.show {
+    @include opacity(1);
+    visibility: visible;
+    pointer-events: visible;
+    z-index: 9999;
+    animation: slideInDown 0.4s forwards;
+  }
+
+  .modal-dialog {
+    max-width: 1000px;
+
+    .close {
+      background-color: $brand-color;
+      @include border-radius(3px);
+      @include transition(0.4s);
+      @include opacity(1);
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      z-index: 9;
+      outline: none;
+      height: 30px;
+      width: 30px;
+
+      span {
+        display: block;
+        padding: 5px 8px;
+      }
+    }
+
+    .modal-body {
+      padding: 30px 15px;
+    }
+  }
+}
+
+/*========= Scroll to top =========*/
+.scrolltotop {
+  background-color: $brand-color-dark;
+  border: 2px solid #dddddd;
+  @include box-shadow(0px 0px 6.65px 0.35px rgba(0, 0, 0, 0.1));
+  @include border-radius(50%);
+  @include font-noline(18);
+  @include transition(0.4s);
+  color: $white;
+  text-align: center;
+  display: block;
+  line-height: 50px;
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  bottom: -30px;
+  @include opacity(0);
+  right: 30px;
+  z-index: 95;
+
+  &.show {
+    bottom: 40px;
+    @include opacity(1);
+  }
+
+  &:hover, &:active, &:focus {
+    background-color: $brand-color;
+    border-color: $brand-color;
+    color: $white;
+  }
+}
+
+// Pagination Style
+.page-pagination {
+  margin-top: 70px;
+  .pagination {
+    @include justify-content(flex-start);
+    @include justify-content(flex-start);
+
+    @media #{$large-mobile, $tablet-device} {
+      @include justify-content(center);;
+    }
+
+    margin: 0 -5px;
+    margin-bottom: 1px;
+    li {
+      margin: 0 5px;
+      a {
+        background-color: $white;
+        color: #666666;
+        outline: 1px solid $border-color;
+        display: block;
+        padding: 12px 22px;
+        font-weight: 700;
+
+        @media #{$large-mobile} {
+          padding: 10px 15px;
+        }
+
+        &:hover, &:focus, &.current {
+          background-color: $brand-color;
+          outline-color: $brand-color;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+// Page Padding
+.page-padding {
+  padding: 90px 0;
+
+  @media #{$large-mobile, $tablet-device} {
+    padding: 50px 0;
+  }
+}

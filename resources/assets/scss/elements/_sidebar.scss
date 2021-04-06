@@ -1,0 +1,190 @@
+/*==============================
+Start Sidebar Style
+================================*/
+#sidebar-area-wrap {
+  margin-top: 50px;
+  @media #{$desktop-device, $laptop-device} {
+    margin-top: 0;
+  }
+}
+
+.single-sidebar-wrap {
+  margin-bottom: 70px;
+
+  @media #{$large-mobile} {
+    margin-bottom: 50px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .sidebar-title {
+    @include font-noline(16);
+    line-height: 1.2;
+    font-weight: 900;
+    margin-top: -2px;
+    margin-bottom: 36px;
+    text-transform: uppercase;
+
+    @media #{$large-mobile} {
+      margin-bottom: 25px;
+    }
+  }
+}
+
+// Sidebar List Style
+.sidebar-list {
+  li {
+    margin-bottom: 13px;
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    a {
+      color: $black-soft;
+      @include transition(0.2s);
+      display: block;
+      text-transform: uppercase;
+      span {
+        float: right;
+        width: 30px;
+        text-align: center;
+      }
+      &:hover {
+        color: $brand-color;
+        padding-left: 4px;
+      }
+    }
+  }
+}
+
+// Tags Style
+.tags {
+  margin-top: -3px;
+  li {
+    display: inline-block;
+    a {
+      display: block;
+      border: 1px solid $border-color;
+      padding: 10px 20px;
+      margin: 5px 2px;
+      color: $paragraph;
+      font-weight: 500;
+      @include font-size(13);
+      text-transform: capitalize;
+      @include transition(0.3s);
+
+      &:hover {
+        background-color: $brand-color;
+        border-color: $brand-color;
+        color: $white;
+      }
+    }
+  }
+}
+
+// Sidebar Search Box
+.sidebar-search {
+  form {
+    position: relative;
+
+    input[type='search'] {
+      width: 100%;
+      border: 2px solid #eeeeee;
+      padding: 15px 60px 15px 15px;
+      outline: none;
+      @include transition(0.4s);
+
+      &:focus {
+        border-color: $brand-color;
+      }
+    }
+
+    button {
+      background-color: $brand-color;
+      border: none;
+      color: $white;
+      cursor: pointer;
+      right: 0;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      @include transition(0.4s);
+      height: 100% !important;
+      width: 60px;
+    }
+  }
+}
+
+// Recent Posts Sidebar
+.recent-post-sidebar {
+  .single-post-item {
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .post-thumb {
+      @include flex(100px 0 0);
+      img {
+        border: 1px solid #cccccc;
+        @include border-radius(2px);
+        padding: 2px;
+        height: 90px;
+        width: 100px;
+      }
+    }
+
+    .product-details {
+      margin-left: 15px;
+      h2 {
+        @include font-noline(15);
+        line-height: 1.3;
+        font-weight: 400;
+        text-transform: capitalize;
+        a {
+          color: $black-soft;
+
+          &:hover {
+            color: $brand-color;
+          }
+        }
+      }
+
+      .date {
+        display: block;
+        @include font-noline(13);
+        line-height: 1;
+        margin-top: 10px;
+      }
+
+      .btn-readmore {
+        color: #666666;
+        @include font-noline(13);
+        font-weight: 500;
+        margin-top: 10px;
+        display: block;
+
+        &:hover {
+          color: $brand-color;
+        }
+
+        i.fa {
+          margin-left: 3px;
+        }
+      }
+    }
+  }
+}
+
+// Top Rated Products
+#sidebar-area-wrap {
+  .products-wrapper {
+    &.small-list {
+      margin-top: 0;
+    }
+  }
+}

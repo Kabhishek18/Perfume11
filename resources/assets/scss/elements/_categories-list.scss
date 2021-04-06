@@ -1,0 +1,101 @@
+/*===============================
+Start Categories Listing
+================================*/
+.categories-listing-area {
+  background-color: #f7f7f7;
+  padding: 90px 0;
+
+  @media #{$large-mobile, $tablet-device} {
+    padding: 50px 0;
+  }
+}
+
+.categories-listing-content {
+  margin-top: -20px;
+  .single-category-list-item {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url("../img/categories/home-three/home3-category1.jpg");
+    border-top: 2px solid $brand-color-alt;
+    padding: 50px 30px;
+    margin-top: 20px;
+
+    &.bgTwo {
+      background-image: url("../img/categories/home-three/home3-category2.jpg");
+    }
+
+    &.bgthree {
+      background-image: url("../img/categories/home-three/home3-category3.jpg");
+    }
+
+    h2 {
+      text-transform: uppercase;
+      @include font-noline(24);
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 25px;
+    }
+  }
+}
+
+.category-list {
+  margin-left: 15px;
+  li {
+    margin-bottom: 12px;
+    list-style-type: initial;
+    color: $brand-color-alt;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+    a {
+      color: #666666;
+      @include font-noline(15);
+      line-height: 1;
+
+      &:hover {
+        color: $brand-color-alt;
+      }
+    }
+  }
+}
+
+/*===============================================
+Start Category Banner area / index4.html
+================================================*/
+.category-banner-wrapper {
+  margin-top: 30px;
+  .single-cate-banner {
+    .category-banner-thumb {
+      position: relative;
+
+      img {
+        width: 100%;
+      }
+
+      .cate-banner-text {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        h2 {
+          @include font-noline(18);
+          line-height: 1.2;
+          margin-bottom: 10px;
+
+          a {
+            color: $black-soft;
+
+            &:hover {
+              color: $brand-color;
+            }
+          }
+        }
+
+        .cate-banner-list {
+          color: #666666;
+        }
+      }
+    }
+  }
+}

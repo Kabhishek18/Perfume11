@@ -1,0 +1,124 @@
+/*==============================
+Start Contact Page
+================================*/
+#contact-page-wrapper {
+  overflow: hidden;
+}
+
+.contact-method {
+  @include font-size(16);
+
+  h2 {
+    font-weight: 600;
+    @include font-size(26);
+    color: $black-soft;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    margin-top: -5px;
+  }
+
+  p {
+    margin-top: -5px;
+  }
+
+  form {
+    margin-top: -20px;
+  }
+}
+
+.contact-info-wrap {
+  background-color: $light-gray;
+  padding: 85px 50px 119px;
+  position: relative;
+
+  @media #{$large-mobile, $tablet-device} {
+    padding: 45px 20px;
+  }
+
+  &:before {
+    background-color: $light-gray;
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  &:after {
+    background-color: $light-gray;
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 0;
+    height: 100%;
+    width: 100%;
+
+    @media #{$laptop-device, $desktop-device} {
+      display: none;
+    }
+  }
+}
+
+.contact-form-wrap {
+  margin: 87px 0 0;
+  @media #{$large-mobile, $tablet-device} {
+    margin: 30px 0 50px;
+  }
+
+  .alert {
+    margin-top: 10px;
+  }
+}
+
+.contact-info-items {
+  margin-top: 25px;
+
+  .single-contact-info {
+    margin-bottom: 25px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h3 {
+      font-weight: 400;
+      @include font-noline(26);
+      margin-bottom: 5px;
+      position: relative;
+      padding-left: 45px;
+
+      i.fa {
+        font-weight: 400;
+        width: 50px;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        @include transform(translateY(-50%));
+      }
+    }
+
+    a {
+      @include font-size(16);
+      color: #666666;
+
+      &:hover {
+        color: $brand-color;
+      }
+    }
+  }
+}
+
+.map-area-wrapper {
+  height: 500px;
+  background-color: $light-white;
+
+  @media #{$large-mobile, $tablet-device} {
+    height: 350px;
+  }
+
+  #map_content {
+    height: 100%;
+  }
+}

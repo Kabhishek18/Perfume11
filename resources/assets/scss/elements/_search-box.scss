@@ -1,0 +1,96 @@
+/*=============================
+Start Search box Wrapper
+================================*/
+
+// Search Box Hide
+.modalSearchBox {
+  @include opacity(0);
+  @include transition(1s, ease, 0.8s);
+  @include transform(translateY(600px));
+  .modal-content {
+    border: none;
+  }
+}
+
+// Modal Background
+.mfp-bg.bTot-popup {
+  @include bg-rgba($brand-color-dark, 0.7);
+  padding-bottom: 100%;
+  border-radius: 100%;
+  overflow: hidden;
+  -webkit-animation: bTot-ripple .8s ease-out forwards;
+  animation: bTot-ripple .8s ease-out forwards;
+}
+
+// Search Box Show After Click
+.mfp-slide-bottom.mfp-ready {
+  .modalSearchBox {
+    @include opacity(1);
+    @include transform(translateY(0));
+  }
+  button.mfp-close {
+    @include opacity(1);
+    visibility: visible;
+    pointer-events: visible;
+  }
+}
+
+// Modal close Button Style
+button.mfp-close {
+  background-color: darken($brand-color, 20%);
+  @include border-radius(3px);
+  width: 45px;
+  height: 45px;
+  right: 50px;
+  top: 20px;
+  @include transition(1s, ease, 0.8s);
+  @include opacity(0);
+  visibility: hidden;
+  pointer-events: none;
+
+  @media #{$large-mobile} {
+    top: 10px;
+    right: 15px;
+  }
+
+  img {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+  }
+}
+
+// Search Box Style
+.search-box-wrapper {
+  form {
+    position: relative;
+
+    input {
+      background-color: $white;
+      outline: none;
+      border: 3px solid $brand-color-dark;
+      padding: 30px;
+      padding-right: 100px;
+      @include font-size(18);
+      width: 100%;
+
+      &:active, &:focus {
+        @include box-shadow(none);
+        outline: none;
+        border: 3px solid $brand-color-dark;
+      }
+    }
+
+    .btn-search {
+      background-color: $brand-color-dark;
+      @include font-noline(22);
+      position: absolute;
+      right: 0;
+      top: 50%;
+      @include transform(translateY(-50%));
+      height: calc(100% - 5px);
+    }
+  }
+}

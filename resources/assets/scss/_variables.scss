@@ -1,0 +1,48 @@
+//== Typography Variable
+$font-family-base: 'Lato', sans-serif;
+$font-font_awesome: 'FontAwesome';
+$font-size-base: 14;
+
+// Site Typography Colors
+$paragraph: #22252C;
+$heading: #000;
+$gray-color: #929292;
+$light-gray: #f7f7f7;
+$light-white: #f4f5f7;
+$ash-color: #d2d2d2;
+$border-color: lighten($gray-color, 30%);
+
+//== Brand Color
+$brand-color: #bdb093;
+$brand-color-dark: darken($brand-color, 15%);
+$brand-color-light: lighten($brand-color, 15%);
+$brand-color-alt: #f9b61e;
+
+//== Alternative Color
+$white: #fff;
+$offwhite: #fafafa;
+$black: #000;
+$black-soft: #222222;
+$navy: #3b5998;
+$pink: #FF69B4;
+$violet: #9933cc;
+$olive: #559137;
+$green: #008000;
+$red: #e74c3c;
+$orange: #f5740a;
+$yellow: #fbbf00;
+
+//== Social Media Icons Color
+$facebook: #3B5999;
+$twitter: #1DA1F2;
+$pinterest: #CB2028;
+$youtube: #CC332D;
+$reddit: #FF4500;
+
+//== Responsive Variables
+$laptop-device: 'only screen and (min-width: 1200px)';
+$desktop-device: 'only screen and (min-width: 992px) and (max-width: 1199px)';
+$tablet-device: 'only screen and (min-width: 768px) and (max-width: 991px)';
+$large-mobile: 'only screen and (max-width: 767px)';
+$small-mobile: 'only screen and (max-width: 575px)';
+$extra-small-mobile: 'only screen and (max-width: 479px)';

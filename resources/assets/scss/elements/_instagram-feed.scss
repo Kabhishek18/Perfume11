@@ -1,0 +1,39 @@
+/*===============================
+Start Instagram Feed Area
+================================*/
+#instagram-feed-area {
+  padding: 90px 0;
+
+  &.layout-two {
+    background-color: #f7f7f7;
+  }
+
+  @media #{$large-mobile, $tablet-device} {
+    padding: 50px 0;
+  }
+  .instagram-content-header {
+    margin-bottom: 43px;
+    h3 {
+      @include font-noline(20);
+      line-height: 1.2;
+      margin-top: -3px;
+      margin-bottom: 10px;
+    }
+    em {
+      color: #666666;
+      @include font-noline(18);
+      font-weight: 300;
+    }
+  }
+
+  .instagram-carousel {
+    &.slick-slider {
+      .slick-list {
+        margin: 0 -5px;
+        .slick-slide {
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+}

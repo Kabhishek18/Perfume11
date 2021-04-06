@@ -1,0 +1,67 @@
+/*================================
+Start Testimonials Area
+=================================*/
+
+#new-feature-pro-reviews {
+  padding: 88px 0 90px;
+
+  @media #{$large-mobile, $tablet-device} {
+    padding: 48px 0 50px;
+  }
+}
+
+#feature-products-area {
+  @media #{$small-mobile} {
+    margin-top: 35px;
+  }
+}
+
+#testimonial-wrapper {
+  @media #{$large-mobile, $tablet-device} {
+    margin-top: 35px;
+  }
+
+  .color-layout-two {
+    .slick-dots {
+      li {
+        border-color: $brand-color-alt;
+
+        &:hover, &.slick-active {
+          background-color: $brand-color-alt;
+        }
+      }
+    }
+  }
+}
+
+.single-testimonial-item {
+  .testimonial-avatar {
+    margin-bottom: 27px;
+    img {
+      @include border-radius(50%);
+      margin: auto;
+      height: 120px;
+      width: 120px;
+    }
+  }
+  .testimonial-quote {
+    color: #666666;
+    @include font-size(15);
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .testimonial-author {
+    @include font-noline(15);
+    color: #666666;
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-top: 26px;
+
+    .title {
+      font-size: 90%;
+      font-weight: 400;
+      vertical-align: middle;
+    }
+  }
+}

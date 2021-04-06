@@ -1,0 +1,52 @@
+/*======================================
+* Start About Page Wrapper
+=======================================*/
+.about-text-wrap {
+  @include font-noline(16);
+  line-height: 1.7;
+
+  h2 {
+    @include font-noline(48);
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-top: -6px;
+
+    @media #{$small-mobile} {
+      @include font-noline(28);
+    }
+
+    span {
+      display: block;
+      font-weight: 300;
+      @include font-noline(30);
+      margin-bottom: 12px;
+
+      @media #{$small-mobile} {
+        @include font-noline(24);
+      }
+    }
+  }
+}
+
+.about-image-wrap {
+  position: relative;
+  padding-left: 30px;
+  padding-top: 30px;
+  margin-bottom: 50px;
+
+  @media #{$laptop-device,$desktop-device} {
+    margin-bottom: 0;
+  }
+
+  &:after {
+    border: 5px solid $brand-color;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: calc(100% - 30px);
+    width: calc(100% - 30px);
+    z-index: -1;
+  }
+}

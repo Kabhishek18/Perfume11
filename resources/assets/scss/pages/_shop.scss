@@ -1,0 +1,49 @@
+/*==============================
+Start Shop Page Wrapper
+================================*/
+.shop-page-content-wrap {
+  .products-settings-option {
+    background-color: #f7f7f7;
+    padding: 10px 15px;
+    @include justify-content(space-between);
+    @include align-items(center);
+    margin-bottom: 30px;
+
+    .show-items {
+      @include font-noline(16);
+    }
+  }
+
+  .products-wrapper {
+    margin-top: -40px;
+  }
+}
+
+.product-view {
+  margin-right: 20px;
+  li {
+    background-color: $white;
+    @include font-noline(20);
+    outline: 1px solid lighten($gray-color, 20%);
+    padding: 3px 10px;
+    cursor: pointer;
+    @include transition(0.4s);
+
+    &.current {
+      color: $brand-color;
+    }
+
+    .fa-bars {
+      padding-top: 1px;
+    }
+  }
+}
+
+.product-sort_by, .product-per-page {
+  label {
+    font-weight: 600;
+    @include font-noline(13);
+    margin: 0;
+    margin-right: 10px;
+  }
+}

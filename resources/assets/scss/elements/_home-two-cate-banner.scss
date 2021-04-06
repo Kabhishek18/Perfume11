@@ -1,0 +1,154 @@
+/*================================================
+Start Categories Banner Area // index2.html
+================================================*/
+.single-category-banner {
+  .cate-banner-thumb {
+    position: relative;
+    &:before {
+      background-color: rgba($black, 0.3);
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      pointer-events: none;
+      height: 100%;
+      width: 100%;
+      @include opacity(0);
+      @include transition(0.3s);
+      visibility: hidden;
+
+      @media #{$large-mobile} {
+        @include opacity(1);
+        visibility: visible;
+      }
+    }
+
+    .banner-content {
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      pointer-events: none;
+      @include translate(0, -50%);
+      width: 100%;
+
+      * {
+        color: $white;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        @include font-noline(36);
+        line-height: 1.2;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 20px;
+        margin-bottom: 35px;
+
+        @media #{$large-mobile} {
+          &:after, &:before {
+            width: calc(100% + 0px) !important;
+          }
+        }
+
+        &:before {
+          background-color: $white;
+          content: '';
+          position: absolute;
+          left: 50%;
+          @include transform(translateX(-50%));
+          @include transition(0.3s);
+          bottom: 0;
+          height: 2px;
+          width: calc(100% + 50px);
+        }
+
+        &:after {
+          background-color: $white;
+          content: '';
+          position: absolute;
+          left: 50%;
+          @include transform(translateX(-50%));
+          @include transition(0.3s);
+          bottom: 0;
+          height: 2px;
+          width: calc(100% + 50px);
+        }
+      }
+
+      h4 {
+        @include font-noline(24);
+        line-height: 1.2;
+      }
+    }
+
+    // After Hover Style
+    &:hover {
+      &:before {
+        @include opacity(1);
+        visibility: visible;
+      }
+
+      .banner-content {
+        h2 {
+          &:before {
+            @include transform(translateX(-50%) rotate(-45deg));
+
+            @media #{$large-mobile} {
+              @include transform(translateX(-50%) rotate(0));
+            }
+          }
+          &:after {
+            @include transform(translateX(-50%) rotate(45deg));
+
+            @media #{$large-mobile} {
+              @include transform(translateX(-50%) rotate(0));
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Layout Two Style
+  &.layout-two {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 100px 50px;
+
+    @media #{$large-mobile} {
+      padding: 30px;
+    }
+
+    &.running-shoes {
+      background-image: url("../img/categories/home-two/home2-cate-3.jpg");
+      margin-bottom: 30px;
+    }
+    &.new-vans {
+      background-image: url("../img/categories/home-two/home2-cate-2.jpg");
+      margin-top: 30px;
+    }
+
+    h2 {
+      @include font-noline(18);
+      line-height: 1.2;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    p {
+      @include font-size(16);
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: $black-soft;
+      font-weight: 700;
+      @include font-noline(13);
+      line-height: 1;
+
+      &:hover {
+        color: $brand-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+//===================================
+//    Dropdown Code Here
+//===================================
+
+// Dropdown Nav
+.dropdown-nav {
+  background-color: $light-white;
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  z-index: 999;
+  @include opacity(0);
+  @include transform(perspective(600px) rotateX(-90deg));
+  @include transform-origin(center top 0);
+
+  @include transition(0.4s);
+
+  .dropdown-nav {
+    left: 100%;
+  }
+
+  &.mega-menu-wrap {
+    width: auto;
+  }
+}
+
+// Dropdown Show
+.dropdown-show {
+  position: relative;
+  &:hover {
+    & > .dropdown-nav {
+      pointer-events: visible;
+      visibility: visible;
+      @include opacity(1);
+      @include transform(none);
+    }
+  }
+}
+
+// Dropdown Arrow Switcher
+.arrow-toggle {
+  position: relative;
+
+  &:after {
+    content: '\f110';
+    @include font-noline(10);
+    font-family: $font-font_awesome;
+    vertical-align: middle;
+  }
+}

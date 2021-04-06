@@ -1,0 +1,71 @@
+/*===============================
+Start Page Header
+================================*/
+#page-header-wrapper {
+  background-color: #f7f7f7;
+  padding: 45px 0;
+
+  @media #{$small-mobile} {
+    [class*="col-"] {
+      max-width: 100%;
+      @include flex(100% 0 0);
+      text-align: center;
+    }
+  }
+
+  .page-title-wrap {
+    h1 {
+      text-transform: uppercase;
+      @include font-noline(24);
+      line-height: 1;
+      font-weight: 900;
+      margin: 0;
+    }
+  }
+
+  .page-breadcrumb-wrap {
+
+    & > .nav {
+      @media #{$small-mobile} {
+        margin-top: 10px;
+        -webkit-justify-content: center !important;
+        -moz-justify-content: center !important;
+        -ms-justify-content: center !important;
+        justify-content: center !important;
+        -ms-flex-pack: center !important;
+      }
+    }
+
+    li {
+
+      &:last-child {
+        a {
+          &:after {
+            display: none;
+          }
+        }
+      }
+
+      a {
+        color: $black-soft;
+        text-transform: uppercase;
+        @include font-noline(13);
+        line-height: 1;
+        font-weight: 700;
+
+        &.current, &:hover {
+          color: $brand-color;
+        }
+
+        &.current {
+          pointer-events: none;
+        }
+
+        &:after {
+          content: "/";
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+}

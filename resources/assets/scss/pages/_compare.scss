@@ -1,0 +1,104 @@
+/*==============================
+Start Compare Page Wrapper
+=================================*/
+.compare-table {
+  & .table {
+    & tbody {
+      & tr {
+        & td {
+          text-align: center;
+          padding: 20px 20px;
+          vertical-align: middle;
+          border-color: lighten($gray-color, 20%);
+
+          &.first-column {
+            min-width: 175px;
+            @include font-size(16);
+            font-weight: 600;
+            color: $black-soft;
+            margin: 0;
+
+            @media #{$large-mobile} {
+              min-width: 115px;
+            }
+          }
+
+          &.product-image-title {
+            min-width: 310px;
+            vertical-align: bottom;
+
+            @media #{$large-mobile} {
+              min-width: 220px;
+            }
+
+            & .image {
+              clear: both;
+              width: 100%;
+              margin-bottom: 15px;
+              display: block;
+              & img {
+                max-width: 100%;
+              }
+            }
+            & .category {
+              float: left;
+              clear: both;
+              color: $brand-color-dark;
+              text-transform: capitalize;
+              letter-spacing: 0.5px;
+            }
+            & .title {
+              float: left;
+              clear: both;
+              @include font-size(16);
+              color: $black-soft;
+              font-weight: 500;
+
+              &:hover {
+                color: $brand-color;
+              }
+            }
+          }
+
+          &.pro-desc {
+            & p {
+              text-align: left;
+              margin: 0;
+              @include font-size(14);
+            }
+          }
+
+          &.pro-price, &.pro-color, &.pro-stock {
+            @include font-size(16);
+            font-weight: 400;
+          }
+
+          &.pro-remove {
+            & button {
+              border: none;
+              background-color: transparent;
+              padding: 0;
+              cursor: pointer;
+              @include transition(0.3s);
+
+              &:hover {
+                color: $red;
+              }
+
+              & i {
+                @include font-size(20);
+              }
+            }
+          }
+
+          &.pro-ratting {
+            & i {
+              color: $yellow;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

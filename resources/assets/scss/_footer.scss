@@ -1,0 +1,206 @@
+/*=================================
+  Start Footer Section
+====================================*/
+
+#footer-area {
+  background-color: $black-soft;
+  color: #999999;
+}
+
+/*=================================
+  Start Newsletter Area
+====================================*/
+.newsletter-area-wrapper {
+  border-bottom: 1px solid rgba($white, 0.05);
+  padding: 92px 0;
+
+  @media #{$large-mobile, $tablet-device} {
+    padding: 50px 0;
+  }
+
+  .newsletter-content-wrap {
+    h2 {
+      color: $white;
+      text-transform: uppercase;
+      @include font-noline(24);
+      line-height: 1.2;
+      margin-top: -5px;
+      margin-bottom: 21px;
+
+      @media #{$large-mobile, $tablet-device} {
+        margin-bottom: 15px;
+      }
+    }
+
+    p {
+      margin-bottom: 40px;
+      color: $white;
+      @media #{$large-mobile, $tablet-device} {
+        margin-bottom: 25px;
+      }
+    }
+
+    .newsletter-form-wrap {
+      position: relative;
+      form {
+        position: relative;
+        input {
+          background-color: $black;
+          border: none;
+          color: #999999;
+          display: block;
+          font-style: italic;
+          padding: 15px 45px 15px 15px;
+          width: 100%;
+          &:focus, &:active {
+            border: none;
+            @include box-shadow(none);
+            outline: none;
+          }
+        }
+
+        button.btn {
+          background-color: transparent;
+          color: #999999;
+          @include font-noline(19);
+          padding: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+          height: 100%;
+          width: 40px;
+        }
+      }
+
+      // Mailchimp Alert
+
+      .mailchimp-alerts {
+        margin-top: 15px;
+        color: $white;
+        @include font-noline(17);
+        @include opacity(0.7);
+        position: absolute;
+        width: 100%;
+      }
+    }
+  }
+}
+
+/*=================================
+  Start Footer Widget Area
+====================================*/
+.footer-widget-wrapper {
+  padding: 90px 0;
+
+  @media #{$large-mobile, $tablet-device} {
+    padding: 50px 0;
+  }
+
+  .widget-content-wrap {
+    margin-top: -40px;
+  }
+}
+
+.single-footer-widget-wrap {
+  margin-top: 40px;
+  &.footer-about {
+    a.footerLogo {
+      display: inline-block;
+      margin-bottom: 37px;
+
+      @media #{$large-mobile, $tablet-device} {
+        margin-bottom: 20px;
+      }
+    }
+    address {
+      margin-top: 35px;
+      margin-bottom: 0;
+
+      @media #{$large-mobile, $tablet-device} {
+        margin-top: 20px;
+      }
+
+      p {
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        a {
+          color: $white;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  .widget-title {
+    color: $white;
+    @include font-noline(17);
+    margin-top: -2px;
+    margin-bottom: 48px;
+    text-transform: uppercase;
+
+    @media #{$large-mobile, $tablet-device} {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+// List Style
+.widget-list {
+  li {
+    margin-bottom: 15px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      a {
+        color: $brand-color;
+        padding-left: 10px;
+      }
+    }
+
+    a {
+      color: #999999;
+      @include transition();
+    }
+  }
+}
+
+// Tags Style
+.tagsCloud {
+  padding-top: 5px;
+  a {
+    background-color: #333;
+    color: #999999;
+    display: inline-block;
+    margin: 0 2px 7px 0;
+    padding: 8px 15px;
+    text-transform: lowercase;
+    @include transition(0.3s);
+
+    &:hover {
+      background-color: $brand-color;
+      color: $white;
+    }
+  }
+}
+
+/*=================================
+  Start Footer Copyright Area
+====================================*/
+.footer-copyright-area {
+  background-color: #1f1f1f;
+  padding: 30px 0;
+  * {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: $white;
+    &:hover {
+      color: $brand-color;
+    }
+  }
+}

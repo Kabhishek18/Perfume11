@@ -1,0 +1,1 @@
+ncurses_assume_default_colors(fg, bg)

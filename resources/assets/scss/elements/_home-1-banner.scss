@@ -1,0 +1,83 @@
+/*=================================
+  Start Parallax Banner Area
+====================================*/
+#parallax-banner-area {
+  background-image: url("../img/home-1-paralax-bg.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  color: $white;
+  position: relative;
+  padding: 90px 0;
+  z-index: 1;
+
+  &.layout-two {
+    background-image: url("../img/home3-fullbanner.jpg");
+  }
+
+  @media #{$large-mobile, $tablet-device} {
+    padding: 50px 0;
+  }
+
+  &:after {
+    background-color: rgba($black-soft, 0.25);
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .banner-content-wrap {
+    @include font-size(18);
+
+    @media #{$large-mobile, $tablet-device} {
+      @include font-size(15);
+    }
+
+    h2 {
+      @include font-noline(36);
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: $white;
+      margin-top: -8px;
+      margin-bottom: 30px;
+
+      @media #{$large-mobile, $tablet-device} {
+        margin-bottom: 15px;
+      }
+    }
+
+    .btn {
+      text-transform: uppercase;
+      border-color: $white;
+      color: $white;
+      font-weight: 700;
+      margin-top: 34px;
+
+      @media #{$large-mobile, $tablet-device} {
+        margin-top: 20px;
+      }
+
+      &:hover {
+        border-color: $brand-color;
+      }
+    }
+  }
+
+  // Layout -two Style
+  &.layout-two {
+    padding: 120px 0;
+    @media #{$large-mobile, $tablet-device} {
+      padding: 50px 0;
+    }
+
+    a.btn {
+      &:hover {
+        background-color: $brand-color-alt;
+      }
+    }
+  }
+}

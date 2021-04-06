@@ -1,0 +1,222 @@
+/*==================================
+Start Navigation // Main Menu
+====================================*/
+#main-navbar {
+  & > li {
+    display: inline-block;
+    margin-right: 25px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      & > a {
+        color: $brand-color;
+      }
+    }
+
+    & > a {
+      color: $black-soft;
+      text-transform: uppercase;
+      font-weight: 700;
+      @include font-noline(13);
+      line-height: 1;
+      display: block;
+      padding: 25px 0;
+      &.arrow-toggle {
+        &:after {
+          margin-left: 2px;
+          display: inline-block;
+          margin-top: -2px;
+        }
+      }
+    }
+
+    .dropdown-nav {
+      background-color: $white;
+      @include box-shadow(0px 0px 7px 0px rgba(0, 0, 0, 0.1));
+      padding: 10px 20px;
+      width: 220px;
+      text-align: left;
+
+      li {
+        border-bottom: 1px solid $border-color;
+
+        &:last-child {
+          border-bottom: 0 !important;
+        }
+
+        a {
+          color: #777777;
+          padding: 8px 0;
+          display: block;
+
+          &:hover {
+            color: $brand-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Mega Menu Style
+.mega-menu-wrap {
+  @include flexbox();
+  @include flex-wrap(no-wrap);
+  width: auto !important;
+  white-space: nowrap;
+  padding: 10px 30px !important;
+
+  & > .mega-menu-item {
+    margin-right: 50px;
+    border-bottom: 0 !important;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    & > .mega-item-title {
+      color: $black-soft !important;
+      text-transform: uppercase;
+      font-weight: 700;
+      @include font-noline(13);
+      padding: 10px 0 0 !important;
+    }
+
+    ul {
+      li {
+        &:last-child {
+          border-bottom: 0 !important;
+        }
+      }
+    }
+  }
+}
+
+// Responsive Menu Style
+.slicknav_menu {
+  background-color: transparent;
+  left: 0;
+  padding: 0;
+  top: 0;
+  display: none;
+
+  @media #{$large-mobile, $tablet-device} {
+    display: block;
+  }
+
+  // Slick Button style
+  .slicknav_btn {
+    background-color: transparent;
+    @include border-radius(0);
+    margin: -4px 25px 0 0;
+    padding: 0;
+    left: 0;
+    z-index: 97;
+    &.slicknav_open {
+      .slicknav_icon {
+        .slicknav_icon-bar {
+          &:nth-child(1) {
+            @include rotate(135);
+            top: 8px;
+          }
+          &:nth-child(2) {
+            display: none;
+          }
+          &:nth-child(3) {
+            @include rotate(-135);
+            top: 8px;
+          }
+        }
+      }
+    }
+    .slicknav_icon {
+      position: relative;
+      height: 15px;
+      width: 30px;
+      &:before {
+        display: none;
+      }
+      .slicknav_icon-bar {
+        background-color: $black-soft;
+        @include box-shadow(none);
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+        @include transition(0.3s);
+        height: 2px;
+        width: 100%;
+        &:nth-child(2) {
+          top: 50%;
+        }
+        &:nth-child(3) {
+          top: 100%;
+        }
+      }
+    }
+    .slicknav_menutxt {
+      text-shadow: none;
+      font-weight: 400;
+      color: $black-soft;
+    }
+  }
+
+  // Slick Menu style
+  .slicknav_nav {
+    background-color: $black-soft;
+    left: 0;
+    position: absolute;
+    padding: 0;
+    top: calc(100% + 30px);
+    width: 100%;
+    max-height: 300px;
+    overflow: auto;
+    z-index: 97;
+
+    li {
+      a {
+        border-bottom: 1px solid $border-color;
+        padding: 0 40px 0 20px;
+        margin: 0;
+        display: block;
+        position: relative;
+        line-height: 45px;
+        &:hover, &:focus, &:active {
+          background-color: transparent;
+          @include border-radius(0);
+          color: $brand-color;
+        }
+
+        .slicknav_arrow {
+          border-left: 1px solid $border-color;
+          margin-left: 0;
+          @include font-noline(22);
+          position: absolute;
+          right: 0;
+          top: 50%;
+          @include translate(0, -50%);
+          text-align: center;
+          width: 40px;
+        }
+      }
+
+      .slicknav_row {
+        border-bottom: 0;
+        padding: 0;
+      }
+
+      ul {
+        margin: 0;
+        background-color: $black;
+        ul {
+          background-color: lighten($black, 20%);
+        }
+      }
+    }
+  }
+}
+
+/*== End Navigation // Main Menu Area End ==*/

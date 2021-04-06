@@ -1,0 +1,76 @@
+/*=================================================
+Start Special Offers Product  / index4.html
+====================================================*/
+.special-products-menu-area {
+  h2 {
+    background-color: $brand-color;
+    color: $white;
+    text-transform: uppercase;
+    @include font-noline(18);
+    line-height: 1.2;
+    font-weight: 900;
+    margin-bottom: 0;
+    padding: 16px 20px;
+
+    @media #{$tablet-device} {
+      font-weight: 700;
+      @include font-noline(15);
+      padding: 15px;
+    }
+  }
+
+  .special-products-menu {
+    a {
+      display: block;
+      color: $black-soft;
+      padding: 18px 0;
+      border-bottom: 1px solid $border-color;
+      font-weight: 700;
+
+      span {
+        vertical-align: middle;
+        margin-left: 15px;
+      }
+
+      &:hover, &.active {
+        color: $brand-color;
+      }
+    }
+  }
+}
+
+#specialProducts {
+  .products-wrapper {
+    .special-product-carousel {
+      margin-top: -40px;
+      &.slick-slider {
+        .slick-list {
+          margin: 0 -15px;
+          .slick-slide {
+            margin: 0 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tab-content {
+  width: 100%;
+}
+
+.tab-content .tab-pane {
+  display: block;
+  height: 0;
+  max-width: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.tab-content .tab-pane.active {
+  height: auto;
+  visibility: visible;
+  opacity: 1;
+  overflow: visible;
+}

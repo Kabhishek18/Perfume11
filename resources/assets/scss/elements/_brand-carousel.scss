@@ -1,0 +1,42 @@
+/*==============================
+Start Brand Carousel Area
+================================*/
+.brand-logo-area {
+  background-color: #f7f7f7;
+  padding: 45px 0;
+
+  &.layout-two {
+    background-color: $white;
+  }
+
+  &.color-layout-two {
+    .slick-slider {
+      .slick-arrow {
+        &:hover {
+          background-color: $brand-color-alt;
+        }
+      }
+    }
+  }
+
+  .brand-logo-carousel {
+    &.slick-slider {
+      .slick-list {
+        margin: 0 -15px;
+        .slick-slide {
+          margin: 0 15px;
+        }
+      }
+    }
+  }
+
+  .single-brand-item {
+    text-align: center;
+    @include transition(0.4s);
+    cursor: pointer;
+    img {
+      width: 70%;
+      margin: auto;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+/*============================
+Start 404 Error Page
+=============================*/
+#error-page-wrapper {
+  height: 100vh;
+  * {
+    height: 100vh;
+  }
+
+  [class*="col-"] {
+    height: auto;
+    * {
+      height: auto;
+    }
+  }
+}
+
+.error-page-content-wrap {
+  height: auto;
+  @include font-size(16);
+  h2 {
+    color: $brand-color;
+    @include font-noline(120);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    line-height: 1;
+    font-weight: 900;
+    animation: rubberBand 0.5s 0.5s forwards;
+
+    @media #{$large-mobile} {
+      @include font-noline(50);
+    }
+  }
+
+  h3 {
+    @include font-size(32);
+    color: $black-soft;
+    margin-bottom: 12px;
+
+    @media #{$large-mobile} {
+      @include font-size(20);
+      margin-bottom: 5px;
+    }
+  }
+
+  /*  .btn {
+      display: inline-block;
+      padding: 20px 40px;
+
+      @media #{$large-mobile} {
+        padding: 15px 20px;
+        @include font-size(13);
+      }
+    }*/
+
+  .search-form-sidebar {
+    margin: 30px auto 40px;
+
+    @media #{$large-mobile} {
+      margin: 0 auto 25px;
+    }
+  }
+}
