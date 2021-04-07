@@ -1,0 +1,11 @@
+<?php
+config['mongo_db']['newdb']['hostname'] = 'localhost';
+$config['mongo_db']['newdb']['port'] = '27017';
+$config['mongo_db']['newdb']['username'] = 'username';
+$config['mongo_db']['newdb']['password'] = 'password';
+$config['mongo_db']['newdb']['database'] = 'database';
+$config['mongo_db']['newdb']['db_debug'] = TRUE;
+$config['mongo_db']['newdb']['write_concerns'] = (int)1;
+$config['mongo_db']['newdb']['journal'] = TRUE;
+$config['mongo_db']['newdb']['read_preference'] = NULL;
+$config['mongo_db']['newdb']['read_preference_tags'] = NULL;
