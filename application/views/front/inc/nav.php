@@ -22,7 +22,8 @@
                     <div class="preheader-right-wrap">
                         <nav id="site-settings">
                             <ul class="nav justify-content-center justify-content-md-end">
-                                <li class="dropdown-show"><a href="#" class="arrow-toggle">My Account</a>
+                                <?php if($this->session->user_account){?>
+                                    <li class="dropdown-show"><a href="#" class="arrow-toggle">My Account</a>
                                     <ul class="dropdown-nav">
                                         <li><a href="#">My Account</a></li>
                                         <li><a href="#">Wishlist</a></li>
@@ -31,7 +32,14 @@
                                         <li><a href="#">Login</a></li>
                                     </ul>
                                 </li>
-
+                                <?php }else{?>
+                                        <li class="dropdown-show"><a  class="arrow-toggle" href="javascript:void(0)"><i class="fa fa-users"></i>Sign in/up</a>
+                                        <ul class="dropdown-nav">
+                                        <li><a href="LoginRegister">Register</a></li>
+                                        <li><a href="LoginRegister">Login</a></li>
+                                    </ul>
+                                        </li>
+                                <?php }?>    
                                 <li class="dropdown-show"><a href="#" class="arrow-toggle"><img
                                         src="<?=base_url()?>resources/assets/img/icons/flag/en.png" alt="English"/> English</a>
                                     <ul class="dropdown-nav">
@@ -47,8 +55,9 @@
                                 <li class="dropdown-show"><a href="#" class="arrow-toggle">USD</a>
                                     <ul class="dropdown-nav">
                                         <li><a href="#">AUD</a></li>
-                                        <li><a href="#">CAD</a></li>
-                                        <li><a href="#">BDT</a></li>
+                                        <li><a href="#">EUR</a></li>
+                                        <li><a href="#">GBP</a></li>
+                                        <li><a href="#">USD</a></li>
                                     </ul>
                                 </li>
 
@@ -68,7 +77,7 @@
                 <!-- Start Logo Area -->
                 <div class="col-lg-3 col-sm-4 m-auto text-center text-sm-left">
                     <div class="logo-wrap mb-4 mb-sm-0">
-                        <a href="#"><img src="<?=base_url()?>resources/assets/img/logo-white.png" alt="Logo"/></a>
+                        <a href="<?=base_url()?>"><img src="<?=base_url()?>resources/assets/img/logo-white.png" alt="Logo"/></a>
                     </div>
                 </div>
                 <!-- End Logo Area -->

@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="meta description">
 
-    <title>Discount Perfume - Free Shipping | www.perfume11.com</title>
-
-
+    <?php if(!empty($meta)){?>
+        <?=$meta?>
+    <?php }?>
     <!--== Google Fonts ==-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900" rel="stylesheet">
 
