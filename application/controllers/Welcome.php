@@ -6,7 +6,6 @@ class Welcome extends CI_Controller {
 		parent::__construct();
 		$this->load->library('cart');
 		$this->load->helper('file');
-		$this->load->model('test_model');
 		$this->load->library('mongo_db', array('activate'=>'newdb'),'mongo_db2');
 		$this->load->library('session');
 		$this->load->helper('date');
@@ -60,12 +59,29 @@ class Welcome extends CI_Controller {
 		echo "<pre>";
 		print_r($res);
 	}
-	public function lolinsert()
+	public function GetBrand()
 	{
-		$res =$this->mongo_db2->insert('products',$array);
+		$res =$this->mongo_db2->get('products');
 		echo "<pre>";
-		print_r($res);
+		foreach($res as $pro){
+			$brandname[] = $pro['BrandName'];
+		}
+		echo "<pre>";
+		print_r(array_unique($brandname));
 	}
+
+	public function GetProductByBrand()
+	{	
+		if(!empty($this->input->post('matchvalue'))){
+		$response=Fragnance_getProductByBrand(Fragnancex_accesstoken(),$this->input->post('matchvalue'));
+		echo($response);
+		}
+		else{
+			$this->session->set_flashdata('danger',  'Strictly Prohibited');
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
+
 	public function lolUpdate()
 	{
 		$this->mongo_db2->where('username','asd');

@@ -22,14 +22,15 @@
                     <div class="preheader-right-wrap">
                         <nav id="site-settings">
                             <ul class="nav justify-content-center justify-content-md-end">
-                                <?php if($this->session->user_account){?>
-                                    <li class="dropdown-show"><a href="#" class="arrow-toggle">My Account</a>
+                                <?php if(!empty($this->session->user_account)){?>
+                                <?php $var =$this->session->user_account;?>
+                                    <li class="dropdown-show"><a href="#" class="arrow-toggle"><?=(!empty($var)?$var['UserName']:'')?> My Account</a>
                                     <ul class="dropdown-nav">
                                         <li><a href="#">My Account</a></li>
                                         <li><a href="#">Wishlist</a></li>
                                         <li><a href="#">Shopping Cart</a></li>
                                         <li><a href="#">Checkout</a></li>
-                                        <li><a href="#">Login</a></li>
+                                        <li><a href="<?=base_url()?>Logout">Logout</a></li>
                                     </ul>
                                 </li>
                                 <?php }else{?>
@@ -228,3 +229,50 @@
     </div>
 </div>
 <!--== End Search box Wrapper ==-->
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<?php if($this->session->flashdata('success')){ ?>
+    <script type="text/javascript">
+        swal({
+        title: 'Success',
+        text: '<?=($this->session->flashdata('success'))?>',
+        timer: 2000,
+        buttons: false
+        })
+    </script>
+<?php }?>
+  
+<?php if($this->session->flashdata('danger')){ ?>
+     <script type="text/javascript">
+        swal({
+        title: 'Danger',
+        text: '<?=($this->session->flashdata('danger'))?>',
+        timer: 2000,
+        buttons: false
+        })
+    </script>
+<?php }?>
+   
+<?php if($this->session->flashdata('warning')){ ?>
+     <script type="text/javascript">
+        swal({
+        title: 'Warning',
+        text: '<?=($this->session->flashdata('warning'))?>',
+        timer: 2000,
+        buttons: false
+        })
+    </script>
+<?php }?>
+   
+<?php if($this->session->flashdata('info')){ ?>
+    <script type="text/javascript">
+        swal({
+        title: 'Information',
+        text: '<?=($this->session->flashdata('info'))?>',
+        timer: 2000,
+        buttons: false
+        })
+    </script>
+<?php }?>
+  

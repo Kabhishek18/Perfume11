@@ -15,7 +15,7 @@
                 <nav class="page-breadcrumb-wrap">
                     <ul class="nav justify-content-end">
                         <li><a href="<?=base_url()?>">Home</a></li>
-                        <li><a href="#" class="current">Login / Register</a></li>
+                        <li><a href="javascript:void(0)" class="current">Login / Register</a></li>
                     </ul>
                 </nav>
             </div>
@@ -34,14 +34,16 @@
                 <div class="col-lg-6">
                     <div class="login-reg-form-wrap  pr-lg-50">
                         <h2>Log In</h2>
-
-                        <form action="#" method="post">
+                        <sub> 
+                            <span class="text-danger">* All Field Are Mandatory</span>
+                        </sub>
+                        <?php echo form_open_multipart('Home/Authenticate','') ?> 
                             <div class="single-input-item">
-                                <input type="email" placeholder="Email" required/>
+                                <input type="email" name="UserEmail"  placeholder="Email" required/>
                             </div>
 
                             <div class="single-input-item">
-                                <input type="password" placeholder="Enter your Password" required/>
+                                <input type="password" name="UserPassword" placeholder="Enter your Password" required/>
                             </div>
 
                             <div class="single-input-item">
@@ -60,7 +62,7 @@
                             <div class="single-input-item">
                                 <button class="btn btn-brand">Login Account</button>
                             </div>
-                        </form>
+                        <?php echo form_close() ?>  
                     </div>
                 </div>
                 <!-- Login Content End -->
@@ -69,23 +71,30 @@
                 <div class="col-lg-6">
                     <div class="login-reg-form-wrap signup-form">
                         <h2>Register Account</h2>
-                        <form action="#" method="post">
+                        <sub> 
+                            <span class="text-danger">* All Field Are Mandatory</span>
+                        </sub>
+                        <?php echo form_open_multipart('Home/RegisterUser','') ?> 
                             <div class="single-input-item">
-                                <input type="text" placeholder="Full Name" required/>
+                                <input type="text" placeholder="Full Name" name="UserName" required/>
                             </div>
-
-                            
+                            <div class="single-input-item">
+                                <input type="email" placeholder="Enter your Email" name="UserEmail" required/>
+                            </div>
+                            <div class="single-input-item">
+                                <input type="text" placeholder="Enter your Mobile" name="UserPhone" required/>
+                            </div>
 
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="single-input-item">
-                                        <input type="email" placeholder="Enter your Email" required/>
+                                        <input type="password" placeholder="Enter your Password" name="UserPassword" required/>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="single-input-item">
-                                        <input type="password" placeholder="Enter your Password" required/>
+                                        <input type="password" placeholder="Confirm your Password" name="CUserPassword" required/>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +103,7 @@
                                 <div class="login-reg-form-meta">
                                     <div class="remember-meta">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="subnewsletter">
+                                            <input type="checkbox" class="custom-control-input" name="Subcribed" id="subnewsletter">
                                             <label class="custom-control-label" for="subnewsletter">Subscribe Our
                                                 Newsletter</label>
                                         </div>
@@ -105,7 +114,7 @@
                             <div class="single-input-item">
                                 <button class="btn btn-brand">Register Here</button>
                             </div>
-                        </form>
+                        <?php echo form_close() ?>  
                     </div>
                 </div>
                 <!-- Register Content End -->

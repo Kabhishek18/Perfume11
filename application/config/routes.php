@@ -6,3 +6,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['LoginRegister'] = 'Home/LoginRegister';
+$route['Logout'] = 'Home/Logout';

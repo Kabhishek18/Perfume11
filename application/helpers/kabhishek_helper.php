@@ -7,6 +7,7 @@
 #DD(Direct Dump)
 #Create Access Token Fragnancex_accesstoken
 #Fragnance_getfile
+#Fragnance_getProductByBrand
 */
 	if ( ! function_exists('force_ssl'))
 	{
@@ -104,6 +105,36 @@
 			$curl_handle = curl_init();
 		curl_setopt_array($curl_handle, array(
 		  CURLOPT_URL => "https://apilisting.fragrancex.com/product/list/",
+		  CURLOPT_RETURNTRANSFER => true,
+		  CURLOPT_SSL_VERIFYHOST =>false,
+		  CURLOPT_SSL_VERIFYPEER => false,
+		  CURLOPT_ENCODING => "",
+		  CURLOPT_MAXREDIRS => 10,
+		  CURLOPT_TIMEOUT => 30,
+		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		  CURLOPT_CUSTOMREQUEST => "GET",
+		  CURLOPT_POSTFIELDS => "grant_type=apiAccessKey&apiAccessId=6dd281e78f26&apiAccessKey=7f314f940fa8835495eb9c5c1f5d5be51875e564",
+		  CURLOPT_HTTPHEADER => array(
+		    "content-type: application/json","Authorization: Bearer $var",
+		  ),
+		));
+		// Execute curl & store data in a variable
+		$curl_data = curl_exec($curl_handle);
+
+		curl_close($curl_handle);
+
+		// Decode JSON into PHP array
+		return $curl_data;
+		
+		}
+	}
+
+	if(!function_exists('Fragnance_getProductByBrand')){
+		function Fragnance_getProductByBrand($var = '',$brand ='')
+		{
+			$curl_handle = curl_init();
+		curl_setopt_array($curl_handle, array(
+		  CURLOPT_URL => "https://apilisting.fragrancex.com/product/getbybrand/$brand",
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_SSL_VERIFYHOST =>false,
 		  CURLOPT_SSL_VERIFYPEER => false,
