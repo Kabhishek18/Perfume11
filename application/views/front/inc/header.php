@@ -26,8 +26,8 @@
     <script src="<?=base_url()?>resources/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
     <!--Sweet Alert  -->
-    <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="<?=base_url()?>resources/assets/js/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="<?=base_url()?>resources/assets/js/sweetalert2.min.css">
     
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

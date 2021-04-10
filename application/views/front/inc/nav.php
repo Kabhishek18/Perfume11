@@ -26,10 +26,9 @@
                                 <?php $var =$this->session->user_account;?>
                                     <li class="dropdown-show"><a href="#" class="arrow-toggle"><?=(!empty($var)?$var['UserName']:'')?> My Account</a>
                                     <ul class="dropdown-nav">
-                                        <li><a href="#">My Account</a></li>
-                                        <li><a href="#">Wishlist</a></li>
-                                        <li><a href="#">Shopping Cart</a></li>
-                                        <li><a href="#">Checkout</a></li>
+                                        <li><a href="<?=base_url()?>Dashboard">My Account</a></li>
+                                        <li><a href="<?=base_url()?>Cart">Shopping Cart</a></li>
+                                        <li><a href="<?=base_url()?>Checkout">Checkout</a></li>
                                         <li><a href="<?=base_url()?>Logout">Logout</a></li>
                                     </ul>
                                 </li>
@@ -88,9 +87,9 @@
                     <div id="navigation-area-wrap" class="text-center">
                         <nav class="mainmenu">
                             <ul id="main-navbar" class="clearfix">
-                                <li class="dropdown-show"><a href="#">WOMEN'S PERFUME</a></li>
-                                <li class="dropdown-show"><a href="#"> MEN'S COLOGNE</a></li>
-
+                                <li class="dropdown-show"><a href="<?=base_url()?>Women">WOMEN'S PERFUME</a></li>
+                                <li class="dropdown-show"><a href="<?=base_url()?>Men"> MEN'S COLOGNE</a></li>
+                    
                                 <li class="dropdown-show"><a href="#">BRANDS</a>
                                     <ul class="mega-menu-wrap dropdown-nav">
                                         <li class="mega-menu-item"><a href="#" class="mega-item-title">Most Popular Perfume Brands

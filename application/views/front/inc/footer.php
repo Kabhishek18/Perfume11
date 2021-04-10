@@ -149,133 +149,7 @@
 <a href="#" class="scrolltotop"><i class="fa fa-angle-double-up"></i></a>
 <!-- Scroll to Top End -->
 
-<!--== Start Quick View Content ==-->
-<div class="modal" id="quickViewModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true"><img src="<?=base_url()?>resources/assets/img/icons/cancel.png" alt="Close" class="img-fluid"/></span>
-            </button>
-            <div class="modal-body">
-                <div class="single-product-page-content">
-                    <div class="row">
-                        <!-- Product Thumbnail Area Start -->
-                        <div class="col-lg-5">
-                            <div class="product-thumbnail-wrap">
-                                <div class="product-image-carousel">
-                                    <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resources/assets/img/products/single-pro-thumb-1.jpg"
-                                             alt="Product"/>
-                                    </div>
 
-                                    <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resources/assets/img/products/single-pro-thumb-2.jpg"
-                                             alt="Product"/>
-                                    </div>
-
-                                    <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resources/assets/img/products/single-pro-thumb-3.jpg"
-                                             alt="Product"/>
-                                    </div>
-
-                                    <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resources/assets/img/products/single-pro-thumb-4.jpg"
-                                             alt="Product"/>
-                                    </div>
-
-                                    <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resources/assets/img/products/single-pro-thumb-5.jpg"
-                                             alt="Product"/>
-                                    </div>
-                                </div>
-
-                                <div class="pro-img-nav-carousel mt-3">
-                                    <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resources/assets/img/products/single-pro-thumb-1.jpg"
-                                             alt="Product"/>
-                                    </div>
-                                    <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resources/assets/img/products/single-pro-thumb-2.jpg"
-                                             alt="Product"/>
-                                    </div>
-                                    <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resources/assets/img/products/single-pro-thumb-3.jpg"
-                                             alt="Product"/>
-                                    </div>
-                                    <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resources/assets/img/products/single-pro-thumb-4.jpg"
-                                             alt="Product"/>
-                                    </div>
-                                    <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resources/assets/img/products/single-pro-thumb-5.jpg"
-                                             alt="Product"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product Thumbnail Area End -->
-
-                        <!-- Product Details Area Start -->
-                        <div class="col-lg-7">
-                            <div class="product-details">
-                                <h2>Product Category Name</h2>
-
-                                <p class="pro-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </p>
-
-                                <div class="price-group">
-                                    <span class="price">$122.00</span>
-                                    <del class="price sale-price">$152.00</del>
-                                </div>
-
-                                <div class="product-info-stock-sku">
-                                    <span class="product-stock-status text-success">In Stock</span>
-                                    <span class="product-sku-status"><strong>SKU</strong> MH03</span>
-                                </div>
-
-                                <p class="product-desc">Lorem ipsum dolore sieded amet, consectetured adipisicing elite.
-                                    Accusantium animi, aspernature assumenda commodi cumque dicta distinctio doloremque
-                                    dolores eius esse eveniet ex exercitationem fugiat harum ipsa iste libero neque
-                                    nulla omnis praesentium, quae, quia sapiente sequi sint sit unde vitae?</p>
-
-                                <div class="shopping-option">
-                                    
-
-                                  
-                                </div>
-
-                                <div class="product-quantity d-sm-flex align-items-center">
-                                    <div class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="2"/></div>
-                                    </div>
-
-                                    <a href="#" class="btn btn-transparent btn-semi-round"><i
-                                            class="fa fa-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <div class="product-btn-group">
-                                    <a href="#" class="btn btn-round btn-transparent"><i
-                                            class="fa fa-heart-o"></i></a>
-                                    <a href="#" class="btn btn-round btn-transparent"><i
-                                            class="fa fa-exchange"></i></a>
-                                    <a href="#" class="btn btn-round btn-transparent"><i
-                                            class="fa fa-envelope-o"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product Details Area End -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--== End Quick View Content ==-->
 
 
 <!--=======================Javascript============================-->
@@ -294,7 +168,7 @@
 
 <!--=== Active Js ===-->
 <script src="<?=base_url()?>resources/assets/js/active.js"></script>
-<script src="sweetalert2.all.min.js"></script>
+<script src="<?=base_url()?>resources/assets/js/sweetalert2.all.min.js"></script>
 <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
 <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 

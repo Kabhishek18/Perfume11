@@ -23,7 +23,8 @@ class Home extends CI_Controller {
 	 *  4) Authentication- Authentication of Login.
 	 */
 	public function index()
-	{	
+	{
+		$var['bestsell'] = $this->GetAllProducts();
 		$var['brandname'] =$this->GetBrand();
 		$var['meta'] ='<title>Perfume Home</title>';
 		$this->load->view('front/inc/header',$var);
@@ -167,6 +168,52 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function GenderPage()
+	{	
+		if($this->uri->segment(1,0)){
+			$var['meta'] ='<title>WOMEN\'S |  
+			MEN\'S
+			
+			| Perfume</title>';
+			$data['gender'] =$this->uri->segment(1,0);
+			$data['datalist'] = $this->GetGender($this->uri->segment(1,0));
+			$this->load->view('front/inc/header',$var);;
+			$this->load->view('front/inc/nav');
+			$this->load->view('front/gender',$data);
+			$this->load->view('front/inc/footer');
+		}else{
+			$this->session->set_flashdata('warning', 'Url Is Mandatory');
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
+
+	public function Products($id='')
+	{
+		$response = Fragnance_getProductById(Fragnancex_accesstoken(),$id);
+		$var = json_decode($response,true);
+		$var['meta'] ='<title> '.$var['ProductName'].' </title>';
+		$this->load->view('front/inc/header',$var);
+		$this->load->view('front/inc/nav');
+		$this->load->view('front/product',$var);
+		$this->load->view('front/inc/footer');
+	}
+
+	public function Dashboard()
+	{
+		if(!empty($this->session->user_account)){
+			$var = $this->session->user_account;
+			$var['meta'] ='<title> Dashboard </title>';
+			$this->load->view('front/inc/header',$var);
+			$this->load->view('front/inc/nav');
+			$this->load->view('front/dashboard',$var);
+			$this->load->view('front/inc/footer');
+		}else{
+			$this->session->set_flashdata('warning', 'User Access Denied');
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
+
+//Get Brand From Mongo
 	public function GetBrand()
 	{
 		$res =$this->mongo_db2->get('products');
@@ -175,5 +222,20 @@ class Home extends CI_Controller {
 		}
 		return array_unique($brandname);
 	}
+//Get Gender From Mongo
+	public function GetGender($gender)
+	{
+		$data = $this->mongo_db2->where(['Gender' => $gender])->get('products');
+		return $data;
+
+	}	
+//Get All Product On Home with limit 10
+	public function GetAllProducts()
+	{
+		$response =$this->mongo_db2->limit(10)->get('products');
+		return $response;
+	}
+
+
 }
 ?>	

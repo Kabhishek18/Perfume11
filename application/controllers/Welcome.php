@@ -59,6 +59,7 @@ class Welcome extends CI_Controller {
 		echo "<pre>";
 		print_r($res);
 	}
+
 	public function GetBrand()
 	{
 		$res =$this->mongo_db2->get('products');
@@ -80,6 +81,17 @@ class Welcome extends CI_Controller {
 			$this->session->set_flashdata('danger',  'Strictly Prohibited');
 			redirect($_SERVER['HTTP_REFERER']);
 		}
+	}
+
+	public function GetProduct()
+	{
+		$res =$this->mongo_db2->get('products');
+		echo "<pre>";
+		foreach($res as $pro){
+			print_r($pro);
+			
+		}
+		
 	}
 
 	public function lolUpdate()
