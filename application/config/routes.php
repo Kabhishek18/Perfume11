@@ -12,3 +12,7 @@ $route['Logout'] = 'Home/Logout';
 
 $route['Women'] ='Home/GenderPage';
 $route['Men'] ='Home/GenderPage';
+$route['Brand/(:any)'] ='Home/BrandPage';
+$route['Brand'] ='Home/BrandPage';
+
+$route['Search']='Home/Search';

@@ -81,7 +81,14 @@
                     </div>
                 </div>
                 <!-- End Logo Area -->
-
+                <?php 
+                $navres =$this->mongo_db2->get('products');
+                foreach($navres as $pro){
+                    $brandname[] = $pro['BrandName'];
+                }
+                $navbrand = array_unique($brandname);
+                shuffle($navbrand);
+                ?>
                 <!-- Start Navigation // Main Menu -->
                 <div class="col-lg-6 m-auto d-none d-lg-block">
                     <div id="navigation-area-wrap" class="text-center">
@@ -93,18 +100,12 @@
                                 <li class="dropdown-show"><a href="#">BRANDS</a>
                                     <ul class="mega-menu-wrap dropdown-nav">
                                         <li class="mega-menu-item"><a href="#" class="mega-item-title">Most Popular Perfume Brands
-                                    </a>
+                                          </a>
                                             <ul><br>
-                                                <li><a href="#">Calvin Klein</a></li>
-                                                <li><a href="#">Yves Saint Laurent</a></li>
-                                                <li><a href="#">Dolce & Gabbana</a></li>
-                                                <li><a href="#">Giorgio Armani</a></li>
-                                                <li><a href="#">Burberry</a></li>
-                                                <li><a href="#">Givenchy</a></li>
-                                                <li><a href="#">Guerlain</a>
-                                                <li><a href="#">Christian Dior</a>
-                                                <li><a href="#">Hugo Boss</a></li>
-												
+                                            <?php $b =1; foreach($navbrand as $brand){?>
+                                                <li><a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$brand))?>"><?=$brand?></a></li>
+                                            <?php $b++;if($b==10){break;}}?>    
+											<li><a href="<?=base_url()?>Brand" class="mega-item-title"><strong>+<?=count($navbrand)?> See More</strong></a></li>	
                                             </ul>
                                         </li>
 
@@ -219,8 +220,8 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="search-box-wrapper">
-                <form action="#" method="POST" class="search-form-area">
-                    <input type="search" class="form-control" name="search" id="search" placeholder="Search">
+                <form action="<?=base_url()?>Home/Search" method="POST" class="search-form-area">
+                    <input type="search" class="form-control" name="search" id="search" placeholder="Product Search ">
                     <button type="submit" class="btn btn-brand btn-search"><i class="fa fa-search"></i></button>
                 </form>
             </div>

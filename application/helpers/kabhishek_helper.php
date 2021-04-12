@@ -21,6 +21,14 @@
 	}
 
 
+	if ( ! function_exists('getfirstChar'))
+	{
+		function getfirstChar($str) {
+			if($str){
+				return strtolower(substr($str, 0, 1));
+			}
+		}
+	}
 
 	if ( ! function_exists('generateUUID'))
 	{

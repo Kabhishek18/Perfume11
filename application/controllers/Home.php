@@ -187,6 +187,28 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function BrandPage()
+	{	
+		if($this->uri->segment(2,0)){
+			$data['brandname'] =$this->uri->segment(2,0);
+			$data['brandname'] =str_replace("-"," ",$data['brandname']);
+			$var['meta'] ='<title>'.$data['brandname'].' | Perfume</title>';
+			$response =Fragnance_getProductByBrand(Fragnancex_accesstoken(),$data['brandname']);
+			$data['datalist'] =json_decode($response,true);
+			$this->load->view('front/inc/header',$var);
+			$this->load->view('front/inc/nav');
+			$this->load->view('front/brand',$data);
+			$this->load->view('front/inc/footer');
+		}else{
+			
+			$var['meta'] ='<title>All Brands | Perfume</title>';
+			$this->load->view('front/inc/header',$var);
+			$this->load->view('front/inc/nav');
+			$this->load->view('front/brand');
+			$this->load->view('front/inc/footer');
+		}
+	}
+
 	public function Products($id='')
 	{
 		$response = Fragnance_getProductById(Fragnancex_accesstoken(),$id);
@@ -213,6 +235,22 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function Search()
+	{
+		if($this->input->post('search')){
+			$this->session->set_userdata('search', $this->input->post('search'));
+			$this->mongo_db2->where('ProductName',ucwords($this->input->post('search')));
+			$res =$this->mongo_db2->get('products');
+			var_dump($res);
+		}else{
+			$this->session->search;
+			$this->mongo_db2->where('ProductName',$this->session->search);
+			$res =$this->mongo_db2->get('products');
+			var_dump($res);
+		}	
+
+	}
+
 //Get Brand From Mongo
 	public function GetBrand()
 	{
@@ -222,6 +260,16 @@ class Home extends CI_Controller {
 		}
 		return array_unique($brandname);
 	}
+
+//Get Brand From Mongo
+public function GetType()
+{
+	$res =$this->mongo_db2->get('products');
+	foreach($res as $pro){
+		$brandname[] = $pro['Type'];
+	}
+	return array_unique($brandname);
+}	
 //Get Gender From Mongo
 	public function GetGender($gender)
 	{

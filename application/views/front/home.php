@@ -98,20 +98,17 @@
     <div class="container">
         <div class="row">
                      
-              <!-- Start Special Product Tab Menu -->
-              <div class="col-md-3">
+            <!-- Start Special Product Tab Menu -->
+            <div class="col-md-3">
                 <div class="special-products-menu-area">
                     <h2>Fragrances by Type</h2>
                     
                     <div class="special-products-menu nav flex-column" role="tablist">
-                    <?php $i=1; foreach($brandname as $brand){?>
-                        <a href="#<?=$brand?>" <?=($i==1?'class="active"':'')?> data-toggle="tab">
-                            <span style="text-transform:uppercase;"><?=$brand?></span>
-                        </a>
-                    <?php $i++; if($i==7){break;} }?>
-                  
-						
-				
+                        <?php $i=1; foreach($brandname as $brand){?>
+                            <a href="#<?=str_replace(" ","-",$brand)?>" <?=($i==1?'class="active"':'')?> data-toggle="tab">
+                                <span style="text-transform:uppercase;"><?=$brand?></span>
+                            </a>
+                        <?php $i++; if($i==7){break;} }?>
                     </div>
                 </div>
             </div>
@@ -122,24 +119,24 @@
                 <div class="tab-content" id="specialProducts">
                     <!-- Single Tab Content Start -->
                     <?php $j=1; foreach($brandname as $brand){?>    
-                    <div class="tab-pane fade <?=($j==1?'class="show active"':'')?> " id="<?=$brand?>" role="tabpanel">
-                        <div class="products-wrapper product-grid-view">
-                            
-                        <div class="col-lg-3 col-sm-6" >
-                                
+                        <div class="tab-pane fade <?=($j==1?'show active':'')?> " id="<?=str_replace(" ","-",$brand)?>" role="tabpanel">
+                            <div class="products-wrapper product-grid-view">
+                                <?php $response = Fragnance_getProductByBrand(Fragnancex_accesstoken(),$brand);?>    
+                                <?php foreach(json_decode($response,true) as $items){?>
+                                   <div class="col-md-3"> 
                                     <div class="single-product-item">
                                         <!-- Product Thumbnail -->
                                         <figure class="product-thumbnail">
                                             <a href="<?=base_url()?>Products/<?=$items['ItemId']?>" class="d-block">
                                                 <img class="primary-thumb" src="<?=$items['SmallImageUrl']?>"
-                                                     alt="Product"/>
+                                                        alt="Product"/>
                                                 <img class="secondary-thumb" src="<?=$items['SmallImageUrl']?>"
-                                                     alt="Product"/>
+                                                        alt="Product"/>
                                             </a>
                                             <figcaption class="product-hvr-content">
-                                               
+                                                
                                                 <a href="#" class="btn btn-brand btn-quickView" data-toggle="modal"
-                                                   data-target="#quickViewModal<?=$items['ItemId']?>">Quick View</a>
+                                                    data-target="#quickViewModal<?=$items['ItemId']?>">Quick View</a>
                                             </figcaption>
                                         </figure>
 
@@ -151,15 +148,12 @@
                                                 
                                                 <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
                                             </div>
-
-                                            
                                         </div>
                                     </div>
-                                      
-                                </div>
-
+                                   </div> 
+                                <?php if($j==7){break;} }?>
+                            </div>    
                         </div>
-                    </div>
                     <?php $j++; if($j==7){break;} }?>
 
                     <!-- Single Tab Content End -->                   

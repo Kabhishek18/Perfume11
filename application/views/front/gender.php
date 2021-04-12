@@ -30,9 +30,58 @@
 <div id="shop-page-wrapper" class="page-padding">
     <div class="container">
         <div class="row">
-      
+             <!-- Sidebar Area Start -->
+             <div class="col-lg-3">
+                <div id="sidebar-area-wrap">
+                    <!-- Single Sidebar Item Start -->
+                    <?php 
+                        $sideres =$this->mongo_db2->get('products');
+                        foreach($sideres as $pro){
+                            $brandname[] = $pro['BrandName'];
+                        }
+                        $sidenavbrand = array_unique($brandname);
+                        shuffle($sidenavbrand);
+                    ?>
+                    <div class="single-sidebar-wrap">
+                        <h2 class="sidebar-title">Fragrances by Brand</h2>
+                        <div class="sidebar-body">
+                            <ul class="sidebar-list">
+                                <?php $s =1; foreach($sidenavbrand as $brand){?>
+                                <li><a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$brand))?>"><?=$brand?></a></li>
+                                <?php $s++;if($s==15){break;}}?>    
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Sidebar Item End -->
+                    <?php 
+                        $sidetype =$this->mongo_db2->get('products');
+                        foreach($sidetype as $stype){
+                            $type[] = $stype['Type'];
+                        }
+                        $sidenavtype = array_unique($type);
+                        shuffle($sidenavtype);
+                    ?>                
+                    <!-- Single Sidebar Item Start -->
+                    <div class="single-sidebar-wrap">
+                        <h2 class="sidebar-title">Fragrances by Type</h2>
+                        <div class="sidebar-body">
+                            <ul class="sidebar-list">
+                                <?php $s=1; foreach($sidenavtype as $snt){?>
+                                <li><a href="<?=base_url()?>Type/<?=(urlencode($snt))?>"><?=$snt?></a></li>
+                                <?php $s++;if($s==15){break;}}?>  
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Sidebar Item End -->
+
+                 
+                   
+                </div>
+            </div>
+            <!-- Sidebar Area End -->
             <!-- Start Shop Page Content -->
-            <div class="col-lg-12 order-first order-lg-last">
+            <div class="col-lg-9 order-first order-lg-last">
                 <div class="shop-page-content-wrap">
              
 
@@ -45,10 +94,10 @@
 
                            
                                
-                               <?php foreach($datalist as $items){?>
+                            <?php $i=1; foreach($datalist as $items){?>
                                 <!-- Single Product Start -->
                               
-                                <div class="col-lg-3 col-sm-6" >
+                                <div class="col-lg-4 col-sm-6" >
                                 
                                     <div class="single-product-item">
                                         <!-- Product Thumbnail -->
@@ -80,9 +129,88 @@
                                     </div>
                                       
                                 </div>
-                               
+                                <!--== Start Quick View Content ==-->
+                                <div class="modal" id="quickViewModal<?=$items['ItemId']?>" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true"><img src="<?=base_url()?>resources/assets/img/icons/cancel.png" alt="Close" class="img-fluid"/></span>
+                                            </button>
+                                            <div class="modal-body">
+                                                <div class="single-product-page-content">
+                                                    <div class="row">
+                                                        <!-- Product Thumbnail Area Start -->
+                                                        <div class="col-lg-5">
+                                                            <div class="product-thumbnail-wrap">
+                                                                <div class="product-image-carousel">
+                                                                    <div class="single-image-item">
+                                                                        <img class="img-fluid" src="<?=$items['LargeImageUrl']?>"
+                                                                            alt="Product"/>
+                                                                    </div>
+
+                                                                   
+                                                                </div>
+
+                                                               
+                                                            </div>
+                                                        </div>
+                                                        <!-- Product Thumbnail Area End -->
+
+                                                        <!-- Product Details Area Start -->
+                                                        <div class="col-lg-7">
+                                                            <div class="product-details">
+                                                                <h2><?=$items['ProductName']?></h2>
+
+                                                               
+                                                                <div class="price-group">
+                                                                    <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
+                                                                   
+                                                                </div>
+
+                                                                <div class="product-info-stock-sku">
+                                                                    <span class="product-stock-status text-success"><?=($items['Instock']?"In Stock":'')?></span>
+                                                                    <span class="product-stock-status text-danger"><?=($items['Instock']?"":'Out Stock')?></span>
+                                                                    <span class="product-sku-status"><strong>SKU</strong> PERFUME<?=$items['ItemId']?></span>
+                                                                </div>
+
+                                                                <p class="product-desc"><?=$items['Description']?></p>
+
+                                                                <div class="shopping-option">
+                                                                    
+
+                                                                
+                                                                </div>
+
+                                                                <div class="product-quantity d-sm-flex align-items-center">
+                                                                    <div class="pro-quantity">
+                                                                        <div class="pro-qty"><input type="text" value="2"/></div>
+                                                                    </div>
+
+                                                                    <a href="#" class="btn btn-transparent btn-semi-round"><i
+                                                                            class="fa fa-shopping-cart"></i> Add to Cart</a>
+                                                                </div>
+
+                                                                <div class="product-share-area">
+                                                                    <h3>Share This Product:</h3>
+                                                                    <div class="share-btn">
+                                                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                                                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                                                                        <a href="#"><i class="fa fa-reddit"></i></a>
+                                                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Product Details Area End -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--== End Quick View Content ==-->
                                 <!-- Single Product End -->
-                                <?php }?>
+                                <?php $i++;if($i==1000){break;}}?>
                              
                             </div>
                         </div>

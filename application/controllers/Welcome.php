@@ -14,6 +14,18 @@ class Welcome extends CI_Controller {
 		}
 	}
 
+	public function Sync()
+	{
+		if($this->ApiPullStore()){
+			if($this->StoreDB()){
+				echo "Syncing Api With database is successfull";
+			}
+	
+		}else{
+			echo "Semthing Misfortune Happens In API SYNC";
+		}
+	}
+
 	public function ApiPullStore()
 	{
 		$response = Fragnance_getfile(Fragnancex_accesstoken());
@@ -23,10 +35,11 @@ class Welcome extends CI_Controller {
 		}
 		if (write_file( $dir.'/main.json', $response) == FALSE)
 		{
-		   echo 'Unable to write the file';
+		   return false;
 
 		} else {
-			write_file( FCPATH.'productlog/'.date('Y-m-d H:i:s').'.json', $response);                     
+			write_file( FCPATH.'productlog/'.date('Y-m-d H:i:s').'.json', $response); 
+			return true;                    
 		}
 	}
 
@@ -41,14 +54,14 @@ class Welcome extends CI_Controller {
 			foreach ($data as $key) {
 				$insert =$this->mongo_db2->insert('products',$key);
 				if($insert){
-					echo 'Product '.$i++.' inserted';
-					echo "<br>";
+					echo 'Inserted Product '.$i++ ;
+					echo '<br>';
 				}else{
-					echo "false";
+					echo 'Inserting Failed  Product '.$i++;
 				}
 			}
 		}else{
-			echo "Unable To Reset The Collections";
+			echo "Unable To Reset";
 		}
 	}
 
