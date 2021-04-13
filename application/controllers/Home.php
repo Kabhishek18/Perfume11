@@ -238,8 +238,8 @@ class Home extends CI_Controller {
 	public function Search()
 	{
 		if($this->input->post('search')){
-			$this->session->set_userdata('search', $this->input->post('search'));
-			$this->mongo_db2->where('ProductName',ucwords($this->input->post('search')));
+			$this->session->set_userdata('search',ucwords(strtolower($this->input->post('search'))));
+			$this->mongo_db2->where('ProductName',ucwords(strtolower($this->input->post('search'))));
 			$res =$this->mongo_db2->get('products');
 			var_dump($res);
 		}else{
