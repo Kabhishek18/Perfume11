@@ -20,8 +20,23 @@ class Home extends CI_Controller {
 	 *  1) index - Homepage.
 	 *  2) LoginRegister- Login Register.
 	 *  3) CommonPage- Content Page.
-	 *  4) Authentication- Authentication of Login.
+	 *	4) Register User
+	 *  5) Authentication- Authentication of Login.
+	 *  6) Verify Mail
+	 *  7) Logout
+	 *  8) GenderPage
+	 *  9) BrandPage
+	 *  10) Products
+	 *  11) Dashboard
+	 *  12) Search
+
+
+	 *  #) GetBrand
+	 *  #) GetType
+	 *  #) GetGender
+	 *  #) GetAllProducts
 	 */
+
 	public function index()
 	{
 		$var['bestsell'] = $this->GetAllProducts();
@@ -32,7 +47,6 @@ class Home extends CI_Controller {
 		$this->load->view('front/home',$var);
 		$this->load->view('front/inc/footer');
 	}
-
 
 	public function LoginRegister()
 	{
@@ -102,10 +116,8 @@ class Home extends CI_Controller {
 				$this->session->set_flashdata('warning', 'Your Password Is Mismatched');
 				redirect($_SERVER['HTTP_REFERER']);
 			}
-		}
-		
+		}		
 	}
-
 
 	public function Authenticate()
 	{
@@ -152,10 +164,8 @@ class Home extends CI_Controller {
 		}
 	}
 
-
 	public function VerifyEmail	()
-	{
-		
+	{		
 	}
 
 	public function Logout()
@@ -239,14 +249,25 @@ class Home extends CI_Controller {
 	{
 		if($this->input->post('search')){
 			$this->session->set_userdata('search',ucwords(strtolower($this->input->post('search'))));
-			$this->mongo_db2->where('ProductName',ucwords(strtolower($this->input->post('search'))));
-			$res =$this->mongo_db2->get('products');
-			var_dump($res);
+			$word =ucwords(strtolower($this->input->post('search')));
+			$var['result'] =$this->mongo_db2->like('ProductName',$word,'i',true,false)->get('products');
+			$var['search'] =ucwords(strtolower($this->input->post('search')));
+			$var['meta'] ='<title> Search | '.$var['search'].' </title>';
+			$this->load->view('front/inc/header',$var);
+			$this->load->view('front/inc/nav');
+			$this->load->view('front/search',$var);
+			$this->load->view('front/inc/footer');
 		}else{
 			$this->session->search;
-			$this->mongo_db2->where('ProductName',$this->session->search);
-			$res =$this->mongo_db2->get('products');
-			var_dump($res);
+			$word =$this->session->search;
+			$var['result'] =$this->mongo_db2->like('ProductName',$word,'i',true,false)->get('products');
+			$var['search'] =ucwords(strtolower($this->input->post('search')));
+			$var['result'] =$this->mongo_db2->get('products');
+			$var['meta'] ='<title> Search | '.$var['search'].' </title>';
+			$this->load->view('front/inc/header',$var);
+			$this->load->view('front/inc/nav');
+			$this->load->view('front/search',$var);
+			$this->load->view('front/inc/footer');
 		}	
 
 	}
@@ -262,20 +283,19 @@ class Home extends CI_Controller {
 	}
 
 //Get Brand From Mongo
-public function GetType()
-{
-	$res =$this->mongo_db2->get('products');
-	foreach($res as $pro){
-		$brandname[] = $pro['Type'];
-	}
-	return array_unique($brandname);
-}	
+	public function GetType()
+	{
+		$res =$this->mongo_db2->get('products');
+		foreach($res as $pro){
+			$brandname[] = $pro['Type'];
+		}
+		return array_unique($brandname);
+	}	
 //Get Gender From Mongo
 	public function GetGender($gender)
 	{
 		$data = $this->mongo_db2->where(['Gender' => $gender])->get('products');
 		return $data;
-
 	}	
 //Get All Product On Home with limit 10
 	public function GetAllProducts()
