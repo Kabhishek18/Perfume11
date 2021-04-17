@@ -19,7 +19,11 @@ class SHOP extends CI_Controller {
 	/**
 	 *  1) index - Cart.
 	 *  2) AddToCart- Cart Insert.
-	
+	 *  3) UpdateItemQty - Cart Update
+	 *  4) RemoveItem remove Cart Items
+	 *  5) DestroyCart Cart Delete
+	 *  6) Coupondestroy Coupon Delete
+	 *  7) Coupondestroy Coupon Delete
 	 *  #) GetBrand
 	 *  #) GetType
 	 *  #) GetGender
@@ -28,7 +32,7 @@ class SHOP extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
 		if ($this->cart->total_items()>0) {
 		$var['meta'] ='<title>Cart | Perfume</title>';
 		$this->load->view('front/inc/header',$var);
@@ -42,8 +46,8 @@ class SHOP extends CI_Controller {
 		}
 	}
 
-
-	public function AddToCart(){ 
+	public function AddToCart()
+	{ 
 		
 		$set['ItemId'] =$this->input->post('ItemId');
 		$data['Quantity'] =$this->input->post('Quantity');
@@ -51,16 +55,14 @@ class SHOP extends CI_Controller {
 		if ($set['ItemId']){
 			$product =json_decode(Fragnance_getProductById(Fragnancex_accesstoken(),$set['ItemId']),true);
 
-
-			$data =array('id' =>$product['ItemId'] , 
-						 'qty'	=> $data['Quantity'],
-						 'price' => $product['WholesalePriceUSD'],
-						 'name' =>$product['ProductName'],
-						 'image' => $product['SmallImageUrl'],
-						 'options' => $product
-						);
-			
-
+			$data =array(
+					 'id' =>$product['ItemId'] , 
+					 'qty'	=> $data['Quantity'],
+					 'price' => $product['WholesalePriceUSD'],
+					 'name' =>$product['ProductName'],
+					 'image' => $product['SmallImageUrl'],
+					 'options' => $product
+					);
 			if($this->cart->insert($data)){
 			 	$this->session->set_flashdata('success', $product['ProductName'].' Added In Cart');
 				redirect($_SERVER['HTTP_REFERER']); 
@@ -77,7 +79,8 @@ class SHOP extends CI_Controller {
 	}
 
 	//quantity update
-	public function UpdateItemQty(){
+	public function UpdateItemQty()
+	{
 	
 		//get the data
 		$var['rowid'] =$this->input->post('rowid');
@@ -101,30 +104,29 @@ class SHOP extends CI_Controller {
 
 
 	//Apply Coupon
-	function ApplyCoupon(){
-		$coupon =$this->input->post('coupon');
-		if (!empty($coupon)) {
-			$ticket =$this->cart_model->Getcoupon($coupon);
-			if($ticket){
-			 	$todaydate =date('Y-m-d');
-              	$expdate =$ticket['coupon_expire'];
-              
-                if($todaydate <=$expdate){
-					$this->session->set_userdata('ticket',$ticket);
+	public function ApplyCoupon()
+	{
+		if ($this->input->post('coupon')) {
+			$coupon =$this->home_model->GetCoupon($this->input->post('coupon'));
+			if(!empty($coupon)){
+				if($coupon['CouponExpire'] >date('Y-m-d H:i:s')){					
+					$this->session->set_userdata('coupon', $coupon);
+					$this->session->set_flashdata('success', $coupon['CouponName'].' Coupon Applied');
+					redirect($_SERVER['HTTP_REFERER']);
+				}else{
+					$this->session->set_flashdata('warning', 'Coupon Already Expired');
+					redirect($_SERVER['HTTP_REFERER']);
 			
-					$this->session->set_flashdata('success', '<span style="color:green">Coupon Added successfully </span>');
-					redirect('checkout');
-				}
-				else{
-					$this->session->set_flashdata('wrong', '<span style="color:orange">Sorry, Coupon Expired!! </span>');
-					redirect('checkout');
 				}
 			}
-
 			else{
-			$this->session->set_flashdata('wrong', '<span style="color:red">Coupon not available</span>');
-			redirect('checkout');
-			}	
+				$this->session->set_flashdata('warning', 'Not A Vaild Coupon');
+				redirect($_SERVER['HTTP_REFERER']);
+		
+			}
+		}else{
+			$this->session->set_flashdata('warning', 'Somethings Misfortune Happens');
+			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
 
@@ -141,19 +143,19 @@ class SHOP extends CI_Controller {
 			
 		} 
 	}
-	function DestroyCart(){
+
+	function DestroyCart()
+	{
 		$this->cart->destroy();
 		$this->session->set_flashdata('success', 'Cart Removed Successfully');
 		redirect('');
-	
-	}
-	function coupondestroy(){
-		$this->session->unset_userdata('ticket');	
-		redirect('checkout');
-	
 	}
 
-
+	function Coupondestroy()
+	{
+		$this->session->unset_userdata('coupon');	
+		redirect($_SERVER['HTTP_REFERER']);
+	}
 
 	function Checkout()
 	{	

@@ -79,9 +79,9 @@
                 <!-- Cart Update Option -->
                 <div class="cart-update-option d-block d-md-flex justify-content-between">
                     <div class="apply-coupon-wrapper">
-                        <form action="#" method="post" class=" d-block d-md-flex">
-                            <input type="text" placeholder="Enter Your Coupon Code" required/>
-                            <button class="btn btn-brand">Apply Coupon</button>
+                        <form action="<?=base_url()?>Shop/ApplyCoupon" method="post" class=" d-block d-md-flex">
+                            <input type="text" name="coupon" placeholder="Enter Your Coupon Code" required/>
+                            <button type="submit" class="btn btn-brand">Apply Coupon</button>
                         </form>
                     </div>
                     <div class="cart-update">
@@ -101,15 +101,35 @@
                             <table class="table">
                                 <tr>
                                     <td>Sub Total</td>
-                                    <td>$<?=$this->cart->total()?></td>
+                                    <?php $total = $this->cart->total();?>
+                                    <td>$<?=$total?></td>
                                 </tr>
-                                <tr>
-                                    <td>Shipping</td>
-                                    <td>$70</td>
-                                </tr>
+                                <?php if(!empty($this->session->coupon)){ $coupon= $this->session->coupon; ?>
+                                    <tr>
+                                        <td>Coupon Applied <span class="text-success"><?=$coupon['CouponName']?></span></td>
+                                        <td> <span class="text-danger">- </span> $
+                                            <?php if($coupon['CouponType']=='Percentage'){
+                                                $coupon['CouponValue'] = ($coupon['CouponValue']*$this->cart->total())/100 ;
+                                                ?>
+
+                                                 <?=(($coupon['CouponValue']*$this->cart->total())/100)?>
+                                            <?php }else{?>
+                                                  <?=$coupon['CouponValue']?>  
+                                            <?php }?> 
+
+                                            <a href="<?=base_url()?>Shop/Coupondestroy" class="text-danger"><i class="fa fa-trash-o"></i></a>   
+                                        </td>
+                                    </tr>
+                                     <?php $total = $this->cart->total() - $coupon['CouponValue'] ?>
+                                <?php }?>    
+
+                               <tr>
+                                   <td>Shipping Charge</td>
+                                   <td>$ <?=$ship?></td>
+                               </tr>
                                 <tr class="total">
                                     <td>Total</td>
-                                    <td class="total-amount">$300</td>
+                                    <td class="total-amount">$<?=$total?></td>
                                 </tr>
                             </table>
                         </div>
