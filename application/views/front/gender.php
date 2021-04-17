@@ -181,15 +181,19 @@
                                                                 
                                                                 </div>
 
-                                                                <div class="product-quantity d-sm-flex align-items-center">
-                                                                    <div class="pro-quantity">
-                                                                        <div class="pro-qty"><input type="text" value="2"/></div>
+                                                                <form method="post" action="<?=base_url()?>Shop/AddToCart">
+                                                                    <div class="product-quantity d-sm-flex align-items-center">
+                                                                        <div class="pro-quantity">
+                                                                            <input type="hidden" name="ItemId" value="<?=$items['ItemId']?>">
+                                                                            <div class="pro-qty">
+                                                                                <input type="text" name="Quantity" min="1" value="1" />
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <button type="submit" class="btn btn-transparent btn-semi-round"><i
+                                                                                class="fa fa-shopping-cart"></i> Add to Cart</button>
                                                                     </div>
-
-                                                                    <a href="#" class="btn btn-transparent btn-semi-round"><i
-                                                                            class="fa fa-shopping-cart"></i> Add to Cart</a>
-                                                                </div>
-
+                                                                </form>
                                                                 <div class="product-share-area">
                                                                     <h3>Share This Product:</h3>
                                                                     <div class="share-btn">

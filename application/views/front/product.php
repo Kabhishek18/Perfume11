@@ -72,18 +72,19 @@
                                 </p>
 
                                 
+                                <form method="post" action="<?=base_url()?>Shop/AddToCart">
+                                        <div class="product-quantity d-sm-flex align-items-center">
+                                            <div class="pro-quantity">
+                                                <input type="hidden" name="ItemId" value="<?=$ItemId?>">
+                                                <div class="pro-qty">
+                                                    <input type="text" name="Quantity" min="1" value="1" />
+                                                </div>
+                                            </div>
 
-                                <div class="product-quantity d-sm-flex align-items-center">
-                                    <div class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="1"/></div>
-                                    </div>
-
-                                    <a href="cart" class="btn btn-transparent btn-semi-round"><i
-                                            class="fa fa-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                              
-
+                                            <button type="submit" class="btn btn-transparent btn-semi-round"><i
+                                                    class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                        </div>
+                                </form>
                                 <!-- Product Share -->
                                 <div class="product-share-area">
                                     <h3>Share This Product:</h3>
@@ -99,166 +100,6 @@
                         <!-- Product Details Area End -->
                     </div>
 
-                    <!-- <div class="row"> -->
-                        <!-- <div class="col-lg-12"> -->
-                            <!-- Product Full Description Start -->
-                            <!-- <div class="product-full-info-reviews"> -->
-                                <!-- Single Product tab Menu -->
-                                <!-- <nav class="nav" id="nav-tab">
-                                    <a class="active" id="description-tab" data-toggle="tab" href="#description">Description</a>
-                                    <a id="reviews-tab" data-toggle="tab" href="#reviews">Reviews</a>
-                                </nav> -->
-                                <!-- Single Product tab Menu -->
-
-                                <!-- Single Product tab Content -->
-                                <!-- <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="description">
-                                        <p> <?=$Description?></p>
-
-                                    </div>
-
-                                    <div class="tab-pane fade" id="reviews">
-                                        <div class="row">
-                                            <div class="col-lg-7">
-                                                <div class="product-ratting-wrap">
-                                                    <div class="pro-avg-ratting">
-                                                        <h4>4.5 <span>(Overall)</span></h4>
-                                                        <span>Based on 9 Comments</span>
-                                                    </div>
-                                                    <div class="ratting-list">
-                                                        <div class="sin-list float-left">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <span>(5)</span>
-                                                        </div>
-                                                        <div class="sin-list float-left">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <span>(3)</span>
-                                                        </div>
-                                                        <div class="sin-list float-left">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <span>(1)</span>
-                                                        </div>
-                                                        <div class="sin-list float-left">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <span>(0)</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="rattings-wrapper">
-
-                                                        <div class="sin-rattings">
-                                                            <div class="ratting-author">
-                                                                <h3>Cristopher Lee</h3>
-                                                                <div class="ratting-star">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <span>(5)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut
-                                                                odit aut fugit, sed quia res eos qui ratione voluptatem
-                                                                sequi Neque porro quisquam est, qui dolorem ipsum quia
-                                                                dolor sit amet, consectetur, adipisci veli</p>
-                                                        </div>
-
-                                                        <div class="sin-rattings">
-                                                            <div class="ratting-author">
-                                                                <h3>Nirob Khan</h3>
-                                                                <div class="ratting-star">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <span>(5)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut
-                                                                odit aut fugit, sed quia res eos qui ratione voluptatem
-                                                                sequi Neque porro quisquam est, qui dolorem ipsum quia
-                                                                dolor sit amet, consectetur, adipisci veli</p>
-                                                        </div>
-
-                                                        <div class="sin-rattings">
-                                                            <div class="ratting-author">
-                                                                <h3>MD.ZENAUL ISLAM</h3>
-                                                                <div class="ratting-star">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <span>(5)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut
-                                                                odit aut fugit, sed quia res eos qui ratione voluptatem
-                                                                sequi Neque porro quisquam est, qui dolorem ipsum quia
-                                                                dolor sit amet, consectetur, adipisci veli</p>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="ratting-form-wrapper">
-                                                        <h3>Add your Comments</h3>
-                                                        <form action="#" method="post">
-                                                            <div class="ratting-form row">
-                                                                <div class="col-12 mb-4">
-                                                                    <h5>Rating:</h5>
-                                                                    <div class="ratting-star fix">
-                                                                        <i class="fa fa-star-o"></i>
-                                                                        <i class="fa fa-star-o"></i>
-                                                                        <i class="fa fa-star-o"></i>
-                                                                        <i class="fa fa-star-o"></i>
-                                                                        <i class="fa fa-star-o"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6 col-12 mb-4">
-                                                                    <label for="name">Name:</label>
-                                                                    <input id="name" placeholder="Name" type="text">
-                                                                </div>
-                                                                <div class="col-md-6 col-12 mb-4">
-                                                                    <label for="email">Email:</label>
-                                                                    <input id="email" placeholder="Email" type="text">
-                                                                </div>
-                                                                <div class="col-12 mb-4">
-                                                                    <label for="your-review">Your Review:</label>
-                                                                    <textarea name="review" id="your-review"
-                                                                              placeholder="Write a review"></textarea>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <input value="add review" type="submit">
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- Single Product tab Content -->
-                            <!-- </div> -->
-                            <!-- Product Full Description End -->
-                        <!-- </div> -->
-                    <!-- </div> -->
                 </div>
             </div>
             <!-- Single Product Page Content End -->

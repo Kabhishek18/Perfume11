@@ -7,7 +7,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['LoginRegister'] = 'Home/LoginRegister';
 $route['Dashboard'] = 'Home/Dashboard';
-$route['Products/(:num)'] = 'Home/Products/$1';
+$route['Products/(:num)/(:any)'] = 'Home/Products/$1/$2';
 $route['Logout'] = 'Home/Logout';
 
 $route['Women'] ='Home/GenderPage';
@@ -18,3 +18,6 @@ $route['Brand'] ='Home/BrandPage';
 $route['Search']='Home/Search';
 
 $route['Cart']='Shop/index';
+$route['Cart/Remove/(:any)']='Shop/RemoveItem/$1';
+$route['Cart/Update']='Shop/UpdateItemQty';
+$route['Cart/Destroy']='Shop/DestroyCart';

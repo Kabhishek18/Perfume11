@@ -16,10 +16,19 @@ class SHOP extends CI_Controller {
 			force_ssl();
 		}
 	}
+	/**
+	 *  1) index - Cart.
+	 *  2) AddToCart- Cart Insert.
+	
+	 *  #) GetBrand
+	 *  #) GetType
+	 *  #) GetGender
+	 *  #) GetAllProducts
+	 */
+
 
 	public function index()
 	{	
-		var_dump($this->cart->contents());
 		if ($this->cart->total_items()>0) {
 		$var['meta'] ='<title>Cart | Perfume</title>';
 		$this->load->view('front/inc/header',$var);
@@ -28,44 +37,32 @@ class SHOP extends CI_Controller {
 		$this->load->view('front/inc/footer');
 		}
 		else{
-
+			$this->session->set_flashdata('success', 'Cart Is Empty');
+			redirect(''); 
 		}
 	}
 
 
-	function AddToCart(){ 
+	public function AddToCart(){ 
 		
 		$set['ItemId'] =$this->input->post('ItemId');
 		$data['Quantity'] =$this->input->post('Quantity');
 		//Fetch data
 		if ($set['ItemId']){
 			$product =json_decode(Fragnance_getProductById(Fragnancex_accesstoken(),$set['ItemId']),true);
-			$data =array('ItemId' =>$product['ItemId'] , 
-						 'BrandName'	=> $product['BrandName'],
-						 'ProductName' => $product['ProductName'],
-						 'Type' =>$product['Type'],
-						 'Size'=>$product['Size'],
-						 'Upc' => $product['Upc'],
-						 'Instock' => $product['Instock'],
-						 'WholesalePriceUSD' => $product['WholesalePriceUSD'],
-						 'WholesalePriceGBP' => $product['WholesalePriceGBP'],
-						 'WholesalePriceEUR' => $product['WholesalePriceEUR'],
-						 'WholesalePriceAUD' => $product['WholesalePriceAUD'],
-						 'WholesalePriceCAD' => $product['WholesalePriceCAD'],
-						 'ParentCode' => $product['ParentCode'],
-						 'SmallImageUrl' => $product['SmallImageUrl'],
-						 'LargeImageUrl' => $product['LargeImageUrl'],
-						 'QuantityAvailable' => $product['QuantityAvailable'],
-						 'Gender' => $product['Gender'],
-						 'Description' => $product['Description'],
-						 'qty' => $data['Quantity'],
-						 'price' =>$product['WholesalePriceUSD'],
 
+
+			$data =array('id' =>$product['ItemId'] , 
+						 'qty'	=> $data['Quantity'],
+						 'price' => $product['WholesalePriceUSD'],
+						 'name' =>$product['ProductName'],
+						 'image' => $product['SmallImageUrl'],
+						 'options' => $product
 						);
-			var_dump($this->cart->insert($data));
-			exit();
+			
+
 			if($this->cart->insert($data)){
-			 	$this->session->set_flashdata('success', $product['ProductName'].' Added Successfully');
+			 	$this->session->set_flashdata('success', $product['ProductName'].' Added In Cart');
 				redirect($_SERVER['HTTP_REFERER']); 
 		 	}
 		 	else{
@@ -80,37 +77,26 @@ class SHOP extends CI_Controller {
 	}
 
 	//quantity update
-	function updateItemQty(){
-		$coupon =$this->input->post('coupon');
-		if (!empty($coupon)) {
-			$ticket =$this->cart_model->Getcoupon($coupon);
-			if($ticket){
-			$this->session->set_userdata('ticket',$ticket);
-			
-			$this->session->set_flashdata('success', '<span style="color:green">Coupon Added successfully </span>');
-			redirect('cart');
-			}
-
-			else{
-			$this->session->set_flashdata('wrong', '<span style="color:red">Coupon not available</span>');
-			redirect('cart');
-			}	
-		}
-
-		$update =0;
+	public function UpdateItemQty(){
+	
 		//get the data
-		$rowid =$this->input->post('rowid');
-		$qty =$this->input->post('qty');
-		for($i=0;$i<count($rowid);$i++){
-			$data[$i] = array('rowid' => $rowid[$i],'qty' => $qty[$i]);
-		}
+		$var['rowid'] =$this->input->post('rowid');
+		$var['qty'] =$this->input->post('qty');
 		//update the cart
-		if (!empty($rowid) && !empty($qty)) {
+		if (!empty($var['rowid']) && !empty($var['qty'])) {
 
-			$update=$this->cart->update($data);
+			$update=$this->cart->update($var);
+			if($update){
+				$this->session->set_flashdata('success', 'Updated Successfully');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('warning', 'Updation Failed');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+		}else{
+			$this->session->set_flashdata('warning', 'Somethings Misfortune Happens');
+			redirect($_SERVER['HTTP_REFERER']);
 		}
-		//return respone
-		redirect('cart');
 	}
 
 
@@ -142,14 +128,23 @@ class SHOP extends CI_Controller {
 		}
 	}
 
-	function removeItem($rowid)
+	public function RemoveItem($rowid)
 	{
+		
 		$remove =$this->cart->remove($rowid);
-		redirect('cart');
+		if($remove){
+			$this->session->set_flashdata('success', 'Product Removed Successfully');
+			redirect($_SERVER['HTTP_REFERER']);
+		}else{
+			$this->session->set_flashdata('warning', 'Product Removing Unsuccessfull');
+			redirect($_SERVER['HTTP_REFERER']);
+			
+		} 
 	}
-	function destremove(){
+	function DestroyCart(){
 		$this->cart->destroy();
-		redirect('cart');
+		$this->session->set_flashdata('success', 'Cart Removed Successfully');
+		redirect('');
 	
 	}
 	function coupondestroy(){

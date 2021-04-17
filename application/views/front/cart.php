@@ -36,67 +36,43 @@
                         <thead>
                         <tr>
                             <th class="pro-thumbnail">Thumbnail</th>
-                            <th class="pro-title">Product</th>
+                            <th class="pro-title">Product </th>
                             <th class="pro-price">Price</th>
                             <th class="pro-quantity">Quantity</th>
                             <th class="pro-subtotal">Total</th>
-                            <th class="pro-remove">Remove</th>
+                            <th class="pro-remove">Update / Remove</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                       src="assets/img/products/product-1.jpg"
-                                                                       alt="Product"/></a></td>
-                            <td class="pro-title"><a href="#">Light Blue</a></td>
-                            <td class="pro-price"><span>$295.00</span></td>
-                            <td class="pro-quantity">
-                                <div class="pro-qty"><input type="text" value="1"></div>
-                            </td>
-                            <td class="pro-subtotal"><span>$295.00</span></td>
-                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                       src="assets/img/products/product-2.jpg"
-                                                                       alt="Product"/></a></td>
-                            <td class="pro-title"><a href="#">Jimmy Choo</a></td>
-                            <td class="pro-price"><span>$275.00</span></td>
-                            <td class="pro-quantity">
-                                <div class="pro-qty"><input type="text" value="2"></div>
-                            </td>
-                            <td class="pro-subtotal"><span>$550.00</span></td>
-                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                       src="assets/img/products/product-3.jpg"
-                                                                       alt="Product"/></a></td>
-                            <td class="pro-title"><a href="#">Bright Crystal</a></td>
-                            <td class="pro-price"><span>$295.00</span></td>
-                            <td class="pro-quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1"/>
-                                </div>
-                            </td>
-                            <td class="pro-subtotal"><span>$295.00</span></td>
-                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                       src="assets/img/products/product-4.jpg"
-                                                                       alt="Product"/></a></td>
-                            <td class="pro-title"><a href="#">Versace Eros </a></td>
-                            <td class="pro-price"><span>$110.00</span></td>
-                            <td class="pro-quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="3"/>
-                                </div>
-                            </td>
-                            <td class="pro-subtotal"><span>$110.00</span></td>
-                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                        </tr>
-                        </tbody>
+                        <?php foreach($this->cart->contents() as $item){?>    
+                            <tr>
+                                <td class="pro-thumbnail">
+                                    <a href="#"><img class="img-fluid" src="<?=$item['image']?>" alt="Product"/></a>
+                                </td>
+                                <td class="pro-title">
+                                    <a href="#"><?=$item['name']?> </a>
+                                </td>
+                                <td class="pro-price">
+                                    <span>$ <?=$item['price']?></span>
+                                </td>
+                                <td class="pro-quantity">
+                                    <form method="post" action="<?=base_url()?>Cart/Update" id="cart-update-<?=$item['id']?>">
+                                         <input type="hidden"  name ="rowid" value="<?=$item['rowid']?>">
+                                        <div class="pro-qty">
+                                            <input type="text" name="qty" value="<?=$item['qty']?>">
+                                           
+                                        </div>
+                                    </form>
+                                </td>
+                                <td class="pro-subtotal">
+                                    <span>$ <?=($item['qty']*$item['price'])?></span>
+                                </td>
+                                <td class="pro-remove">
+                                    <a href="javascript:void(0)" onclick="document.getElementById('cart-update-<?=$item['id']?>').submit();"><i class="fa fa-recycle"></i></a>
+                                    <a href="<?=base_url()?>Cart/Remove/<?=$item['rowid']?>"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                        <?php }?>
                     </table>
                 </div>
 
@@ -109,7 +85,7 @@
                         </form>
                     </div>
                     <div class="cart-update">
-                        <a href="#" class="btn btn-brand">Update Cart</a>
+                        <a href="<?=base_url()?>Cart/Destroy"  class="btn btn-brand">Clear Cart</a>
                     </div>
                 </div>
             </div>
@@ -125,7 +101,7 @@
                             <table class="table">
                                 <tr>
                                     <td>Sub Total</td>
-                                    <td>$230</td>
+                                    <td>$<?=$this->cart->total()?></td>
                                 </tr>
                                 <tr>
                                     <td>Shipping</td>

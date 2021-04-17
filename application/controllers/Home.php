@@ -16,7 +16,6 @@ class Home extends CI_Controller {
 	}
 
 	/**
-	 *  
 	 *  1) index - Homepage.
 	 *  2) LoginRegister- Login Register.
 	 *  3) CommonPage- Content Page.
@@ -29,8 +28,6 @@ class Home extends CI_Controller {
 	 *  10) Products
 	 *  11) Dashboard
 	 *  12) Search
-
-
 	 *  #) GetBrand
 	 *  #) GetType
 	 *  #) GetGender
@@ -219,7 +216,7 @@ class Home extends CI_Controller {
 		}
 	}
 
-	public function Products($id='')
+	public function Products($id='',$name)
 	{
 		$response = Fragnance_getProductById(Fragnancex_accesstoken(),$id);
 		$var = json_decode($response,true);
