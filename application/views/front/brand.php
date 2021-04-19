@@ -83,17 +83,23 @@
             <!-- Start Shop Page Content -->
             <div class="col-lg-9 order-first order-lg-last">
                 <div class="shop-page-content-wrap">
-             
+                    <div class="products-settings-option d-block d-md-flex">
+                        <div class="product-cong-left d-flex align-items-center">
+                            <ul class="product-view d-flex align-items-center">
+                                <li data-target="grid-view"><i class="fa fa-th"></i></li>
+                                <li class="current" data-target="product-list-view"><i class="fa fa-list-ul"></i></li>
+                            </ul>
+                            <span class="show-items">Total Items :<strong> <?=count($datalist)?></strong></span>
+                        </div>
+                    </div>
 
                     <div class="shop-page-products-wrap">
                         <div class="products-wrapper product-grid-view physicianList">
 
                         <input type='hidden' id='current_page' />
                             <input type='hidden' id='show_per_page' />
-                            <div class="row  " id="pagingBox">
+                            <div class="row" id="pagingBox">
 
-                           
-                               
                                <?php $i=1; foreach($datalist as $items){?>
                                 <!-- Single Product Start -->
                               
@@ -123,7 +129,7 @@
                                                 
                                                 <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
                                             </div>
-
+                                            <p class="product-desc"><?=$items['Description']?></p>
                                             
                                         </div>
                                     </div>

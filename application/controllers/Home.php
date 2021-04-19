@@ -258,7 +258,7 @@ class Home extends CI_Controller {
 			$this->session->search;
 			$word =$this->session->search;
 			$var['result'] =$this->mongo_db2->like('ProductName',$word,'i',true,false)->get('products');
-			$var['search'] =ucwords(strtolower($this->input->post('search')));
+			$var['search'] =ucwords(strtolower($this->session->search));
 			$var['result'] =$this->mongo_db2->get('products');
 			$var['meta'] ='<title> Search | '.$var['search'].' </title>';
 			$this->load->view('front/inc/header',$var);

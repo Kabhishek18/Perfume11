@@ -34,6 +34,7 @@ class SHOP extends CI_Controller {
 	public function index()
 	{
 		if ($this->cart->total_items()>0) {
+		$var['ship'] = 70;	
 		$var['meta'] ='<title>Cart | Perfume</title>';
 		$this->load->view('front/inc/header',$var);
 		$this->load->view('front/inc/nav');
