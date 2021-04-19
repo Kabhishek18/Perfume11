@@ -202,9 +202,8 @@
                                                                 <div class="product-share-area">
                                                                     <h3>Share This Product:</h3>
                                                                     <div class="share-btn">
-                                                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                                                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                                                                        <a href="#"><i class="fa fa-reddit"></i></a>
+                                                                         <a href="#"><i class="fa fa-facebook"></i></a>
+                                                                        <a href="#"><i class="fa fa-instagram"></i></a>
                                                                         <a href="#"><i class="fa fa-twitter"></i></a>
                                                                     </div>
                                                                 </div>

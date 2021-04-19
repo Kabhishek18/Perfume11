@@ -83,11 +83,20 @@
             <!-- Start Shop Page Content -->
             <div class="col-lg-9 order-first order-lg-last">
                 <div class="shop-page-content-wrap">
-             
+                         <div class="products-settings-option d-block d-md-flex">
+                        <div class="product-cong-left d-flex align-items-center">
+                            <ul class="product-view d-flex align-items-center">
+                                <li data-target="grid-view"><i class="fa fa-th"></i></li>
+                                <li class="current" data-target="product-list-view"><i class="fa fa-list-ul"></i></li>
+                            </ul>
+                            <span class="show-items">Total Items :<strong> <?=count($datalist)?></strong>  Similar Results</span>
+                        </div>
+                    </div>
+
 
                     <div class="shop-page-products-wrap">
                         <div class="products-wrapper product-grid-view physicianList">
-                            <h3><?=count($result)?> Similar Results </h3>
+                        
                         <input type='hidden' id='current_page' />
                             <input type='hidden' id='show_per_page' />
                             <div class="row  " id="pagingBox">
@@ -199,8 +208,7 @@
                                                                     <h3>Share This Product:</h3>
                                                                     <div class="share-btn">
                                                                         <a href="#"><i class="fa fa-facebook"></i></a>
-                                                                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                                                                        <a href="#"><i class="fa fa-reddit"></i></a>
+                                                                        <a href="#"><i class="fa fa-instagram"></i></a>
                                                                         <a href="#"><i class="fa fa-twitter"></i></a>
                                                                     </div>
                                                                 </div>
