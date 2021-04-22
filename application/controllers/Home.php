@@ -7,6 +7,7 @@ class Home extends CI_Controller {
 		$this->load->library('cart');
 		$this->load->library('mongo_db', array('activate'=>'newdb'),'mongo_db2');
 		$this->load->model('home_model');
+		$this->load->model('test_model');
 		$this->load->helper('file');
 		$this->load->library('session');
 		$this->load->helper('date');
@@ -35,7 +36,7 @@ class Home extends CI_Controller {
 	 */
 
 	public function index()
-	{
+	{	
 		$var['bestsell'] = $this->GetAllProducts();
 		$var['brandname'] =$this->GetBrand();
 		$var['meta'] ='<title>Perfume Home</title>';
@@ -284,27 +285,47 @@ class Home extends CI_Controller {
 		$this->load->view('front/inc/footer');
 	}
 
-	public function fetch_data($value='')
+	public function fetch_data()
 	{
 		$minimum_price =$this->input->post('minimum_price');
 		$maximum_price =$this->input->post('maximum_price');
 		$brand =$this->input->post('brand');
 		$typename =$this->input->post('typename');
 		$this->load->library('pagination');
-
 		$config = array();
 		$config['basr_url']='#';
-		$config['totalrows']= ;
+		$config['totalrows']= $this->test_model->count_all($minimum_price,$maximum_price,$brand,$typename) ;
+		$config['per_page'] = 150;
+		$config['uri_segement'] =3;
+		$config['use_page_numbers']= TRUE;
+		$config['full_tag_open'] ='<ul class="pagination">';
+		$config['full_tag_close'] ='</ul">';
+		$config['first_tag_open'] ='<li>';
+		$config['first_tag_close'] ='</li>';
+		$config['last_tag_open'] ='<li>';
+		$config['last_tag_close'] ='</li>';
+		$config['next_link'] ='&gt;';
+		$config['next_tag_open'] ='<li>';
+		$config['next_tag_close'] ='</li>';
+		$config['prev_link'] ='&lt;';
+		$config['prev_tag_open'] ='<li>';
+		$config['prev_tag_close'] ='</li>';
+		$config['cur_tag_open'] ="<li class='active'><a href='#'> ";
+		$config['cur_tag_close'] ="</a></li>";
+		$config['num_tag_open'] ="<li>";
+		$config['num_tag_close'] ="</li>";
+		$config['num_links'] =3;
+		$this->pagination->intialize($config);
+		$page  = $this->uri->segment(3);
+		$start = ($page - 1)*$config['per_page'];
+		$ouput = array(
+			'pagination_link' => $this->pagination->create_links(),
+			'product_list' => $this->test_model->fetch_data($config["per_page"],$start,$minimum_price,$maximum_price,$brand,$typename),
+			 );
+		echo json_encode($ouput);
 	}
 
 
-//Get Filter data from Mongo
-
-	public function GetFilterData($minimum_price,$maximum_price,$brand,$typename)
-	{
-		$array = array('' => , );
-		$data = $this->mongo_db2->where(['Gender' => $gender])->get('products');
-	}
 
 //Get Brand From Mongo
 	public function GetBrand()
@@ -337,7 +358,16 @@ class Home extends CI_Controller {
 		$response =$this->mongo_db2->limit(10)->get('products');
 		return $response;
 	}
-
+//Get All Product With Productname
+	public function GetTheProducts()
+	{
+		$response =$this->mongo_db2->get('products');
+		foreach($response as $pro){
+			$productname[] = $pro['ProductName'];
+		}
+		$productname= array_unique($productname);
+		return $productname;
+	}
 
 }
 ?>	

@@ -2076,6 +2076,8 @@ Start Products Style
 }
 
 .single-product-item {
+        border: 1px solid #e8e7e7;
+    padding: 20px;
     overflow: hidden;
     margin-top: 40px;
 }
@@ -2158,7 +2160,7 @@ Start Products Style
     line-height: 1.2;
     text-transform: uppercase;
     font-weight: 700;
-    margin-bottom: 20px;
+   /* margin-bottom: 20px;*/
 }
 
 .single-product-item .product-details .product-name a {

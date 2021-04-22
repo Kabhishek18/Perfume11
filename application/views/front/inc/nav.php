@@ -8,7 +8,7 @@
     <div class="preheader-area" >
         <div class="container-fluid" >
             <div class="row" >
-                <div class="col-md-6 text-center text-md-left">
+                <div class="col-md-4 text-center text-md-left">
                     <!-- Start PreHeader Left -->
                     <div class="preheader-left-wrap">
                         <a href="tel:1018889999"><i class="fa fa-phone"></i> 101.888.9999</a>
@@ -16,8 +16,27 @@
                     </div>
                     <!-- End PreHeader Left -->
                 </div>
-
-                <div class="col-md-6 mt-3 mt-md-0">
+                <div class="col-md-4 mt-3 mt-md-0">
+                    <!--== Start Search box Wrapper ==-->
+                  
+                        <form action="<?=base_url()?>Home/Search" method="POST" class="search-form-area" style="display: flex;">
+                            <input type="search" class="form-control" name="search" id="search" placeholder="Product Search"  list="browsers">
+                              <datalist class="searchspecial" id="browsers">
+                                <?php $response =$this->mongo_db2->get('products');
+                                    foreach($response as $pro){
+                                        $productname[] = $pro['ProductName'];
+                                    }
+                                    $searchdata= array_unique($productname);
+                                foreach($searchdata as $search){ ?>
+                                  <option><?=$search?></option>
+                                <?php }?>
+                              </datalist>
+                            <button type="submit" class="btn btn-brand btn-search"><i class="fa fa-search"></i></button>
+                        </form>
+                         
+                    <!--== End Search box Wrapper ==-->
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
                     <!-- Start PreHeader Right -->
                     <div class="preheader-right-wrap">
                         <nav id="site-settings">
@@ -181,7 +200,7 @@
 <!--== End Header Section ===-->
 
 <!--== Start Search box Wrapper ==-->
-<div class="mfp-hide modalSearchBox" id="search-box-popup">
+<!-- <div class="mfp-hide modalSearchBox" id="search-box-popup">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="search-box-wrapper">
@@ -192,7 +211,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!--== End Search box Wrapper ==-->
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

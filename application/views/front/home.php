@@ -29,17 +29,140 @@
     </div>
 </div>
 <!--== End Categories Gallery ==-->
-
+<style type="text/css">
+    .col-lg-2 .pt{
+    color: #337ab7;
+    text-decoration: none;
+    line-height: 28px;
+    text-transform: uppercase;
+    }
+</style>
 <!--== Start Best Sellers Product Area ==-->
 <section class="products-area-wrapper">
     <div class="container">
-        <!-- Start Section Title Area -->
         <div class="row">
             <div class="col-lg-6 m-auto text-center">
+               <div class="section-title-wrap ">
+                   <h2>TOP PERFUME AND COLOGNE BRANDS</h2>
+               </div> 
+            </div>   
+               <div class="row">
+                   <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Armaf">Armaf</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Azzaro">Azzaro</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Burberry">Burberry</a>
+                   </div>                    
+                   <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Bvlgari">Bvlgari</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Calvin-Klein"> Calvin Klein</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Christian-Dior">Christian Dior</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Coach">Coach</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Davidoff">Davidoff</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Dolce-&-Gabbana"> Dolce & Gabbana</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Elizabeth-Arden">Elizabeth Arden</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Estee-Lauder">Estee Lauder</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Giorgio-Armani">Giorgio Armani</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Givenchy">Givenchy</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Gucci">Gucci</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Guerlain">Guerlain</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Hugo-Boss"> Hugo Boss</a>
+                   </div>
+
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Issey-Miyake"> Issey Miyake</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Jimmy-Choo">Jimmy Choo</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Juicy-Couture">  Juicy Couture</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Lancome">Lancome</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Liz-Claiborne"> Liz Claiborne</a>
+                   </div>
+                   <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Marc-Jacobs">Marc Jacobs</a>
+                   </div>
+                   <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Mont-Blanc">Mont Blanc</a>
+                   </div>
+                   <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Paco-Rabanne">Paco Rabanne</a>
+                   </div>
+                   <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Prada">Prada</a>
+                   </div>
+                   <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Ralph-Lauren">Ralph Lauren</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Thierry-Mugler">Thierry Mugler</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Versace">Versace</a>
+                   </div>
+                    <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Victoria's-Secret">Victoria's Secret</a>
+                   </div>
+                   <div class="col-lg-2 pt">
+                         <a href="<?=base_url()?>Brand/Yves-Saint-Laurent">Yves Saint Laurent</a>
+                   </div>
+               </div>             
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <!-- Start Section Title Area -->
+        <div class="row">
+            <div class="col-lg-12 m-auto text-center">
                 <div class="section-title-wrap">
                     <h2>BEST SELLING FRAGRANCES</h2>
                     <p>Browse the collection of our best selling and top interesting products. You’ll definitely find
                         what you are looking for.</p>
+                        <br />
+                    <div class="row">
+                        
+                        <div class="col-lg-6" style="border-right: 1px solid">
+                            <a href="<?=base_url()?>Men"> VIEW ALL MEN’S COLOGNE</a>
+                        </div>
+                        <div class="col-lg-6" style="border-left: 1px solid">
+                            <a href="<?=base_url()?>Women"> VIEW ALL WOMEN’S PERFUME</a>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,28 +178,20 @@
                         <div class="single-product-item">
                             <!-- Product Thumbnail -->
                             <figure class="product-thumbnail">
-                                            <a href="<?=base_url()?>Products/<?=$items['ItemId']?>" class="d-block">
+                                            <a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>" class="d-block">
                                                 <img class="primary-thumb" src="<?=$items['SmallImageUrl']?>"
                                                      alt="Product"/>
                                                 <img class="secondary-thumb" src="<?=$items['SmallImageUrl']?>"
                                                      alt="Product"/>
                                             </a>
-                                            <figcaption class="product-hvr-content">
-                                            </figcaption>
+                                         
                             </figure>
 
                             <!-- Product Details -->
                             <div class="product-details">
-                                    <a href="#" class="product-cat-name"><?=$items['Type']?></a>
-                                    <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>">
+                                    <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>">
                                         <?=$items['ProductName']?></a>
                                     </h2>
-                                    <div class="product-prices">
-                                        
-                                        <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
-                                    </div>
-
-                                         
                             </div>
                         </div>
                     
@@ -140,11 +255,10 @@
             display: block;
             width: 0;}
     </style>
-<div  class="col-sm-6">
+<!-- <div  class="col-sm-6">
         <h3>Left Tabs</h3>
         <hr/>
-        <div class="col-xs-3"> <!-- required for floating -->
-          <!-- Nav tabs -->
+        <div class="col-xs-3"> 
           <ul class="nav nav-tabs tabs-left sideways">
              <?php foreach($bestsell as $items){?>
             <li class="active"><a href="#home-v" data-toggle="tab">Home</a></li>
@@ -156,7 +270,6 @@
         </div>
 
         <div class="col-xs-9">
-          <!-- Tab panes -->
           <div class="tab-content">
             <div class="tab-pane active" id="home-v">Home Tab.</div>
             <div class="tab-pane" id="profile-v">Profile Tab.</div>
@@ -167,7 +280,7 @@
 
         <div class="clearfix"></div>
 
-</div>
+</div> -->
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>

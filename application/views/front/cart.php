@@ -92,7 +92,7 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-5 ml-auto">
+            <div class="col-lg-5 ">
                 <!-- Cart Calculation Area -->
                 <div class="cart-calculator-wrapper">
                     <div class="cart-calculate-items">
@@ -134,7 +134,7 @@
                             </table>
                         </div>
                     </div>
-                    <a href="checkout.html" class="btn btn-brand d-block">Proceed To Checkout</a>
+                    <a href="<?=base_url()?>Checkout" class="btn btn-brand d-block">Proceed To Checkout</a>
                 </div>
             </div>
         </div>

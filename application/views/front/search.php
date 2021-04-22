@@ -89,7 +89,7 @@
                                 <li data-target="grid-view"><i class="fa fa-th"></i></li>
                                 <li class="current" data-target="product-list-view"><i class="fa fa-list-ul"></i></li>
                             </ul>
-                            <span class="show-items">Total Items :<strong> <?=count($datalist)?></strong>  Similar Results</span>
+                            <span class="show-items">Total Items :<strong> <?=count($result)?></strong>  Similar Results</span>
                         </div>
                     </div>
 
@@ -111,7 +111,7 @@
                                     <div class="single-product-item">
                                         <!-- Product Thumbnail -->
                                         <figure class="product-thumbnail">
-                                            <a href="<?=base_url()?>Products/<?=$items['ItemId']?>" class="d-block">
+                                            <a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>" class="d-block">
                                                 <img class="primary-thumb" src="<?=$items['SmallImageUrl']?>"
                                                      alt="Product"/>
                                                 <img class="secondary-thumb" src="<?=$items['SmallImageUrl']?>"
@@ -127,7 +127,7 @@
                                         <!-- Product Details -->
                                         <div class="product-details">
                                             <a href="#" class="product-cat-name"><?=$items['Type']?></a>
-                                            <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>"><?=$items['ProductName']?></a></h2>
+                                            <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>"><?=$items['ProductName']?></a></h2>
                                             <div class="product-prices">
                                                 
                                                 <span class="price">$ <?=$items['WholesalePriceUSD']?></span>

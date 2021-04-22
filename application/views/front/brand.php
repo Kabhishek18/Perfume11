@@ -31,7 +31,7 @@
     <div class="container">
         <div class="row">
              <!-- Sidebar Area Start -->
-             <div class="col-lg-3">
+            <div class="col-lg-3">
                 <div id="sidebar-area-wrap">
                     <!-- Single Sidebar Item Start -->
                     <?php 
@@ -40,36 +40,20 @@
                             $brandnames[] = $pro['BrandName'];
                         }
                         $sidenavbrand = array_unique($brandnames);
-                        // shuffle($sidenavbrand);
+                        //shuffle($sidenavbrand);
                     ?>
-                    <form method="get" action="<?=base_url()?>Searchs">
                     <div class="single-sidebar-wrap">
-                        <h2 class="sidebar-title">Fragrances by Brand <input type="submit" class="btn btn-transparent btn-semi-round"  value="Refined By"></h2>
+                        <h2 class="sidebar-title">Fragrances by Brand</h2>
                         <div class="sidebar-body">
-                            <style type="text/css">
-                                .bale{
-                                    margin-bottom: 13px;
-                                    border-bottom: 1px solid #dfdfdf;
-                                    padding-bottom: 10px;
-                                }
-                            </style>
-                            <div class="sidebar-list">
-                                <?php $s =1; foreach($sidenavbrand as $brand){
-                                    $checked =[];
-                                    if(isset($_GET['brands'])) {
-                                        $checked =$_GET['brands'];
-                                     }   ?>
-                                 <div class="bale">    
-                                        <label><input type="checkbox" name="brands[]" value="<?=$brand?>" <?=(in_array($brand, $checked)?'Checked':"")?> > <?=$brand?></label>
-                                </div>
+                            <ul class="sidebar-list">
+                                <?php $s =1; foreach($sidenavbrand as $brand){?>
+                                <li><a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$brand))?>"><?=$brand?></a></li>
                                 <?php $s++;if($s==15){break;}}?>    
-                            </div>
+                            </ul>
                         </div>
                     </div>
-         
-
-                 
-                   
+                    <!-- Single Sidebar Item End -->
+                                 
                 </div>
             </div>
             <!-- Sidebar Area End -->
@@ -349,24 +333,24 @@
     <div id="shop-page-wrapper" class="page-padding">
     <div class="container">
         <div class="row"> 
-          
-            <?php 
-                $bodyres =$this->mongo_db2->get('products');
-                foreach($bodyres as $pro){
-                    $brandbody[] = $pro['BrandName'];
-                }
-                $bodybrand = array_unique($brandbody);
-                sort($bodybrand);?>   
-                <?php foreach($bodybrand as $items){?>
-                    <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$items))?>"><?=$items?></a>
-                        </div>
-                    </div>
-                    </div>
-                <?php }?>
-                    
+           
+                        <?php 
+                        $bodyres =$this->mongo_db2->get('products');
+                        foreach($bodyres as $pro){
+                            $brandbody[] = $pro['BrandName'];
+                        }
+                        $bodybrand = array_unique($brandbody);
+                        sort($bodybrand);?>   
+                        <?php foreach($bodybrand as $items){?>
+                            <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                   <h3> <a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$items))?>"><?=$items?></a></h3>
+                                </div>
+                            </div>
+                            </div>
+                        <?php }?>
+                 
         </div>
     </div>    
 <div>    

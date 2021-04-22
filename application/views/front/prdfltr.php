@@ -113,16 +113,23 @@
 </style>
 <script type="text/javascript">
     $(document).ready(function() {
+        filter_data(1);
         function filter_data(page) {
 
             $('filter_data').html("<div id='loading'></div>");
             var action ='fetch_data';
             var minimum_price =$('#hidden_minimum_price').val();
+
             var maximum_price =$('#hidden_maximum_price').val();
-            var brand =get_filter('brand');
-            var typename = get_filter('type');
+
+            //var brand =get_filter('brand');
+            var brand ='Liz Claiborne';
+             console.log(brand);
+            // var typename = get_filter('type');
+             var typename = 'Body Lotion';
+
             $.ajax({
-                url:"<?= base_url()?>Home/fetch_data"+page,
+                url:"<?= base_url()?>Home/fetch_data/"+page,
                 method:"POST",
                 dataType:"JSON",
                 data:{ action:action,minimum_price:minimum_price,maximum_price:maximum_price,brand:brand,typename:typename },
@@ -139,6 +146,30 @@
              });
              return filter;
          } 
+
+        $(document).on('click','.pagination li a',function(event) {
+            event.preventDefault();
+            var page =$(this).data('ci-pagination-page');
+            filter_data(page);
+        }) ;
+
+        $('.common_selector').click(function() {
+            filter_data(1);
+        });
+
+        $('#price_range').slider({
+            range:true,
+            min:1,
+            max:99999999,
+            values:[1,99999999].
+            step:500,
+            stop:function (event, ui) {
+                $('#price_show').html(ui.values[0] + ' - ' +ui.values[1]);
+                $('#hidden_minimum_price').val(ui.values[0]);
+                $('#hidden_maximum_price').val(ui.values[1]);
+                filter_data(1);
+            }
+        })
 
     });
 </script>
