@@ -16,6 +16,7 @@ $route['Brand/(:any)'] ='Home/BrandPage';
 $route['Brand'] ='Home/BrandPage';
 
 $route['Search']='Home/Search';
+$route['Product_filter']='Home/Product_filter';
 
 $route['Cart']='Shop/index';
 $route['Cart/Remove/(:any)']='Shop/RemoveItem/$1';

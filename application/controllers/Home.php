@@ -269,6 +269,43 @@ class Home extends CI_Controller {
 
 	}
 
+	public function Product_filter()
+	{
+		$allbrand = $this->GetBrand();
+		$alltype = $this->GetType();
+		$var['brand_data'] =array_slice($allbrand, 0,20);
+		$var['type_data'] =array_slice($alltype, 0,20);
+
+
+		$var['meta'] ='<title> Dashboard </title>';
+		$this->load->view('front/inc/header',$var);
+		$this->load->view('front/inc/nav');
+		$this->load->view('front/prdfltr');
+		$this->load->view('front/inc/footer');
+	}
+
+	public function fetch_data($value='')
+	{
+		$minimum_price =$this->input->post('minimum_price');
+		$maximum_price =$this->input->post('maximum_price');
+		$brand =$this->input->post('brand');
+		$typename =$this->input->post('typename');
+		$this->load->library('pagination');
+
+		$config = array();
+		$config['basr_url']='#';
+		$config['totalrows']= ;
+	}
+
+
+//Get Filter data from Mongo
+
+	public function GetFilterData($minimum_price,$maximum_price,$brand,$typename)
+	{
+		$array = array('' => , );
+		$data = $this->mongo_db2->where(['Gender' => $gender])->get('products');
+	}
+
 //Get Brand From Mongo
 	public function GetBrand()
 	{

@@ -83,7 +83,7 @@
             <!-- Start Shop Page Content -->
             <div class="col-lg-9 order-first order-lg-last">
                 <div class="shop-page-content-wrap">
-                     <div class="products-settings-option d-block d-md-flex">
+                    <div class="products-settings-option d-block d-md-flex">
                         <div class="product-cong-left d-flex align-items-center">
                             <ul class="product-view d-flex align-items-center">
                                 <li data-target="grid-view"><i class="fa fa-th"></i></li>

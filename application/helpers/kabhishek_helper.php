@@ -4,6 +4,7 @@
 #force_ssl
 #generateUUID
 #MessageAlertStatus
+#arrayBreak
 #DD(Direct Dump)
 #Create Access Token Fragnancex_accesstoken
 #Fragnance_getfile
@@ -27,6 +28,14 @@
 			if($str){
 				return strtolower(substr($str, 0, 1));
 			}
+		}
+	}
+
+	if(! function_exists('arraybreak'))
+	{
+		function arraybreak($variable,$limit) {
+
+			
 		}
 	}
 

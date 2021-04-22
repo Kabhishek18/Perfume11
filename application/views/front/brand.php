@@ -40,40 +40,33 @@
                             $brandnames[] = $pro['BrandName'];
                         }
                         $sidenavbrand = array_unique($brandnames);
-                        shuffle($sidenavbrand);
+                        // shuffle($sidenavbrand);
                     ?>
+                    <form method="get" action="<?=base_url()?>Searchs">
                     <div class="single-sidebar-wrap">
-                        <h2 class="sidebar-title">Fragrances by Brand</h2>
+                        <h2 class="sidebar-title">Fragrances by Brand <input type="submit" class="btn btn-transparent btn-semi-round"  value="Refined By"></h2>
                         <div class="sidebar-body">
-                            <ul class="sidebar-list">
-                                <?php $s =1; foreach($sidenavbrand as $brand){?>
-                                <li><a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$brand))?>"><?=$brand?></a></li>
+                            <style type="text/css">
+                                .bale{
+                                    margin-bottom: 13px;
+                                    border-bottom: 1px solid #dfdfdf;
+                                    padding-bottom: 10px;
+                                }
+                            </style>
+                            <div class="sidebar-list">
+                                <?php $s =1; foreach($sidenavbrand as $brand){
+                                    $checked =[];
+                                    if(isset($_GET['brands'])) {
+                                        $checked =$_GET['brands'];
+                                     }   ?>
+                                 <div class="bale">    
+                                        <label><input type="checkbox" name="brands[]" value="<?=$brand?>" <?=(in_array($brand, $checked)?'Checked':"")?> > <?=$brand?></label>
+                                </div>
                                 <?php $s++;if($s==15){break;}}?>    
-                            </ul>
+                            </div>
                         </div>
                     </div>
-                    <!-- Single Sidebar Item End -->
-                    <?php 
-                        $sidetype =$this->mongo_db2->get('products');
-                        foreach($sidetype as $stype){
-                            $type[] = $stype['Type'];
-                        }
-                        $sidenavtype = array_unique($type);
-                        shuffle($sidenavtype);
-                    ?>                
-                    <!-- Single Sidebar Item Start -->
-                    <div class="single-sidebar-wrap">
-                        <h2 class="sidebar-title">Fragrances by Type</h2>
-                        <div class="sidebar-body">
-                            <ul class="sidebar-list">
-                                <?php $s=1; foreach($sidenavtype as $snt){?>
-                                <li><a href="<?=base_url()?>Type/<?=(urlencode($snt))?>"><?=$snt?></a></li>
-                                <?php $s++;if($s==15){break;}}?>  
-
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Single Sidebar Item End -->
+         
 
                  
                    
@@ -264,7 +257,7 @@
 </style> 
 
 <script>
-    jQuery(document).ready(function () {
+    $(document).ready(function () {
 
     //Pagination JS
     //how much items per page to show

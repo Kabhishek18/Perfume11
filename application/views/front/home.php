@@ -98,70 +98,79 @@
     <div class="container">
         <div class="row">
                      
-            <!-- Start Special Product Tab Menu -->
-            <div class="col-md-3">
-                <div class="special-products-menu-area">
-                    <h2>Fragrances by Type</h2>
-                    
-                    <div class="special-products-menu nav flex-column" role="tablist">
-                        <?php $i=1; foreach($brandname as $brand){?>
-                            <a href="#<?=str_replace(" ","-",$brand)?>" <?=($i==1?'class="active"':'')?> data-toggle="tab">
-                                <span style="text-transform:uppercase;"><?=$brand?></span>
-                            </a>
-                        <?php $i++; if($i==7){break;} }?>
-                    </div>
-                </div>
-            </div>
-            <!-- End Special Product Tab Menu -->
+            
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+<!-- partial:index.partial.html -->
+    <style>
+        .tabs-left {
+          border-bottom: none;
+          border-right: 1px solid #ddd;
+        }
 
-            <!-- Start Special Product Tab Content -->
-            <div class="col-md-9 mt-5 mt-md-0">
-                <div class="tab-content" id="specialProducts">
-                    <!-- Single Tab Content Start -->
-                    <?php $j=1; foreach($brandname as $brand){?>    
-                        <div class="tab-pane fade <?=($j==1?'show active':'')?> " id="<?=str_replace(" ","-",$brand)?>" role="tabpanel">
-                            <div class="products-wrapper product-grid-view">
-                                <?php $response = Fragnance_getProductByBrand(Fragnancex_accesstoken(),$brand);?>    
-                                <?php foreach(json_decode($response,true) as $items){?>
-                                   <div class="col-md-3"> 
-                                    <div class="single-product-item">
-                                        <!-- Product Thumbnail -->
-                                        <figure class="product-thumbnail">
-                                            <a href="<?=base_url()?>Products/<?=$items['ItemId']?>" class="d-block">
-                                                <img class="primary-thumb" src="<?=$items['SmallImageUrl']?>"
-                                                        alt="Product"/>
-                                                <img class="secondary-thumb" src="<?=$items['SmallImageUrl']?>"
-                                                        alt="Product"/>
-                                            </a>
-                                            <figcaption class="product-hvr-content">
-                                                
-                                                <a href="#" class="btn btn-brand btn-quickView" data-toggle="modal"
-                                                    data-target="#quickViewModal<?=$items['ItemId']?>">Quick View</a>
-                                            </figcaption>
-                                        </figure>
+        .tabs-left>li {
+          float: none;
+        margin:0px;
+          
+        }
 
-                                        <!-- Product Details -->
-                                        <div class="product-details">
-                                            <a href="#" class="product-cat-name"><?=$items['Type']?></a>
-                                            <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>"><?=$items['ProductName']?></a></h2>
-                                            <div class="product-prices">
-                                                
-                                                <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                   </div> 
-                                <?php if($j==7){break;} }?>
-                            </div>    
-                        </div>
-                    <?php $j++; if($j==7){break;} }?>
+        .tabs-left>li.active>a,
+        .tabs-left>li.active>a:hover,
+        .tabs-left>li.active>a:focus {
+          border-bottom-color: #ddd;
+          border-right-color: transparent;
+          background:#f90;
+          border:none;
+          border-radius:0px;
+          margin:0px;
+        }
+        .nav-tabs>li>a:hover {
+            /* margin-right: 2px; */
+            line-height: 1.42857143;
+            border: 1px solid transparent;
+            /* border-radius: 4px 4px 0 0; */
+        }
+        .tabs-left>li.active>a::after{content: "";
+            position: absolute;
+            top: 10px;
+            right: -10px;
+            border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+          
+          border-left: 10px solid #f90;
+            display: block;
+            width: 0;}
+    </style>
+<div  class="col-sm-6">
+        <h3>Left Tabs</h3>
+        <hr/>
+        <div class="col-xs-3"> <!-- required for floating -->
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs tabs-left sideways">
+             <?php foreach($bestsell as $items){?>
+            <li class="active"><a href="#home-v" data-toggle="tab">Home</a></li>
+            <li><a href="#profile-v" data-toggle="tab">Profile</a></li>
+            <li><a href="#messages-v" data-toggle="tab">Messages</a></li>
+            <li><a href="#settings-v" data-toggle="tab">Settings</a></li>
+              <?php }?>    
+          </ul>
+        </div>
 
-                    <!-- Single Tab Content End -->                   
-                </div>
-            </div>
-            <!-- End Special Product Tab Content -->                
+        <div class="col-xs-9">
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="home-v">Home Tab.</div>
+            <div class="tab-pane" id="profile-v">Profile Tab.</div>
+            <div class="tab-pane" id="messages-v">Messages Tab.</div>
+            <div class="tab-pane" id="settings-v">Settings Tab.</div>
+          </div>
+        </div>
 
+        <div class="clearfix"></div>
 
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
 
         </div>
     </div>

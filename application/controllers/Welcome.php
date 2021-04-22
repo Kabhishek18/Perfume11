@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Welcome extends CI_Controller {
 	function __construct(){
 		parent::__construct();
+		$this->load->model('test_model');
 		$this->load->library('cart');
 		$this->load->helper('file');
 		$this->load->library('mongo_db', array('activate'=>'newdb'),'mongo_db2');
@@ -18,6 +19,18 @@ class Welcome extends CI_Controller {
 	{
 		if($this->ApiPullStore()){
 			if($this->StoreDB()){
+				echo "Syncing Api With database is successfull";
+			}
+	
+		}else{
+			echo "Semthing Misfortune Happens In API SYNC";
+		}
+	}
+
+	public function Sync2()
+	{
+		if($this->ApiPullStore()){
+			if($this->StoreDB2()){
 				echo "Syncing Api With database is successfull";
 			}
 	
@@ -65,6 +78,28 @@ class Welcome extends CI_Controller {
 		}
 	}
 
+	public function StoreDB2()
+	{	
+		$data = read_file(FCPATH.'productlog/main.json');
+		$data = json_decode($data,true);
+		 $datareset =$this->db->empty_table('tbl_products');
+		 $i=1;
+		 if($datareset){
+		 	foreach ($data as $key ) {
+		 		$insert =$this->test_model->InsertProduct($key);
+				if($insert){
+					echo 'Inserted Product '.$i++ ;
+					echo '<br>';
+				}else{
+					echo 'Inserting Failed  Product '.$i++;
+				}
+		 	}
+		 }else{
+			echo "Unable To Reset";
+		}
+
+	}
+
 
 	public function GetAllProducts()
 	{
@@ -86,14 +121,10 @@ class Welcome extends CI_Controller {
 
 	public function GetProductByBrand()
 	{	
-		if(!empty($this->input->post('matchvalue'))){
-		$response=Fragnance_getProductByBrand(Fragnancex_accesstoken(),$this->input->post('matchvalue'));
+		
+		$response=Fragnance_getProductByBrand(Fragnancex_accesstoken(),'Bath & Body Works');
 		echo($response);
-		}
-		else{
-			$this->session->set_flashdata('danger',  'Strictly Prohibited');
-			redirect($_SERVER['HTTP_REFERER']);
-		}
+		
 	}
 
 	public function GetProduct()
@@ -115,4 +146,6 @@ class Welcome extends CI_Controller {
 		echo "<pre>";
 		print_r($res);
 	}
+
+
 }
