@@ -108,14 +108,7 @@
                     </div>
                 </div>
                 <!-- End Logo Area -->
-                <?php 
-                $navres =$this->mongo_db2->get('products');
-                foreach($navres as $pro){
-                    $brandname[] = $pro['BrandName'];
-                }
-                $navbrand = array_unique($brandname);
-                shuffle($navbrand);
-                ?>
+           
                 <!-- Start Navigation // Main Menu -->
                 <div class="col-lg-6 m-auto d-none d-lg-block">
                     <div id="navigation-area-wrap" class="text-center">

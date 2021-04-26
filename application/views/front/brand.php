@@ -35,26 +35,35 @@
             <div class="col-lg-3">
                 <div id="sidebar-area-wrap">
                     <!-- Single Sidebar Item Start -->
-                    <?php 
-                        $sideres =$this->mongo_db2->get('products');
-                        foreach($sideres as $pro){
-                            $brandnames[] = $pro['BrandName'];
-                        }
-                        $sidenavbrand = array_unique($brandnames);
-                        //shuffle($sidenavbrand);
-                    ?>
+                    <?php $sidenavbrand =$this->home_model->GetAllProductLimit(15,'BrandName')?>
                     <div class="single-sidebar-wrap">
                         <h2 class="sidebar-title">Fragrances by Brand</h2>
                         <div class="sidebar-body">
                             <ul class="sidebar-list">
                                 <?php $s =1; foreach($sidenavbrand as $brand){?>
-                                <li><a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$brand))?>"><?=$brand?></a></li>
+                                <li><a href="<?=base_url()?>Brand/<?=(urlencode($brand['BrandName']))?>"><?=$brand['BrandName']?></a></li>
                                 <?php $s++;if($s==15){break;}}?>    
                             </ul>
                         </div>
                     </div>
                     <!-- Single Sidebar Item End -->
-                                 
+                    <?php $sidenavtype =$this->home_model->GetAllProductLimit(15,'Type'); ?>                
+                    <!-- Single Sidebar Item Start -->
+                    <div class="single-sidebar-wrap">
+                        <h2 class="sidebar-title">Fragrances by Type</h2>
+                        <div class="sidebar-body">
+                            <ul class="sidebar-list">
+                                <?php $s=1; foreach($sidenavtype as $snt){?>
+                                <li><a href="<?=base_url()?>Type/<?=(urlencode($snt['Type']))?>"><?=$snt['Type']?></a></li>
+                                <?php $s++;if($s==15){break;}}?>  
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Sidebar Item End -->
+
+                 
+                   
                 </div>
             </div>
             <!-- Sidebar Area End -->
@@ -212,38 +221,86 @@
 
 
 <!--== End Shop Page Wrapper ==-->
-<style type="text/css">
-    .card-body a{
-        color: #bdb093;
-    }
-    .card-body  a:hover{
-        color: #bdb093;
-    }
-</style>
+
 
 <?php }else{?>
+<style type="text/css">
+    .top-bar{
+        border-top: 4px solid #bdb093;
+        padding-top:10px;
+        padding-bottom:10px;
+        text-align: center;
+    }
+    .box 
+    {
+        background: white;
+        border: 2px solid #bdb093;
+        box-shadow: 1px 2px 3px solid #bdb093;
+    }
+
+    .boxed{
+
+        border:1px solid #bdb093;
+        padding: 5px;
+    }
+    .boxed:hover{
+        background: #bdb093;
+        color: white;
+    }
+    .text-default{
+        color: #bdb093;
+        font-size: 15px;
+    }
+    .text-default:hover{
+       color: #212529;
+        outline: none;
+        text-decoration: none;
+    }
+    .pb-50{
+        padding-bottom: 50;
+    }
+</style>
     <div id="shop-page-wrapper" class="page-padding">
     <div class="container">
         <div class="row"> 
-           
+           <div class="col-md-3 top-bar">
+                <h2>All Brands By Letter</h2>
+                <div class="row box">
+                    <?php $range  =range('A','Z');
+                foreach($range as $item){?>
+               
+                 <div class="col-md-3 boxed ">
+                      <span> <a class="btn"><?=$item?></a></span>
+                 </div>
+            <?php } ?>
+                 <div class="col-md-3 boxed ">
+                      <span> <a class="btn">All</a></span>
+                 </div>
+                </div>
+           </div>
+           <div class="col-md-9">
+                <div class="container">
+                    <div class="text-title pb-50">
+                          <h2>Perfume & Cologne > All </h2>
+                    </div>
+                </div>
+               <div class="row">
+                            
                         <?php 
-                        $bodyres =$this->mongo_db2->get('products');
-                        foreach($bodyres as $pro){
-                            $brandbody[] = $pro['BrandName'];
-                        }
-                        $bodybrand = array_unique($brandbody);
-                        sort($bodybrand);?>   
+                        $bodybrand = $this->home_model->GetAllProductLimit(0,'BrandName');?>   
                         <?php foreach($bodybrand as $items){?>
                             <div class="col-md-3">
                             <div class= "card">
                                 <div class="card-body">
                                    <h3> 
-                                    <a class="text-default" href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$items))?>"><?=$items?></a>
+                                    <a class="text-default" href="<?=base_url()?>Brand/<?=(urlencode($items['BrandName']))?>"><?=$items['BrandName']?></a>
                                     </h3>
                                 </div>
                             </div>
                             </div>
                         <?php }?>
+               </div>
+           </div>
                  
         </div>
     </div>    

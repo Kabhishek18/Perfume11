@@ -31,43 +31,29 @@
     <div class="container">
         <div class="row">
              <!-- Sidebar Area Start -->
-             <div class="col-lg-3">
+            <div class="col-lg-3">
                 <div id="sidebar-area-wrap">
                     <!-- Single Sidebar Item Start -->
-                    <?php 
-                        $sideres =$this->mongo_db2->get('products');
-                        foreach($sideres as $pro){
-                            $brandname[] = $pro['BrandName'];
-                        }
-                        $sidenavbrand = array_unique($brandname);
-                        shuffle($sidenavbrand);
-                    ?>
+                    <?php $sidenavbrand =$this->home_model->GetAllProductLimit(15,'BrandName')?>
                     <div class="single-sidebar-wrap">
                         <h2 class="sidebar-title">Fragrances by Brand</h2>
                         <div class="sidebar-body">
                             <ul class="sidebar-list">
                                 <?php $s =1; foreach($sidenavbrand as $brand){?>
-                                <li><a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$brand))?>"><?=$brand?></a></li>
+                                <li><a href="<?=base_url()?>Brand/<?=(urlencode($brand['BrandName']))?>"><?=$brand['BrandName']?></a></li>
                                 <?php $s++;if($s==15){break;}}?>    
                             </ul>
                         </div>
                     </div>
                     <!-- Single Sidebar Item End -->
-                    <?php 
-                        $sidetype =$this->mongo_db2->get('products');
-                        foreach($sidetype as $stype){
-                            $type[] = $stype['Type'];
-                        }
-                        $sidenavtype = array_unique($type);
-                        shuffle($sidenavtype);
-                    ?>                
+                    <?php $sidenavtype =$this->home_model->GetAllProductLimit(15,'Type'); ?>                
                     <!-- Single Sidebar Item Start -->
                     <div class="single-sidebar-wrap">
                         <h2 class="sidebar-title">Fragrances by Type</h2>
                         <div class="sidebar-body">
                             <ul class="sidebar-list">
                                 <?php $s=1; foreach($sidenavtype as $snt){?>
-                                <li><a href="<?=base_url()?>Type/<?=(urlencode($snt))?>"><?=$snt?></a></li>
+                                <li><a href="<?=base_url()?>Type/<?=(urlencode($snt['Type']))?>"><?=$snt['Type']?></a></li>
                                 <?php $s++;if($s==15){break;}}?>  
 
                             </ul>

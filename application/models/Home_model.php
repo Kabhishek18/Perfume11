@@ -65,31 +65,64 @@ class Home_model extends CI_Model
         return !empty($result)?$result:false;
     }
 
-
-
-    // Fetch records
-    public function getData($rowno,$rowperpage) {
-            
-        $this->db->select('*');
+    public function SimliarProduct($ProductName,$Type)
+    {
+       $this->db->select('*');
         $this->db->from($this->products);
-        $this->db->limit($rowperpage, $rowno);  
-        $query = $this->db->get();
-        
-        return $query->result_array();
-    }
-
-    // Select total records
-    public function getrecordCount() {
-
-        $this->db->select('count(*) as allcount');
-        $this->db->from($this->products);
-        $query = $this->db->get();
+        $array = array('ProductName' => $ProductName, 'Type' => $Type);
+        $this->db->where($array);
+        $query  = $this->db->get();
         $result = $query->result_array();
-      
-        return $result[0]['allcount'];
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+
+    public function SimliarProductName($ProductName)
+    {
+       $this->db->select('*');
+        $this->db->from($this->products);
+        $array = array('ProductName' => $ProductName,);
+        $this->db->where($array);
+        $query  = $this->db->get();
+        $result = $query->result_array();
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+
+    public function GetAllProduct($id='')
+    {
+       $this->db->select('*');
+        $this->db->from($this->products);
+        if($id){
+            $array = array('ItemId'=>$id);
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->row_array();
+        }else{
+            $query  = $this->db->get();
+            $result = $query->result_array();
+
+        }
+        return !empty($result)?$result:false;
     }
 
 
+    public function GetAllProductLimit($limit='',$var)
+    {
+
+       $this->db->distinct(); 
+       $this->db->select($var);
+        $this->db->from($this->products);
+        if($limit==0){
+
+        }else{
+        $this->db->limit($limit);} 
+        $query  = $this->db->get();
+        $result = $query->result_array();
+     return !empty($result)?$result:false;
+    }
 
 
 

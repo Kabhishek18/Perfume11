@@ -38,8 +38,8 @@ class Home extends CI_Controller {
 
 	public function index()
 	{	
-		$var['bestsell'] = $this->GetAllProducts();
-		$var['brandname'] =$this->GetBrand();
+		$var['bestsell'] = $this->GetAllProducts(10);
+		$var['brandname'] =$this->GetBrand(10);
 		$var['meta'] ='<title>Perfume Home</title>';
 		$this->load->view('front/inc/header',$var);
 		$this->load->view('front/inc/nav');
@@ -200,7 +200,7 @@ class Home extends CI_Controller {
 	{	
 		if($this->uri->segment(2,0)){
 			$data['brandname'] =$this->uri->segment(2,0);
-			$data['brandname'] =str_replace("-"," ",$data['brandname']);
+			$data['brandname'] =urldecode($data['brandname']);
 			$var['meta'] ='<title>'.$data['brandname'].' | Perfume</title>';
 			$response =Fragnance_getProductByBrand(Fragnancex_accesstoken(),$data['brandname']);
 			$data['datalist'] =json_decode($response,true);
@@ -219,8 +219,10 @@ class Home extends CI_Controller {
 
 	public function Products($id='',$name)
 	{
-		$response = Fragnance_getProductById(Fragnancex_accesstoken(),$id);
-		$var = json_decode($response,true);
+		$var = $this->home_model->GetAllProduct($id);
+		$var['similarname'] = $this->home_model->SimliarProductName($var['ProductName']);
+		rsort($var['similarname']);
+		$var['similar'] = $this->home_model->SimliarProduct($var['ProductName'],$var['Type']);
 		$var['meta'] ='<title> '.$var['ProductName'].' </title>';
 		$this->load->view('front/inc/header',$var);
 		$this->load->view('front/inc/nav');
@@ -270,146 +272,47 @@ class Home extends CI_Controller {
 
 	}
 
-	public function Product_filter()
-	{
-		$allbrand = $this->GetBrand();
-		$alltype = $this->GetType();
-		$var['brand_data'] =array_slice($allbrand, 0,20);
-		$var['type_data'] =array_slice($alltype, 0,20);
 
 
-		$var['meta'] ='<title> Dashboard </title>';
-		$this->load->view('front/inc/header',$var);
-		$this->load->view('front/inc/nav');
-		$this->load->view('front/prdfltr');
-		$this->load->view('front/inc/footer');
-	}
-
-	public function fetch_data()
-	{
-		$minimum_price =$this->input->post('minimum_price');
-		$maximum_price =$this->input->post('maximum_price');
-		$brand =$this->input->post('brand');
-		$typename =$this->input->post('typename');
-		$this->load->library('pagination');
-		$config = array();
-		$config['basr_url']='#';
-		$config['totalrows']= $this->test_model->count_all($minimum_price,$maximum_price,$brand,$typename) ;
-		$config['per_page'] = 150;
-		$config['uri_segement'] =3;
-		$config['use_page_numbers']= TRUE;
-		$config['full_tag_open'] ='<ul class="pagination">';
-		$config['full_tag_close'] ='</ul">';
-		$config['first_tag_open'] ='<li>';
-		$config['first_tag_close'] ='</li>';
-		$config['last_tag_open'] ='<li>';
-		$config['last_tag_close'] ='</li>';
-		$config['next_link'] ='&gt;';
-		$config['next_tag_open'] ='<li>';
-		$config['next_tag_close'] ='</li>';
-		$config['prev_link'] ='&lt;';
-		$config['prev_tag_open'] ='<li>';
-		$config['prev_tag_close'] ='</li>';
-		$config['cur_tag_open'] ="<li class='active'><a href='#'> ";
-		$config['cur_tag_close'] ="</a></li>";
-		$config['num_tag_open'] ="<li>";
-		$config['num_tag_close'] ="</li>";
-		$config['num_links'] =3;
-		$this->pagination->intialize($config);
-		$page  = $this->uri->segment(3);
-		$start = ($page - 1)*$config['per_page'];
-		$ouput = array(
-			'pagination_link' => $this->pagination->create_links(),
-			'product_list' => $this->test_model->fetch_data($config["per_page"],$start,$minimum_price,$maximum_price,$brand,$typename),
-			 );
-		echo json_encode($ouput);
-	}
-
-
-	public function loadRecord($rowno=0){
-
-		// Row per page
-		$rowperpage = 100;
-
-		// Row position
-		if($rowno != 0){
-			$rowno = ($rowno-1) * $rowperpage;
-		}
-      	
-      	// All records count
-      	$allcount = $this->home_model->getrecordCount();
-
-      	// Get  records
-      	$users_record = $this->home_model->getData($rowno,$rowperpage);
-      	
-      	// Pagination Configuration
-      	$config['base_url'] = base_url().'Home/loadRecord';
-      	$config['use_page_numbers'] = TRUE;
-		$config['total_rows'] = $allcount;
-		$config['per_page'] = $rowperpage;
-
-		// Initialize
-		$this->pagination->initialize($config);
-
-		// Initialize $data Array
-		$data['pagination'] = $this->pagination->create_links();
-		$data['result'] = $users_record;
-		$data['row'] = $rowno;
-
-		echo json_encode($data);
-		
-	}
 
    	public function Test()
 	{
 
-        $var['meta'] ='<title>Perfume Home</title>';
-		$this->load->view('front/inc/header',$var);
-		$this->load->view('front/inc/nav');
+        dd($this->home_model->GetAllProductLimit(15,'BrandName'));
 
     }
 
 
 //Get Brand From Mongo
-	public function GetBrand()
+	public function GetBrand($limit)
 	{
-		$res =$this->mongo_db2->get('products');
-		foreach($res as $pro){
-			$brandname[] = $pro['BrandName'];
-		}
-		return array_unique($brandname);
+		$brandname = $this->home_model->GetAllProductLimit($limit,'BrandName');
+		return $brandname;
 	}
 
 //Get Brand From Mongo
-	public function GetType()
+	public function GetType($limit)
 	{
-		$res =$this->mongo_db2->get('products');
-		foreach($res as $pro){
-			$brandname[] = $pro['Type'];
-		}
-		return array_unique($brandname);
+		$type = $this->home_model->GetAllProductLimit($limit,'Type');
+		return $type;
 	}	
 //Get Gender From Mongo
 	public function GetGender($gender)
 	{
-		$data = $this->mongo_db2->where(['Gender' => $gender])->get('products');
-		return $data;
+		$gender = $this->home_model->GetAllProductLimit($limit,'Gender');
+		return $gender;
 	}	
 //Get All Product On Home with limit 10
-	public function GetAllProducts()
+	public function GetAllProducts($limit)
 	{
-		$response =$this->mongo_db2->limit(10)->get('products');
-		return $response;
+		$products = $this->home_model->GetAllProductLimit($limit,'*');
+		return $products;
 	}
 //Get All Product With Productname
 	public function GetTheProducts()
 	{
-		$response =$this->mongo_db2->get('products');
-		foreach($response as $pro){
-			$productname[] = $pro['ProductName'];
-		}
-		$productname= array_unique($productname);
-		return $productname;
+		$products = $this->home_model->GetAllProductLimit($limit,'Gender');
+		return $products;
 	}
 
 }

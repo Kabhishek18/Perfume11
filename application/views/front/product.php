@@ -1,3 +1,4 @@
+<!--== Start Page Header ==-->
 <div id="page-header-wrapper">
     <div class="container">
         <div class="row">
@@ -13,8 +14,8 @@
             <div class="col-6 m-auto">
                 <nav class="page-breadcrumb-wrap">
                     <ul class="nav justify-content-end">
-                        <li><a href="javascript:void(0)">Home</a></li>
-                        <li><a href="javascript:void(0)"  class="current">Product</a></li>
+                        <li><a href="<?=base_url()?>">Home</a></li>
+                       <li><a href="javascript:void(0)"  class="current">Product</a></li>
                     </ul>
                 </nav>
             </div>
@@ -23,433 +24,188 @@
     </div>
 </div>
 <!--== End Page Header ==-->
-<style type="text/css">
-  .row .modified{
-      margin-top: 50px;
-    margin-bottom: 50px;
-    width: 100%;
-  }
-</style>
-<!--== Start Single Product Wrapper ==-->
-<div id="single-product-page-wrapper" class="page-padding">
-    <div class="container">
+
+
+<!--== Start Shop Page Wrapper ==-->
+<div id="shop-page-wrapper">
+    <div class="container" style="max-width:1260px;">
+	
         <div class="row">
-            <!-- Single Product Page Content Start -->
-            <div class="col-lg-12">
-                <div class="single-product-page-content">
-                    <div class="row">
-                        <!-- Product Thumbnail Area Start -->
-                        <div class="col-lg-5">
-                            <div class="product-thumbnail-wrap">
-                                <div class="product-image-carousel">
-                                    <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=$LargeImageUrl?>"
-                                             alt="Product"/>
-                                    </div>
+		<div class="shop-page-products-wrap" style="margin-bottom:50px;" >
+            <div class="products-wrapper product-list-view">
+                <div class="row">
+                    <!-- Single Product Start -->
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="single-product-item">
+                            <!-- Product Thumbnail -->
+                            <figure class="product-thumbnail">
+                                <a href="#" class="d-block">
+                                    <img class="primary-thumb" src="<?=$SmallImageUrl?>"
+                                         alt="Product"/>
+                                    <img class="secondary-thumb" src="<?=$SmallImageUrl?>"
+                                         alt="Product"/>
+                                </a>
+                                
+                            </figure>
 
-                                    
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- Product Thumbnail Area End -->
-
-                        <!-- Product Details Area Start -->
-                        <div class="col-lg-7">
+                            <!-- Product Details -->
                             <div class="product-details">
-                                <h2><?=$MetricSize?> <?=$ProductName?></h2>
-
-
-                                <div class="price-group">
-                                    <span class="price">$ <?=$WholesalePriceUSD?></span>
-                                </div>
-
-                                <div class="product-info-stock-sku">
-                                
-                                    <span class="product-stock-status text-success"><?=($Instock?'In Stock':'')?></span>
-
-                                    <span class="product-stock-status text-danger"><?=($Instock?'':'Out Stock')?></span>
-                                    <span class="product-sku-status"><strong>SKU</strong> PERFUME<?=$ItemId?></span>
-                                </div>
-
-                                <p class="product-desc" style="text-align:justify;">
-                                    <?=$Description?>
-                                </p>
-
-                                
-                                <form method="post" action="<?=base_url()?>Shop/AddToCart">
-                                        <div class="product-quantity d-sm-flex align-items-center">
-                                            <div class="pro-quantity">
-                                                <input type="hidden" name="ItemId" value="<?=$ItemId?>">
-                                                <div class="pro-qty">
-                                                    <input type="text" name="Quantity" min="1" value="1" />
-                                                </div>
-                                            </div>
-
-                                            <button type="submit" class="btn btn-transparent btn-semi-round"><i
-                                                    class="fa fa-shopping-cart"></i> Add to Cart</button>
-                                        </div>
-                                </form>
-                                <!-- Product Share -->
-                                <div class="product-share-area">
-                                    <h3>Share This Product:</h3>
-                                    <div class="share-btn">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                                        <a href="#"><i class="fa fa-reddit"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                    </div>
-                                </div>
+                                <h2 class="product-name" style="margin-bottom:5px;"><?=$ProductName?></h2>
+                                By   <a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$BrandName))?>" class="product-cat-name"><?=$BrandName?></a> For <?=$Gender?>
+                                <p class="product-desc"><?=$Description?></p>
                             </div>
                         </div>
-                        <!-- Product Details Area End -->
+                    </div>
+                    <!-- Single Product End -->
 
-                        <div class="row modified" > 
-                            <?php $response =$this->mongo_db2->where(['ProductName'=>$ProductName,'Type'=>$Type])->get('products');?>
-                                
-                                        <?php $i=1; foreach($response as $items){?>
-                                            <!-- Single Product Start -->
-                                          
-                                             <div class="col-lg-3 col-sm-6" >
-                                
-                                                <div class="single-product-item">
-                                                    <!-- Product Thumbnail -->
-                                                    <figure class="product-thumbnail">
-                                                        <a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>" class="d-block">
-                                                            <img class="primary-thumb" src="<?=$items['SmallImageUrl']?>"
-                                                                 alt="Product"/>
-                                                            <img class="secondary-thumb" src="<?=$items['SmallImageUrl']?>"
-                                                                 alt="Product"/>
-                                                        </a>
-                                                        <figcaption class="product-hvr-content">
-                                                           
-                                                            <a href="#" class="btn btn-brand btn-quickView" data-toggle="modal"
-                                                               data-target="#quickViewModal<?=$items['ItemId']?>">Quick View</a>
-                                                        </figcaption>
-                                                    </figure>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Sidebar Area Start -->
+           <div class="col-lg-3">
+                <div id="sidebar-area-wrap">
+                    <!-- Single Sidebar Item Start -->
+                    <?php $sidenavbrand =$this->home_model->GetAllProductLimit(15,'BrandName')?>
+                    <div class="single-sidebar-wrap">
+                        <h2 class="sidebar-title">Fragrances by Brand</h2>
+                        <div class="sidebar-body">
+                            <ul class="sidebar-list">
+                                <?php $s =1; foreach($sidenavbrand as $brand){?>
+                                <li><a href="<?=base_url()?>Brand/<?=(urlencode($brand['BrandName']))?>"><?=$brand['BrandName']?></a></li>
+                                <?php $s++;if($s==15){break;}}?>    
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Sidebar Item End -->
+                    <?php $sidenavtype =$this->home_model->GetAllProductLimit(15,'Type'); ?>                
+                    <!-- Single Sidebar Item Start -->
+                    <div class="single-sidebar-wrap">
+                        <h2 class="sidebar-title">Fragrances by Type</h2>
+                        <div class="sidebar-body">
+                            <ul class="sidebar-list">
+                                <?php $s=1; foreach($sidenavtype as $snt){?>
+                                <li><a href="<?=base_url()?>Type/<?=(urlencode($snt['Type']))?>"><?=$snt['Type']?></a></li>
+                                <?php $s++;if($s==15){break;}}?>  
 
-                                                    <!-- Product Details -->
-                                                    <div class="product-details">
-                                                        <a href="#" class="product-cat-name"><?=$items['Type']?></a>
-                                                        <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>"><?=$items['MetricSize']?> <?=$items['ProductName']?></a></h2>
-                                                        <div class="product-prices">
-                                                            
-                                                            <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
-                                                        </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Sidebar Item End -->
 
-                                                        
-                                                    </div>
-                                                </div>
-                                      
-                                            </div>
-                                            <!--== Start Quick View Content ==-->
-                                    <div class="modal" id="quickViewModal<?=$items['ItemId']?>" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true"><img src="<?=base_url()?>resources/assets/img/icons/cancel.png" alt="Close" class="img-fluid"/></span>
-                                            </button>
-                                            <div class="modal-body">
-                                                <div class="single-product-page-content">
-                                                    <div class="row">
-                                                        <!-- Product Thumbnail Area Start -->
-                                                        <div class="col-lg-5">
-                                                            <div class="product-thumbnail-wrap">
-                                                                <div class="product-image-carousel">
-                                                                    <div class="single-image-item">
-                                                                        <img class="img-fluid" src="<?=$items['LargeImageUrl']?>"
-                                                                            alt="Product"/>
-                                                                    </div>
+                 
+                   
+                </div>
+            </div>
+            <!-- Sidebar Area End -->
 
-                                                                   
-                                                                </div>
+        <!-- Start Shop Page Content -->
+        <div class="col-lg-9 order-first order-lg-last">
+            <div class="shop-page-content-wrap">
+             
+                <div class="shop-page-products-wrap">
+                    <div class="products-wrapper product-list-view">
+                        <div class="row">
+                            <!-- Single Product Start -->
+                            <?php foreach($similar as $items){?>
+                                <div class="col-lg-6 col-sm-6">
 
-                                                               
+                                    <div class="single-product-item">
+                                    <!-- Product Thumbnail -->
+                                        <figure class="product-thumbnail">
+                                        <a href="#" class="d-block">
+                                        <img class="primary-thumb" src="<?=$items['SmallImageUrl']?>" alt="<?=$items['ProductName']?>"/>
+                                        <img class="secondary-thumb" src="<?=$items['SmallImageUrl']?>" alt="<?=$items['ProductName']?>"/>
+                                        </a>
+                                        </figure>
+
+                                        <!-- Product Details -->
+                                        <div class="product-details">
+                                            <a href="#" class="product-cat-name">Item #<?=$items['ItemId']?>  </a>
+                                            <h2 class="product-name"><a href="#"><?=$items['MetricSize']?> <?=$items['ProductName']?></a></h2>
+                                            <h2 class="text-success"><?=($items['Instock']?'Instock':'')?></h2>
+                                            <h2 class="text-danger"><?=($items['Instock']?'':'Outstock')?></h2>
+
+                                            <p class="product-desc"><?=$items['Description']?></p><br>
+                                            <h2> ₹ <?=number_format($items['WholesalePriceUSD'],2)?></h2>
+                                         
+                                            <div class="post-footer d-block d-sm-flex justify-content-sm-between align-items-center">
+                                                <form method="post" action="<?=base_url()?>Shop/AddToCart">
+                                                    <div class="product-quantity d-sm-flex align-items-center">
+                                                        <div class="pro-quantity">
+                                                            <input type="hidden" name="ItemId" value="<?=$items['ItemId']?>">
+                                                            <div class="pro-qty">
+                                                                <input type="text" name="Quantity" min="1" max="<?=$items['QuantityAvailable']?>" value="1" />
                                                             </div>
                                                         </div>
-                                                        <!-- Product Thumbnail Area End -->
 
-                                                        <!-- Product Details Area Start -->
-                                                        <div class="col-lg-7">
-                                                            <div class="product-details">
-                                                                <h2><?=$items['ProductName']?></h2>
-
-                                                               
-                                                                <div class="price-group">
-                                                                    <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
-                                                                   
-                                                                </div>
-
-                                                                <div class="product-info-stock-sku">
-                                                                    <span class="product-stock-status text-success"><?=($items['Instock']?"In Stock":'')?></span>
-                                                                    <span class="product-stock-status text-danger"><?=($items['Instock']?"":'Out Stock')?></span>
-                                                                    <span class="product-sku-status"><strong>SKU</strong> PERFUME<?=$items['ItemId']?></span>
-                                                                </div>
-
-                                                                <p class="product-desc"><?=$items['Description']?></p>
-
-                                                                <div class="shopping-option">
-                                                                    
-
-                                                                
-                                                                </div>
-
-                                                                <form method="post" action="<?=base_url()?>Shop/AddToCart">
-                                                                    <div class="product-quantity d-sm-flex align-items-center">
-                                                                        <div class="pro-quantity">
-                                                                            <input type="hidden" name="ItemId" value="<?=$items['ItemId']?>">
-                                                                            <div class="pro-qty">
-                                                                                <input type="text" name="Quantity" min="1" value="1" />
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <button type="submit" class="btn btn-transparent btn-semi-round"><i
-                                                                                class="fa fa-shopping-cart"></i> Add to Cart</button>
-                                                                    </div>
-                                                                </form>
-                                                                <div class="product-share-area">
-                                                                    <h3>Share This Product:</h3>
-                                                                    <div class="share-btn">
-                                                                         <a href="#"><i class="fa fa-facebook"></i></a>
-                                                                        <a href="#"><i class="fa fa-instagram"></i></a>
-                                                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Product Details Area End -->
+                                                       <div style="margin-left: 10px;">
+                                                            <button type="submit" class="btn btn-transparent btn-semi-round"><i
+                                                                class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                                       </div>
                                                     </div>
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
-                                    </div>
-                                            </div>
-                                       
-                                            <!-- Single Product End -->
-                                        <?php $i++;if($i==1000){break;}}?>
-                  
-                        </div>  
-
-
-                        <div class="container">
-                                 <h2 style="font-size: 33px;text-align: center; padding: 15px">Similar Products</h2>
-                                <!-- Start Section Title Area -->
-                               
-                                <!-- End Section Title Area -->
-
-                                <!-- Start Products Content Wrapper -->
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="products-wrapper">
-                                            <div class="feature-product-carousel">
-                                                <?php 
-                                                    $bestsell =$this->mongo_db2->where(['ProductName'=>$ProductName])->get('products');
-                                                    rsort($bestsell);
-                                                    ?>
-                                                <?php foreach($bestsell as $items){?>
-                                                <!-- Start Single Product -->
-                                                <div class="single-product-item">
-                                                                            <!-- Product Thumbnail -->
-                                                                            <figure class="product-thumbnail">
-                                                                                <a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>" class="d-block">
-                                                                                    <img class="primary-thumb" src="<?=$items['SmallImageUrl']?>"
-                                                                                         alt="Product"/>
-                                                                                    <img class="secondary-thumb" src="<?=$items['SmallImageUrl']?>"
-                                                                                         alt="Product"/>
-                                                                                </a>
-                                                                                <figcaption class="product-hvr-content">
-                                                                                   
-                                                                                    <a href="#" class="btn btn-brand btn-quickView" data-toggle="modal"
-                                                                                       data-target="#quickViewModal<?=$items['ItemId']?>">Quick View</a>
-                                                                                </figcaption>
-                                                                            </figure>
-
-                                                                            <!-- Product Details -->
-                                                                            <div class="product-details">
-                                                                                <a href="#" class="product-cat-name"><?=$items['Type']?></a>
-                                                                                <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>"><?=$items['ProductName']?></a></h2>
-                                                                                <div class="product-prices">
-                                                                                    
-                                                                                    <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
-                                                                                </div>
-
-                                                                                
-                                                                            </div>
-                                                </div>
-                                                
-                                                <!-- End Single Product -->
-                                                <?php }?>    
-                                              
-                                            </div>
-                                        </div>
-                                            <?php foreach($bestsell as $items){?>
-                                            <div class="modal" id="quickViewModal<?=$items['ItemId']?>" tabindex="-1" role="dialog">
-                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                        <div class="modal-content">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true"><img src="<?=base_url()?>resources/assets/img/icons/cancel.png" alt="Close" class="img-fluid"/></span>
-                                                            </button>
-                                                            <div class="modal-body">
-                                                                <div class="single-product-page-content">
-                                                                    <div class="row">
-                                                                        <!-- Product Thumbnail Area Start -->
-                                                                        <div class="col-lg-5">
-                                                                            <div class="product-thumbnail-wrap">
-                                                                                <div class="product-image-carousel">
-                                                                                    <div class="single-image-item">
-                                                                                        <img class="img-fluid" src="<?=$items['LargeImageUrl']?>"
-                                                                                            alt="Product"/>
-                                                                                    </div>
-
-                                                                                   
-                                                                                </div>
-
-                                                                               
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- Product Thumbnail Area End -->
-
-                                                                        <!-- Product Details Area Start -->
-                                                                        <div class="col-lg-7">
-                                                                            <div class="product-details">
-                                                                                <h2><?=$items['ProductName']?></h2>
-
-                                                                               
-                                                                                <div class="price-group">
-                                                                                    <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
-                                                                                   
-                                                                                </div>
-
-                                                                                <div class="product-info-stock-sku">
-                                                                                    <span class="product-stock-status text-success"><?=($items['Instock']?"In Stock":'')?></span>
-                                                                                    <span class="product-stock-status text-danger"><?=($items['Instock']?"":'Out Stock')?></span>
-                                                                                    <span class="product-sku-status"><strong>SKU</strong> PERFUME<?=$items['ItemId']?></span>
-                                                                                </div>
-
-                                                                                <p class="product-desc"><?=$items['Description']?></p>
-
-                                                                                <div class="shopping-option">
-                                                                                    
-
-                                                                                
-                                                                                </div>
-
-                                                                                <form method="post" action="<?=base_url()?>Shop/AddToCart">
-                                                                                    <div class="product-quantity d-sm-flex align-items-center">
-                                                                                        <div class="pro-quantity">
-                                                                                            <input type="hidden" name="ItemId" value="<?=$items['ItemId']?>">
-                                                                                            <div class="pro-qty">
-                                                                                                <input type="text" name="Quantity" min="1" value="1" />
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                        <button type="submit" class="btn btn-transparent btn-semi-round"><i
-                                                                                                class="fa fa-shopping-cart"></i> Add to Cart</button>
-                                                                                    </div>
-                                                                                </form>
-                                                                                <div class="product-share-area">
-                                                                                    <h3>Share This Product:</h3>
-                                                                                    <div class="share-btn">
-                                                                                         <a href="#"><i class="fa fa-facebook"></i></a>
-                                                                                        <a href="#"><i class="fa fa-instagram"></i></a>
-                                                                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- Product Details Area End -->
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                             <?php }?>     
                                     </div>
                                 </div>
-                                <!-- End Products Content Wrapper -->
-                        </div>              
+                            <?php }?>
+                            <!-- Single Product End -->
 
+
+          
+                        </div>
                     </div>
+                </div>
 
+                <!-- Start Products Content Wrapper -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="products-wrapper">
+                            <div class="feature-product-carousel">
+                                <?php foreach($similarname as $items){?>
+                                <!-- Start Single Product -->
+                                <div class="single-product-item">
+                                    <!-- Product Thumbnail -->
+                                    <figure class="product-thumbnail">
+                                                    <a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>" class="d-block">
+                                                        <img class="primary-thumb" src="<?=$items['SmallImageUrl']?>"
+                                                             alt="Product"/>
+                                                        <img class="secondary-thumb" src="<?=$items['SmallImageUrl']?>"
+                                                             alt="Product"/>
+                                                    </a>
+                                                 
+                                    </figure>
 
-                    <!-- Review Section -->
-                        
-                        <div class="row">
+                                    <!-- Product Details -->
+                                    <div class="product-details">
+                                            <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>">
+                                                <?=$items['ProductName']?></a>
+                                            </h2>
+                                    </div>
+                                </div>
+                            
+                                <!-- End Single Product -->
+                                <?php }?>    
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Products Content Wrapper -->
+
+                <div class="row">
                         <div class="col-lg-12">
                             <!-- Product Full Description Start -->
                             <div class="product-full-info-reviews">
-                                <!-- Single Product tab Menu -->
-                                <nav class="nav" id="nav-tab">
-                                    <a class="active" id="description-tab" data-toggle="tab" href="#description">Description</a>
-                                    <a id="reviews-tab" data-toggle="tab" href="#reviews">Reviews</a>
-                                </nav>
-                                <!-- Single Product tab Menu -->
-
-                                <!-- Single Product tab Content -->
-                                <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="description">
-                                        <p>Stay comfortable and stay in the race no matter what the weather's up to. The
-                                            Bruno Compete Hoodie's water-repellent exterior shields you from the
-                                            elements, while advanced fabric technology inside wicks moisture to keep you
-                                            dry.Stay comfortable and stay in the race no matter what the weather's up
-                                            to. The Bruno Compete Hoodie's water-repellent exterior shields you from the
-                                            elements, while advanced fabric technology inside wicks moisture to keep you
-                                            dry.Stay comfortable and stay in the race no matter what the weather's up
-                                            to. The Bruno Compete Hoodie's water-repellent exterior shields you from the
-                                            elements, while advanced fabric technology inside wicks moisture to keep you
-                                            dry.</p>
-
-                                        <ul>
-                                            <li>Adipisicing elitEnim, laborum.</li>
-                                            <li>Lorem ipsum dolor sit</li>
-                                            <li>Dolorem molestiae quod voluptatem! Sint.</li>
-                                            <li>Iure obcaecati odio pariatur quae saepe!</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="tab-pane fade" id="reviews">
+                                    <div class="" id="reviews">
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="product-ratting-wrap">
                                                     <div class="pro-avg-ratting">
-                                                        <h4>4.5 <span>(Overall)</span></h4>
-                                                        <span>Based on 9 Comments</span>
+                                                        <h4>Reviewed by 663 customers </h4>
                                                     </div>
-                                                    <div class="ratting-list">
-                                                        <div class="sin-list float-left">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <span>(5)</span>
-                                                        </div>
-                                                        <div class="sin-list float-left">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <span>(3)</span>
-                                                        </div>
-                                                        <div class="sin-list float-left">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <span>(1)</span>
-                                                        </div>
-                                                        <div class="sin-list float-left">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <span>(0)</span>
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <div class="rattings-wrapper">
 
                                                         <div class="sin-rattings">
@@ -461,13 +217,14 @@
                                                                     <i class="fa fa-star"></i>
                                                                     <i class="fa fa-star"></i>
                                                                     <i class="fa fa-star"></i>
-                                                                    <span>(5)</span>
                                                                 </div>
                                                             </div>
                                                             <p>enim ipsam voluptatem quia voluptas sit aspernatur aut
                                                                 odit aut fugit, sed quia res eos qui ratione voluptatem
                                                                 sequi Neque porro quisquam est, qui dolorem ipsum quia
                                                                 dolor sit amet, consectetur, adipisci veli</p>
+															 <span style="color:grey;">Submitted 4/22/2021</span>
+
                                                         </div>
 
                                                         <div class="sin-rattings">
@@ -544,22 +301,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Single Product tab Content -->
+                                
                             </div>
                             <!-- Product Full Description End -->
                         </div>
-                    </div>                    
-
-                    <!-- Review Section -->
-
-
                 </div>
             </div>
-            <!-- Single Product Page Content End -->
+        </div>
+        <!-- End Shop Page Content -->
         </div>
     </div>
 </div>
-
-
-<!--== End Single Product Wrapper ==
+<!--== End Shop Page Wrapper ==-->
