@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SHOP extends CI_Controller {
+	
 	function __construct(){
 		parent::__construct();
 		$this->load->library('session');
@@ -16,6 +17,8 @@ class SHOP extends CI_Controller {
 			force_ssl();
 		}
 	}
+
+	public $shipping_charge = 70;
 	/**
 	 *  1) index - Cart.
 	 *  2) AddToCart- Cart Insert.
@@ -31,11 +34,12 @@ class SHOP extends CI_Controller {
 	 */
 
 
+
 	public function index()
 	{
 		if ($this->cart->total_items()>0) {
 		if($this->cart->total() < 150){
-			$var['ship'] = 70;	
+			$var['ship'] = $this->shipping_charge;	
 		}else{
 			$var['ship'] =0;
 		}
@@ -71,7 +75,7 @@ class SHOP extends CI_Controller {
 					);
 			if($this->cart->insert($data)){
 			 	$this->session->set_flashdata('success', $product['ProductName'].' Added In Cart');
-				redirect($_SERVER['HTTP_REFERER']); 
+				redirect(base_url().'Cart'); 
 		 	}
 		 	else{
 		 		$this->session->set_flashdata('warning', 'Somethings Misfortune Happens In Cart!');
@@ -166,18 +170,21 @@ class SHOP extends CI_Controller {
 	function Checkout()
 	{	
 		if ($this->cart->total_items()>0) {
-		$data = array();
-		$data['cartItems'] = $this->cart->contents();
-		$this->load->view('page/include/head');
-		$this->load->view('page/include/nav');
-		$this->load->view('page/checkout',$data);
-		$this->load->view('page/include/foot');
+		$var['ship'] =$this->shipping_charge;	
+		$this->load->view('front/inc/header');
+		$this->load->view('front/inc/nav');
+		$this->load->view('front/checkout',$var);
+		$this->load->view('front/inc/footer');
 		}
 		else{
-			redirect('');
+			redirect('Cart');
 		}
 	}
 
+	public function CheckoutSubmit()
+	{
+		dd($_POST);
+	}
 
 
 

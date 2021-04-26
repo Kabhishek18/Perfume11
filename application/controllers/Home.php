@@ -7,6 +7,7 @@ class Home extends CI_Controller {
 		$this->load->library('cart');
 		$this->load->library('mongo_db', array('activate'=>'newdb'),'mongo_db2');
 		$this->load->model('home_model');
+		$this->load->library('pagination');
 		$this->load->model('test_model');
 		$this->load->helper('file');
 		$this->load->library('session');
@@ -208,7 +209,6 @@ class Home extends CI_Controller {
 			$this->load->view('front/brand',$data);
 			$this->load->view('front/inc/footer');
 		}else{
-			
 			$var['meta'] ='<title>All Brands | Perfume</title>';
 			$this->load->view('front/inc/header',$var);
 			$this->load->view('front/inc/nav');
@@ -325,6 +325,55 @@ class Home extends CI_Controller {
 		echo json_encode($ouput);
 	}
 
+
+	public function loadRecord($rowno=0){
+
+		// Row per page
+		$rowperpage = 100;
+
+		// Row position
+		if($rowno != 0){
+			$rowno = ($rowno-1) * $rowperpage;
+		}
+      	
+      	// All records count
+      	$allcount = $this->home_model->getrecordCount();
+
+      	// Get  records
+      	$users_record = $this->home_model->getData($rowno,$rowperpage);
+      	
+      	// Pagination Configuration
+      	$config['base_url'] = base_url().'Home/loadRecord';
+      	$config['use_page_numbers'] = TRUE;
+		$config['total_rows'] = $allcount;
+		$config['per_page'] = $rowperpage;
+
+		// Initialize
+		$this->pagination->initialize($config);
+
+		// Initialize $data Array
+		$data['pagination'] = $this->pagination->create_links();
+		$data['result'] = $users_record;
+		$data['row'] = $rowno;
+
+		echo json_encode($data);
+		
+	}
+
+   	public function CartAjaxPro()
+	{
+
+        $query = $this->input->get('query');
+
+        $this->db->like('name', $query);
+
+
+        $data = $this->db->get("tags")->result();
+
+
+        echo json_encode( $data);
+
+    }
 
 
 //Get Brand From Mongo

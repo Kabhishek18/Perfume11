@@ -125,11 +125,11 @@
 
                                <tr>
                                    <td>Shipping Charge</td>
-                                   <td>$ <?=$ship?></td>
+                                   <td>$ <?=(!empty($ship)?$ship:"Free Shipping")?></td>
                                </tr>
                                 <tr class="total">
                                     <td>Total</td>
-                                    <td class="total-amount">$<?=$total?></td>
+                                    <td class="total-amount">$<?=($total+$ship)?></td>
                                 </tr>
                             </table>
                         </div>

@@ -1,11 +1,9 @@
-
-
 <body>
 
 <!--== Start Header Section ===-->
-<header id="header-area" class="headerFour">
+<header id="header-area" class="headerFour ">
  <!-- Start PreHeader Area -->
-    <div class="preheader-area" >
+    <div class="preheader-area navbar-fixed-top" >
         <div class="container-fluid" >
             <div class="row" >
                 <div class="col-md-4 text-center text-md-left">
@@ -116,20 +114,7 @@
                                 <li class="dropdown-show"><a href="<?=base_url()?>Women">WOMEN'S PERFUME</a></li>
                                 <li class="dropdown-show"><a href="<?=base_url()?>Men"> MEN'S COLOGNE</a></li>
                     
-                                <li class="dropdown-show"><a href="#">BRANDS</a>
-                                    <ul class="mega-menu-wrap dropdown-nav">
-                                        <li class="mega-menu-item"><a href="#" class="mega-item-title">Most Popular Perfume Brands
-                                          </a>
-                                            <ul><br>
-                                            <?php $b =1; foreach($navbrand as $brand){?>
-                                                <li><a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$brand))?>"><?=$brand?></a></li>
-                                            <?php $b++;if($b==10){break;}}?>    
-											<li><a href="<?=base_url()?>Brand" class="mega-item-title"><strong>+<?=count($navbrand)?> See More</strong></a></li>	
-                                            </ul>
-                                        </li>
-
-                                       
-                                    </ul>
+                                <li class="dropdown-show"><a href="<?=base_url()?>Brand">BRANDS</a>
                                 </li>
                                 
                                 <li><a href="#">Contact</a></li>

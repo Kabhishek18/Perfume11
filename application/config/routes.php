@@ -22,3 +22,8 @@ $route['Cart']='Shop/index';
 $route['Cart/Remove/(:any)']='Shop/RemoveItem/$1';
 $route['Cart/Update']='Shop/UpdateItemQty';
 $route['Cart/Destroy']='Shop/DestroyCart';
+
+$route['CartAjaxPro'] ='Home/CartAjaxPro'; 
+
+$route['Checkout']='Shop/Checkout';
+

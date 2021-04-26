@@ -7,6 +7,7 @@ class Home_model extends CI_Model
 
 	function __construct() {
         $this->users   = 'tbl_users';
+        $this->products   = 'tbl_products';
         $this->coupon   = 'tbl_coupons';
     }
 // # Authenticate User For Authentication of Mail And password
@@ -63,6 +64,36 @@ class Home_model extends CI_Model
         // return fetched data
         return !empty($result)?$result:false;
     }
+
+
+
+    // Fetch records
+    public function getData($rowno,$rowperpage) {
+            
+        $this->db->select('*');
+        $this->db->from($this->products);
+        $this->db->limit($rowperpage, $rowno);  
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
+
+    // Select total records
+    public function getrecordCount() {
+
+        $this->db->select('count(*) as allcount');
+        $this->db->from($this->products);
+        $query = $this->db->get();
+        $result = $query->result_array();
+      
+        return $result[0]['allcount'];
+    }
+
+
+
+
+
+
 
 
 }
