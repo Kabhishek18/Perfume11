@@ -360,18 +360,12 @@ class Home extends CI_Controller {
 		
 	}
 
-   	public function CartAjaxPro()
+   	public function Test()
 	{
 
-        $query = $this->input->get('query');
-
-        $this->db->like('name', $query);
-
-
-        $data = $this->db->get("tags")->result();
-
-
-        echo json_encode( $data);
+        $var['meta'] ='<title>Perfume Home</title>';
+		$this->load->view('front/inc/header',$var);
+		$this->load->view('front/inc/nav');
 
     }
 

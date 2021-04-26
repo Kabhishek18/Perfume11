@@ -15,6 +15,7 @@
 
     <!--=== Bootstrap CSS ===-->
     <link href="<?=base_url()?>resources/assets/css/vendor/bootstrap.min.css" rel="stylesheet"/>
+    
     <!--=== Font-Awesome CSS ===-->
     <link href="<?=base_url()?>resources/assets/css/vendor/font-awesome.css" rel="stylesheet"/>
     <!--=== Plugins CSS ===-->
@@ -33,7 +34,7 @@
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>

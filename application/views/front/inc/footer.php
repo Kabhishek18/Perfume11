@@ -149,9 +149,6 @@
 <a href="#" class="scrolltotop"><i class="fa fa-angle-double-up"></i></a>
 <!-- Scroll to Top End -->
 
-
-
-
 <!--=======================Javascript============================-->
 <!--=== Jquery Min Js ===-->
 <script src="<?=base_url()?>resources/assets/js/vendor/jquery-3.3.1.min.js"></script>

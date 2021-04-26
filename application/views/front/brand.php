@@ -1,3 +1,4 @@
+
 <!--== Start Page Header ==-->
 <div id="page-header-wrapper">
     <div class="container">
@@ -80,7 +81,7 @@
                                <?php $i=1; foreach($datalist as $items){?>
                                 <!-- Single Product Start -->
                               
-                                <div class="col-lg-4 col-sm-6" >
+                                <div class="col-lg-3 col-sm-6" >
                                 
                                     <div class="single-product-item">
                                         <!-- Product Thumbnail -->
@@ -104,7 +105,7 @@
                                             <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>"><?=$items['ProductName']?></a></h2>
                                             <div class="product-prices">
                                                 
-                                                <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
+                                                <span class="price">$ <?=number_format($items['WholesalePriceUSD'],2)?></span>
                                             </div>
                                             <p class="product-desc"><?=$items['Description']?></p>
                                             
@@ -142,11 +143,11 @@
                                                         <!-- Product Details Area Start -->
                                                         <div class="col-lg-7">
                                                             <div class="product-details">
-                                                                <h2>Product Category Name</h2>
+                                                                <h2><?=$items['ProductName']?></h2>
 
                                                                
                                                                 <div class="price-group">
-                                                                    <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
+                                                                    <span class="price">$ <?=number_format($items['WholesalePriceUSD'],2)?></span>
                                                                    
                                                                 </div>
 
@@ -200,14 +201,7 @@
                             </div>
                         </div>
                     </div>
-                                
-                    <div class="text-center">
-                        <div class="pagination-area-wrap">
-                            <div class="container">
-                                <div id='page_navigation'></div>
-                            </div>
-                        </div>
-                    </div>
+                 
                 </div>
             </div>
             <!-- End Shop Page Content -->
@@ -218,116 +212,14 @@
 
 
 <!--== End Shop Page Wrapper ==-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<style>
-
-    /*Pagination CSS*/
-    #page_navigation {
-    clear:both;
-    margin: 20px 0;
+<style type="text/css">
+    .card-body a{
+        color: #bdb093;
     }
-    #page_navigation a{
-        padding:3px 6px;
-        border:1px solid #a08d64;
-        margin:2px;
-        color:black;
-        text-decoration:none
+    .card-body  a:hover{
+        color: #bdb093;
     }
-    .active_page{
-        background:#a08d64;
-        color:white !important;
-    }
-
-</style> 
-
-<script>
-    $(document).ready(function () {
-
-    //Pagination JS
-    //how much items per page to show
-    var show_per_page = 200; 
-    //getting the amount of elements inside pagingBox div
-    var number_of_items = $('#pagingBox').children().size();
-    //calculate the number of pages we are going to have
-    var number_of_pages = Math.ceil(number_of_items/show_per_page);
-
-    //set the value of our hidden input fields
-    $('#current_page').val(0);
-    $('#show_per_page').val(show_per_page);
-
-    //now when we got all we need for the navigation let's make it '
-
-    /* 
-    what are we going to have in the navigation?
-        - link to previous page
-        - links to specific pages
-        - link to next page
-    */
-    var navigation_html = '<a class="previous_link" href="javascript:previous();">Prev</a>';
-    var current_link = 0;
-    while(number_of_pages > current_link){
-        navigation_html += '<a class="page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +'</a>';
-        current_link++;
-    }
-    navigation_html += '<a class="next_link" href="javascript:next();">Next</a>';
-
-    $('#page_navigation').html(navigation_html);
-
-    //add active_page class to the first page link
-    $('#page_navigation .page_link:first').addClass('active_page');
-
-    //hide all the elements inside pagingBox div
-    $('#pagingBox').children().css('display', 'none');
-
-    //and show the first n (show_per_page) elements
-    $('#pagingBox').children().slice(0, show_per_page).css('display', 'block');
-
-    });
-
-
-
-    //Pagination JS
-
-    function previous(){
-
-    new_page = parseInt($('#current_page').val()) - 1;
-    //if there is an item before the current active link run the function
-    if($('.active_page').prev('.page_link').length==true){
-    go_to_page(new_page);
-    }
-
-    }
-
-    function next(){
-    new_page = parseInt($('#current_page').val()) + 1;
-    //if there is an item after the current active link run the function
-    if($('.active_page').next('.page_link').length==true){
-    go_to_page(new_page);
-    }
-
-    }
-    function go_to_page(page_num){
-    //get the number of items shown per page
-    var show_per_page = parseInt($('#show_per_page').val());
-
-    //get the element number where to start the slice from
-    start_from = page_num * show_per_page;
-
-    //get the element number where to end the slice
-    end_on = start_from + show_per_page;
-
-    //hide all children elements of pagingBox div, get specific items and show them
-    $('#pagingBox').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');
-
-    /*get the page link that has longdesc attribute of the current page and add active_page class to it
-    and remove that class from previously active page link*/
-    $('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');
-
-    //update the current page input field
-    $('#current_page').val(page_num);
-    }
-</script>
-
+</style>
 
 <?php }else{?>
     <div id="shop-page-wrapper" class="page-padding">
@@ -343,9 +235,11 @@
                         sort($bodybrand);?>   
                         <?php foreach($bodybrand as $items){?>
                             <div class="col-md-3">
-                            <div class="card">
+                            <div class= "card">
                                 <div class="card-body">
-                                   <h3> <a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$items))?>"><?=$items?></a></h3>
+                                   <h3> 
+                                    <a class="text-default" href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$items))?>"><?=$items?></a>
+                                    </h3>
                                 </div>
                             </div>
                             </div>

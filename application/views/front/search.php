@@ -106,7 +106,7 @@
                             <?php $i=1; foreach($result as $items){?>
                                 <!-- Single Product Start -->
                               
-                                <div class="col-lg-4 col-sm-6" >
+                                <div class="col-lg-3 col-sm-6" >
                                 
                                     <div class="single-product-item">
                                         <!-- Product Thumbnail -->
@@ -130,7 +130,7 @@
                                             <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>"><?=$items['ProductName']?></a></h2>
                                             <div class="product-prices">
                                                 
-                                                <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
+                                                <span class="price">$ <?=number_format($items['WholesalePriceUSD'],2)?></span>
                                             </div>
 
                                             
@@ -172,7 +172,7 @@
 
                                                                
                                                                 <div class="price-group">
-                                                                    <span class="price">$ <?=$items['WholesalePriceUSD']?></span>
+                                                                    <span class="price">$ <?=number_format($items['WholesalePriceUSD'],2)?></span>
                                                                    
                                                                 </div>
 

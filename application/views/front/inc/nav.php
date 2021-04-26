@@ -1,9 +1,16 @@
 <body>
-
+<style type="text/css">
+    .btn-clay{
+            padding: 2px;
+    margin-left: 2px;
+    border-radius: 3px;
+    width: 100px;
+    }
+</style>
 <!--== Start Header Section ===-->
 <header id="header-area" class="headerFour ">
  <!-- Start PreHeader Area -->
-    <div class="preheader-area navbar-fixed-top" >
+    <div class="preheader-area fixed-top" >
         <div class="container-fluid" >
             <div class="row" >
                 <div class="col-md-4 text-center text-md-left">
@@ -18,18 +25,21 @@
                     <!--== Start Search box Wrapper ==-->
                   
                         <form action="<?=base_url()?>Home/Search" method="POST" class="search-form-area" style="display: flex;">
+
                             <input type="search" class="form-control" name="search" id="search" placeholder="Product Search"  list="browsers">
+                            
                               <datalist class="searchspecial" id="browsers">
                                 <?php $response =$this->mongo_db2->get('products');
                                     foreach($response as $pro){
                                         $productname[] = $pro['ProductName'];
                                     }
                                     $searchdata= array_unique($productname);
+                                    asort($searchdata);
                                 foreach($searchdata as $search){ ?>
                                   <option><?=$search?></option>
                                 <?php }?>
                               </datalist>
-                            <button type="submit" class="btn btn-brand btn-search"><i class="fa fa-search"></i></button>
+                            <button type="submit" class="btn btn-brand btn-clay btn-search"><i class="fa fa-search"></i></button>
                         </form>
                          
                     <!--== End Search box Wrapper ==-->
@@ -184,20 +194,6 @@
 </header>
 <!--== End Header Section ===-->
 
-<!--== Start Search box Wrapper ==-->
-<!-- <div class="mfp-hide modalSearchBox" id="search-box-popup">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="search-box-wrapper">
-                <form action="<?=base_url()?>Home/Search" method="POST" class="search-form-area">
-                    <input type="search" class="form-control" name="search" id="search" placeholder="Product Search ">
-                    <button type="submit" class="btn btn-brand btn-search"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!--== End Search box Wrapper ==-->
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
