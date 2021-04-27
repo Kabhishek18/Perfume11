@@ -124,7 +124,21 @@ class Home_model extends CI_Model
      return !empty($result)?$result:false;
     }
 
+     public function GetAllProductGender($limit='',$var,$gender)
+    {
+        $this->db->distinct(); 
+        $this->db->select($var);
+        $this->db->from($this->products);
+        if($limit==0){
 
+        }else{
+        $this->db->limit($limit);} 
+        $array = array('Gender' => $gender);
+        $this->db->where($array);
+        $query  = $this->db->get();
+        $result = $query->result_array();
+     return !empty($result)?$result:false;
+    }
 
 
 

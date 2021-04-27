@@ -185,8 +185,8 @@ class Home extends CI_Controller {
 			
 			| Perfume</title>';
 			$data['gender'] =$this->uri->segment(1,0);
-			$data['datalist'] = $this->GetGender($this->uri->segment(1,0));
-			$this->load->view('front/inc/header',$var);;
+			$data['datalist'] = $this->GetGender(2000,$this->uri->segment(1,0));
+			$this->load->view('front/inc/header',$var);
 			$this->load->view('front/inc/nav');
 			$this->load->view('front/gender',$data);
 			$this->load->view('front/inc/footer');
@@ -297,9 +297,9 @@ class Home extends CI_Controller {
 		return $type;
 	}	
 //Get Gender From Mongo
-	public function GetGender($gender)
+	public function GetGender($limit,$gender)
 	{
-		$gender = $this->home_model->GetAllProductLimit($limit,'Gender');
+		$gender = $this->home_model->GetAllProductGender($limit,'*',$gender);
 		return $gender;
 	}	
 //Get All Product On Home with limit 10
