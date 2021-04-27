@@ -3241,9 +3241,12 @@ Start Sidebar Style
     }
 }
 
+
+.sidebar-body ul{
+    border-right: 3px solid #dfdfdf;
+}
 .sidebar-list li {
     margin-bottom: 13px;
-    border-bottom: 1px solid #dfdfdf;
     padding-bottom: 10px;
 }
 

@@ -74,6 +74,7 @@
                                 <?php $s =1; foreach($sidenavbrand as $brand){?>
                                 <li><a href="<?=base_url()?>Brand/<?=(urlencode($brand['BrandName']))?>"><?=$brand['BrandName']?></a></li>
                                 <?php $s++;if($s==15){break;}}?>    
+                                 <li><a href="<?=base_url()?>Brand"><strong>See More+</strong></a></li>
                             </ul>
                         </div>
                     </div>
@@ -98,7 +99,21 @@
                 </div>
             </div>
             <!-- Sidebar Area End -->
+<style type="text/css">
+    .img-responsive{
+        height: 150px;
+    }
+    .sepera
+    {
+        padding: 10px;
+        text-align: center;
 
+    }
+    .single-product-item{
+        border-bottom:2px solid #dfdfdf;
+    }
+
+</style>
         <!-- Start Shop Page Content -->
         <div class="col-lg-9 order-first order-lg-last">
             <div class="shop-page-content-wrap">
@@ -108,30 +123,27 @@
                         <div class="row">
                             <!-- Single Product Start -->
                             <?php foreach($similar as $items){?>
-                                <div class="col-lg-6 col-sm-6">
+
+
+
+                                <div class="col-lg-6 col-sm-6" >
 
                                     <div class="single-product-item">
                                     <!-- Product Thumbnail -->
-                                        <figure class="product-thumbnail">
-                                        <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=$items['SmallImageUrl']?>" alt="<?=$items['ProductName']?>"/>
-                                        <img class="secondary-thumb" src="<?=$items['SmallImageUrl']?>" alt="<?=$items['ProductName']?>"/>
-                                        </a>
-                                        </figure>
+                                        <img class="img-responsive" src="<?=$items['SmallImageUrl']?>" alt="<?=$items['ProductName']?>"/>
 
                                         <!-- Product Details -->
-                                        <div class="product-details">
+                                        <div class="product-details ">
                                             <a href="#" class="product-cat-name">Item #<?=$items['ItemId']?>  </a>
-                                            <h2 class="product-name"><a href="#"><?=$items['MetricSize']?> <?=$items['ProductName']?></a></h2>
+                                            <h2 class="product-name"><a href="#"><?=$items['MetricSize']?> <?=$items['Type']?></a></h2>
                                             <h2 class="text-success"><?=($items['Instock']?'Instock':'')?></h2>
                                             <h2 class="text-danger"><?=($items['Instock']?'':'Outstock')?></h2>
-
-                                            <p class="product-desc"><?=$items['Description']?></p><br>
-                                            <h2> ₹ <?=number_format($items['WholesalePriceUSD'],2)?></h2>
-                                         
-                                            <div class="post-footer d-block d-sm-flex justify-content-sm-between align-items-center">
+                                             <p class="product-desc"><?=$items['Description']?></p>
+                                         </div>
+                                            <div class="sepera align-items-right">
+                                                <h2 > $ <?=number_format($items['WholesalePriceUSD'],2)?></h2>
                                                 <form method="post" action="<?=base_url()?>Shop/AddToCart">
-                                                    <div class="product-quantity d-sm-flex align-items-center">
+                                                    <div class="product-quantity align-items-center" style="padding: 10px">
                                                         <div class="pro-quantity">
                                                             <input type="hidden" name="ItemId" value="<?=$items['ItemId']?>">
                                                             <div class="pro-qty">
@@ -139,14 +151,16 @@
                                                             </div>
                                                         </div>
 
-                                                       <div style="margin-left: 10px;">
+                                                       <div class="form-group" style="padding: 10px">
                                                             <button type="submit" class="btn btn-transparent btn-semi-round"><i
                                                                 class="fa fa-shopping-cart"></i> Add to Cart</button>
                                                        </div>
                                                     </div>
                                                 </form>
                                             </div>
-                                        </div>
+                                           
+
+                                        
                                     </div>
                                 </div>
                             <?php }?>

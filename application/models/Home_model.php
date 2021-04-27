@@ -124,7 +124,7 @@ class Home_model extends CI_Model
      return !empty($result)?$result:false;
     }
 
-     public function GetAllProductGender($limit='',$var,$gender)
+    public function GetAllProductGender($limit='',$var,$gender)
     {
         $this->db->distinct(); 
         $this->db->select($var);
@@ -138,6 +138,19 @@ class Home_model extends CI_Model
         $query  = $this->db->get();
         $result = $query->result_array();
      return !empty($result)?$result:false;
+    }
+
+    public function GetByBrand($limit,$brandname)
+    {
+       
+       $this->db->select('*');
+        $this->db->from($this->products);      
+        $this->db->limit($limit);
+         $array = array('brandname' => $brandname);
+        $this->db->where($array);
+        $query  = $this->db->get();
+        $result = $query->result_array();
+        return !empty($result)?$result:false;
     }
 
 

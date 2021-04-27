@@ -42,6 +42,7 @@
                                 <?php $s =1; foreach($sidenavbrand as $brand){?>
                                 <li><a href="<?=base_url()?>Brand/<?=(urlencode($brand['BrandName']))?>"><?=$brand['BrandName']?></a></li>
                                 <?php $s++;if($s==15){break;}}?>    
+                                <li><a href="<?=base_url()?>Brand"><strong>See More+</strong></a></li>
                             </ul>
                         </div>
                     </div>

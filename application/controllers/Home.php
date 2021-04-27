@@ -8,6 +8,8 @@ class Home extends CI_Controller {
 		$this->load->library('mongo_db', array('activate'=>'newdb'),'mongo_db2');
 		$this->load->model('home_model');
 		$this->load->library('pagination');
+      	$this->load->library('Ajax_pagination');
+        $this->perPage = 2;
 		$this->load->model('test_model');
 		$this->load->helper('file');
 		$this->load->library('session');

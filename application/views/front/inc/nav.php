@@ -199,7 +199,7 @@
         buttons: false
         })
     </script>
-<?php }?>
+<?php unset($_SESSION['success']);}?>
   
 <?php if($this->session->flashdata('danger')){ ?>
      <script type="text/javascript">
