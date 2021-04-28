@@ -177,6 +177,7 @@
                     <div class="col-lg-12">
                         <div class="products-wrapper">
                             <div class="feature-product-carousel">
+                                <h2>Similar Product</h2>
                                 <?php foreach($similarname as $items){?>
                                 <!-- Start Single Product -->
                                 <div class="single-product-item">

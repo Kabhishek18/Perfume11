@@ -10,9 +10,9 @@ $route['Dashboard'] = 'Home/Dashboard';
 $route['Products/(:num)/(:any)'] = 'Home/Products/$1/$2';
 $route['Logout'] = 'Home/Logout';
 
-$route['Women'] ='Home/GenderPage';
-$route['Men'] ='Home/GenderPage';
-$route['Brand/(:any)'] ='Home/BrandPage';
+$route['Gender/Women'] ='Product_filter/index';
+$route['Gender/Men'] ='Product_filter/index';
+$route['Brand/(:any)'] ='Product_filter/index';
 $route['Brand'] ='Home/BrandPage';
 
 $route['Search']='Home/Search';

@@ -5,7 +5,7 @@
             <!-- Page Title Area Start -->
             <div class="col-6">
                 <div class="page-title-wrap">
-                    <h1>Product</h1>
+                    <h1><?=($this->uri->segment(1,0))?></h1>
                 </div>
             </div>
             <!-- Page Title Area End -->
@@ -55,7 +55,7 @@
 						 <div class="sidebar-body">
                             <ul class="sidebar-list">
 								<?php foreach($Gender as $row){ ?>
-								<li><input type="checkbox" class="common_selector gender" value="<?php echo $row['Gender']; ?>"  > <?php echo $row['Gender']; ?> </li>
+								<li><input type="checkbox" class="common_selector gender" value="<?php echo $row['Gender']; ?>"  <?=(($this->uri->segment(2,0)==$row['Gender']?'Checked':''))?> > <?php echo $row['Gender']; ?> </li>
 								<?php }	?>	
 							</ul>
 						</div>		
@@ -66,7 +66,7 @@
 						 <div class="sidebar-body">
                             <ul class="sidebar-list">
 								<?php foreach($BrandName as $row){ ?>
-								<li><input type="checkbox" class="common_selector brand" value="<?php echo $row['BrandName']; ?>"  > <?php echo $row['BrandName']; ?> </li>
+								<li><input type="checkbox" class="common_selector brand" value="<?php echo $row['BrandName']; ?>" <?=((urldecode($this->uri->segment(2,0))==$row['BrandName']?'Checked':''))?> >  <?php echo $row['BrandName']; ?> </li>
 								<?php }	?>	
 							</ul>
 						</div>		
@@ -78,7 +78,7 @@
 						 <div class="sidebar-body">
                             <ul class="sidebar-list">
 								<?php foreach($Type as $row){ ?>
-								<li><input type="checkbox" class="common_selector brand" value="<?php echo $row['Type']; ?>"  > <?php echo $row['Type']; ?> </li>
+								<li><input type="checkbox" class="common_selector brand" value="<?php echo $row['Type']; ?>" <?=((urldecode($this->uri->segment(2,0))==$row['Type']?'Checked':''))?>   > <?php echo $row['Type']; ?> </li>
 								<?php }	?>	
 							</ul>
 						</div>		
@@ -131,11 +131,13 @@ $(document).ready(function(){
 		$('.filter_data').html('<div id="loading" style="" ></div>');
 		var action = 'fetch_data';
 		//var page = 1;
+	
+		var gender = get_filter('gender');
 		var minimum_price = $('#hidden_minimum_price').val();
 		var maximum_price = $('#hidden_maximum_price').val();
 		var brand = get_filter('brand');
 		var type = get_filter('type');
-		var gender = get_filter('gender');
+		
 		$.ajax({
 			url:"<?php echo base_url(); ?>product_filter/fetch_data/"+page,
 			method:"POST",

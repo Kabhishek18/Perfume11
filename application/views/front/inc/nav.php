@@ -114,8 +114,8 @@
                     <div id="navigation-area-wrap" class="text-center">
                         <nav class="mainmenu">
                             <ul id="main-navbar" class="clearfix">
-                                <li class="dropdown-show"><a href="<?=base_url()?>Women">WOMEN'S PERFUME</a></li>
-                                <li class="dropdown-show"><a href="<?=base_url()?>Men"> MEN'S COLOGNE</a></li>
+                                <li class="dropdown-show"><a href="<?=base_url()?>Gender/Women">WOMEN'S PERFUME</a></li>
+                                <li class="dropdown-show"><a href="<?=base_url()?>Gender/Men"> MEN'S COLOGNE</a></li>
                     
                                 <li class="dropdown-show"><a href="<?=base_url()?>Brand">BRANDS</a>
                                 </li>

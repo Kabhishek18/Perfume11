@@ -92,7 +92,16 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-5 ">
+            <div class="col-lg-6">
+                 <div class="cart-calculator-wrapper">
+                    <div class="cart-calculate-items">
+                        <div class="form-group">
+                            <a class="btn btn-brand" href="<?=$_SERVER['HTTP_REFERER']?>">Continue Shopping</a>
+                        </div>
+                    </div>
+                 </div>   
+            </div>
+            <div class="col-lg-5 ml-auto">
                 <!-- Cart Calculation Area -->
                 <div class="cart-calculator-wrapper">
                     <div class="cart-calculate-items">

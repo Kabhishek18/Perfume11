@@ -3,11 +3,11 @@
 <section id="slider-area-wrap">
     <div class="slider-carousel-wrap">
         <!-- Start Single Slide Item -->
-        <a href="<?=base_url()?>Women"><div class="single-slide-wrap slideBg7"></div></a>
+        <a href="<?=base_url()?>Brand"><div class="single-slide-wrap slideBg7"></div></a>
         <!-- End Single Slide Item -->
 
         <!-- Start Single Slide Item -->
-        <a href="<?=base_url()?>Brand">
+        <a href="<?=base_url()?>Women">
         <div class="single-slide-wrap slideBg8"></div></a>
         <!-- End Single Slide Item -->
     </div>

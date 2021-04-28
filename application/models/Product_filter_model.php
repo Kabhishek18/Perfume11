@@ -80,7 +80,7 @@ class Product_filter_model extends CI_Model
 
                             <!-- Product Details -->
                             <div class="product-details">
-                                <a href="#" class="product-cat-name">'.$row['Type'].'</a>
+                                <a href="#" class="product-cat-name">'.$row['BrandName'].' For '.$row['Gender'].'</a>
                                 <h2 class="product-name"><a href="'.base_url().'Products/'.$row['ItemId'].'/'.$row['ProductName'].'" >'.$row['ProductName'].'</a></h2>
                                 <div class="product-prices">
                                     

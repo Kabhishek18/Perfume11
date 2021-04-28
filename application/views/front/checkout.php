@@ -276,22 +276,8 @@
                         <!-- Order Summary Table -->
                         <div class="order-summary-table table-responsive text-center">
                             <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Products</th>
-                                    <th>Total</th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-                                <?php foreach($this->cart->contents() as $item){?>    
-                                    <tr>
-                                        <td><a href="<?=base_url()?>Products/<?=$item['id']?>/<?=str_replace(' ', "-", $item['name'])?>"><?=$item['name']?> <strong> × <?=$item['qty']?></strong></a></td>
-                                        <td> $ <?=number_format($item['qty']*$item['price'],2)?></td>
-                                    </tr>
-                               
-                                <?php }?>
-                                </tbody>
+                            
+                             
                                 <tfoot>
                                 <tr>
                                     <td>Sub Total</td>
@@ -328,9 +314,6 @@
                                 <tr>
                                     <td>Total Amount</td>
                                     <td><strong>$<?=($total+$ship)?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"> <a href="<?=base_url()?>"><i class="fa fa-edit"></i> Edit This Order</a></td>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -410,6 +393,42 @@
                         </div>
                     </div>
                     
+                </div>
+            </div>
+            <div class="col-lg-12 " style="margin-top: 10px">
+                <div class="cart-table table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="pro-thumbnail">Thumbnail</th>
+                            <th class="pro-title">Product </th>
+                            <th class="pro-price">Price</th>
+                            <th class="pro-quantity">Quantity</th>
+                            <th class="pro-subtotal">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($this->cart->contents() as $item){?>    
+                            <tr>
+                                <td class="pro-thumbnail">
+                                    <a href="#"><img class="img-fluid" src="<?=$item['image']?>" alt="Product"/></a>
+                                </td>
+                                <td class="pro-title">
+                                    <a href="#"><?=$item['name']?> </a>
+                                </td>
+                                <td class="pro-price">
+                                    <span>$ <?=$item['price']?></span>
+                                </td>
+                                <td class="pro-quantity">
+                                    <?=$item['qty']?>
+                                </td>
+                                <td class="pro-subtotal">
+                                    <span>$ <?=($item['qty']*$item['price'])?></span>
+                                </td>
+                            </tr>
+                        <?php }?>
+                        <tr> <td colspan="5"> <a href="<?=base_url()?>" class="btn btn-brand btn-full"><i class="fa fa-edit"></i> Edit This Order</a></td></tr>
+                    </table>
                 </div>
             </div>
         </div>
