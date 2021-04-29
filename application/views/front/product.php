@@ -133,17 +133,19 @@
                                         <img class="img-responsive" src="<?=$items['SmallImageUrl']?>" alt="<?=$items['ProductName']?>"/>
 
                                         <!-- Product Details -->
-                                        <div class="product-details ">
+                                        <div class="product-details align-items-center">
                                             <a href="#" class="product-cat-name">Item #<?=$items['ItemId']?>  </a>
                                             <h2 class="product-name"><a href="#"><?=$items['MetricSize']?> <?=$items['Type']?></a></h2>
+                                            <a href="#" class="product-cat-name"><?=$items['BrandName']?> For <?=$items['Gender']?>  </a>
                                             <h2 class="text-success"><?=($items['Instock']?'Instock':'')?></h2>
                                             <h2 class="text-danger"><?=($items['Instock']?'':'Outstock')?></h2>
-                                             <p class="product-desc"><?=$items['Description']?></p>
+                                            
                                          </div>
-                                            <div class="sepera align-items-right">
+                                            <div class="sepera align-items-right" style="
+                                            float: right;margin-left: 150px">
                                                 <h2 > $ <?=number_format($items['WholesalePriceUSD'],2)?></h2>
                                                 <form method="post" action="<?=base_url()?>Shop/AddToCart">
-                                                    <div class="product-quantity align-items-center" style="padding: 10px">
+                                                    <div class="product-quantity align-items-center" style="padding: 10px;">
                                                         <div class="pro-quantity">
                                                             <input type="hidden" name="ItemId" value="<?=$items['ItemId']?>">
                                                             <div class="pro-qty">
@@ -174,10 +176,9 @@
 
                 <!-- Start Products Content Wrapper -->
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 ">
                         <div class="products-wrapper">
-                            <div class="feature-product-carousel">
-                                <h2>Similar Product</h2>
+                            <div class="feature-product-carousel" style="margin-top: 50px;">
                                 <?php foreach($similarname as $items){?>
                                 <!-- Start Single Product -->
                                 <div class="single-product-item">

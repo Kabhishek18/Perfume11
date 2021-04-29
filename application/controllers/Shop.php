@@ -113,6 +113,28 @@ class SHOP extends CI_Controller {
 	}
 
 
+	 function AjaxupdateItemQty(){
+        $update = 0;
+        
+        // Get cart item info
+        $rowid = $this->input->get('rowid');
+        $qty = $this->input->get('qty');
+        
+        // Update item in the cart
+        if(!empty($rowid) && !empty($qty)){
+            $data = array(
+                'rowid' => $rowid,
+                'qty'   => $qty
+            );
+            $update = $this->cart->update($data);
+        }
+        
+        // Return response
+        echo $update?'ok':'err';
+    }
+
+
+
 	//Apply Coupon
 	public function ApplyCoupon()
 	{

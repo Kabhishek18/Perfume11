@@ -68,6 +68,7 @@
 								<?php foreach($BrandName as $row){ ?>
 								<li><input type="checkbox" class="common_selector brand" value="<?php echo $row['BrandName']; ?>" <?=((urldecode($this->uri->segment(2,0))==$row['BrandName']?'Checked':''))?> >  <?php echo $row['BrandName']; ?> </li>
 								<?php }	?>	
+								 <li><a href="<?=base_url()?>Brand"><strong>See More+</strong></a></li>
 							</ul>
 						</div>		
 	                </div>		

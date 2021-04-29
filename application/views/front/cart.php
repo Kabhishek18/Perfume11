@@ -150,3 +150,5 @@
     </div>
 </div>
 <!--== End Cart Page Wrapper ==-->
+
+<script src="<?=base_url()?>resources/assets/js/vendor/jquery-3.3.1.min.js"></script>

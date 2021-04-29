@@ -228,16 +228,18 @@ img {
 }
 
 .pro-qty a.inc {
-    border-right: 1px solid #c5c5c5;
-    top: 0;
-    left: 0;
-}
-
-.pro-qty a.dec {
-    top: 0;
+   top: 0;
     right: 0;
     border-left: 1px solid #c5c5c5;
     padding-left: 2px;
+}
+
+.pro-qty a.dec {
+     border-right: 1px solid #c5c5c5;
+    top: 0;
+    left: 0;
+    
+    
 }
 
 .table-responsive::-webkit-scrollbar-thumb, .list::-webkit-scrollbar-thumb {
