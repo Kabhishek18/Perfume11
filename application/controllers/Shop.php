@@ -48,7 +48,7 @@ class SHOP extends CI_Controller {
 		$this->load->view('front/inc/header',$var);
 		$this->load->view('front/inc/nav');
 		$this->load->view('front/cart',$var);
-		$this->load->view('front/inc/footer');
+		//$this->load->view('front/inc/footer');
 		}
 		else{
 			$this->session->set_flashdata('success', 'Cart Is Empty');
@@ -114,23 +114,25 @@ class SHOP extends CI_Controller {
 
 
 	 function AjaxupdateItemQty(){
-        $update = 0;
+        $var['rowid'] =$this->input->post('rowid');
+		$var['qty'] =$this->input->post('qty');
+
+		//update the cart
+		if (!empty($var['rowid']) && !empty($var['qty'])) {
+
+			$update=$this->cart->update($var);
+			if($update){
+		        // Return response
+		        $cart =$this->cart->contents();
+		        $top =json_encode($cart[$var['rowid']]);
+		        echo $update?$top:'error';
+			}else{
+				echo "failed";
+			}
+		}else{
+				echo "failed with Post" ;
+		}
         
-        // Get cart item info
-        $rowid = $this->input->get('rowid');
-        $qty = $this->input->get('qty');
-        
-        // Update item in the cart
-        if(!empty($rowid) && !empty($qty)){
-            $data = array(
-                'rowid' => $rowid,
-                'qty'   => $qty
-            );
-            $update = $this->cart->update($data);
-        }
-        
-        // Return response
-        echo $update?'ok':'err';
     }
 
 
@@ -203,9 +205,42 @@ class SHOP extends CI_Controller {
 		}
 	}
 
-	public function CheckoutSubmit()
-	{
-		dd($_POST);
+	public function TotalValueCart()
+	{	
+		$var['total'] =$this->cart->total(); 
+		if($this->cart->total() < 150){
+			$var['ship'] = $this->shipping_charge;	
+		}else{
+			$var['ship'] =0;
+		}
+
+		$var['maintotal'] = $var['ship'] + $var['total'];
+		if(!empty($this->session->coupon)){ 
+			$coupon= $this->session->coupon;
+			$first ='Coupon Applied <span class="text-success">'.$coupon['CouponName'].'</span>
+                                         <span class="text-danger " style="margin-left:200px">- </span> $ ';
+            if($coupon['CouponType']=='Percentage')
+            {
+            	$coupon['CouponValue'] = ($coupon['CouponValue']*$this->cart->total())/100 ;          
+            	$middle = (($coupon['CouponValue']*$this->cart->total())/100);
+            }
+            else
+            {
+				$middle =$coupon['CouponValue'];  
+            } 
+
+            $last = '<a href="'.base_url().'Shop/Coupondestroy" class="text-danger"><i class="fa fa-trash-o"></i></a>';
+
+            $var['coupon'] = $first.$middle.$last;	
+           }
+        else 
+        {
+           	$middle =0;
+        } 
+
+           	$var['maintotal'] = $var['ship'] + $var['total']-$middle;
+		echo json_encode($var);
+
 	}
 
 

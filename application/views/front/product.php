@@ -154,7 +154,7 @@
                                                         </div>
 
                                                        <div class="form-group" style="padding: 10px">
-                                                            <button type="submit" class="btn btn-transparent btn-semi-round"><i
+                                                            <button type="submit" class="btn btn-transparent btn-semi-round" style="background-color: #bdb093;color: white"><i
                                                                 class="fa fa-shopping-cart"></i> Add to Cart</button>
                                                        </div>
                                                     </div>
