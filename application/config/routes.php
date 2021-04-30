@@ -27,3 +27,5 @@ $route['CartAjaxPro'] ='Home/CartAjaxPro';
 
 $route['Checkout']='Shop/Checkout';
 
+$route['Review/(:any)']='Shop/Review/$1';
+

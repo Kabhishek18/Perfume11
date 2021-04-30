@@ -25,7 +25,6 @@
 
     <!-- Modernizer JS -->
     <script src="<?=base_url()?>resources/assets/js/vendor/modernizr-2.8.3.min.js"></script>
-
     <!--Sweet Alert  -->
     <script src="<?=base_url()?>resources/assets/js/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="<?=base_url()?>resources/assets/js/sweetalert2.min.css">

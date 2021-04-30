@@ -6,6 +6,7 @@ class Home_model extends CI_Model
 {   
 
 	function __construct() {
+        $this->review   = 'tbl_review';
         $this->users   = 'tbl_users';
         $this->products   = 'tbl_products';
         $this->coupon   = 'tbl_coupons';
@@ -153,7 +154,11 @@ class Home_model extends CI_Model
         return !empty($result)?$result:false;
     }
 
-
+    public function ReviewInsert($var)
+    {
+        $insert = $this->db->insert($this->review,$var);
+        return $insert?true:false;
+    }
 
 
 }

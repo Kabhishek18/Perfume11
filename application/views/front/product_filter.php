@@ -41,12 +41,16 @@
         <div class="row">
             <div class="col-md-3">
 				<div id="sidebar-area-wrap">
-					<div class="list-group" style="display: none;">
-						<h3>Price</h3>
-						<input type="hidden" id="hidden_minimum_price" value="0" />
-						<input type="hidden" id="hidden_maximum_price" value="300" />
-						<p id="price_show">1 - 300</p>
-		                <div id="price_range"></div>
+				    <div class="single-sidebar-wrap">
+						 <h2 class="sidebar-title">Fragrances by Price</h2>
+                         <div class="sidebar-body">
+                            <div class="sidebar-list">
+        						<input type="hidden" id="hidden_minimum_price" value="0" />
+        						<input type="hidden" id="hidden_maximum_price" value="200" />
+        						<p id="price_show">1 - 300</p>
+        		                <div id="price_range"></div>
+                            </div>
+                         </div>   
 	                </div>	
 
                        
@@ -123,72 +127,69 @@
 </style>
 
 <script>
-$(document).ready(function(){
+    $(document).ready(function(){
 
-	filter_data(1);
+    	filter_data(1);
 
-	function filter_data(page)
-	{
-		$('.filter_data').html('<div id="loading" style="" ></div>');
-		var action = 'fetch_data';
-		//var page = 1;
-	
-		var gender = get_filter('gender');
-		var minimum_price = $('#hidden_minimum_price').val();
-		var maximum_price = $('#hidden_maximum_price').val();
-		var brand = get_filter('brand');
-		var type = get_filter('type');
-		
-		$.ajax({
-			url:"<?php echo base_url(); ?>product_filter/fetch_data/"+page,
-			method:"POST",
-			dataType:"JSON",
-			data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price, brand:brand, type:type, gender:gender},
-			success:function(data)
-			{
-				$('.filter_data').html(data.product_list);
-				$('#pagination_link').html(data.pagination_link);
-			}
-		})
-	}
+    	function filter_data(page)
+    	{
+    		$('.filter_data').html('<div id="loading" style="" ></div>');
+    		var action = 'fetch_data';
+    		//var page = 1;
+    	
+    		var gender = get_filter('gender');
+    		var minimum_price = $('#hidden_minimum_price').val();
+    		var maximum_price = $('#hidden_maximum_price').val();
+    		var brand = get_filter('brand');
+    		var type = get_filter('type');
+    		
+    		$.ajax({
+    			url:"<?php echo base_url(); ?>product_filter/fetch_data/"+page,
+    			method:"POST",
+    			dataType:"JSON",
+    			data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price, brand:brand, type:type, gender:gender},
+    			success:function(data)
+    			{
+    				$('.filter_data').html(data.product_list);
+    				$('#pagination_link').html(data.pagination_link);
+    			}
+    		})
+    	}
 
-	$('#price_range').slider({
-		range:true,
-		min:1,
-		max:300,
-		values:[1, 300],
-		step: 5,
-		stop:function(event, ui){
-			//$('#price_show').show();
-			$('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
-			$('#hidden_minimum_price').val(ui.values[0]);
-			$('#hidden_maximum_price').val(ui.values[1]);
-			filter_data(1);
-		}
-	});
+    	$('#price_range').slider({
+    		range:true,
+    		min:1,
+    		max:250,
+    		values:[1, 250],
+    		step: 2,
+    		stop:function(event, ui){
+    			//$('#price_show').show();
+    			$('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+    			$('#hidden_minimum_price').val(ui.values[0]);
+    			$('#hidden_maximum_price').val(ui.values[1]);
+    			filter_data(1);
+    		}
+    	});
 
-	function get_filter(class_name)
-	{
-		var filter = [];
-		$('.'+class_name+':checked').each(function(){
-			filter.push($(this).val());
-		});
-		return filter;
-	}
+    	function get_filter(class_name)
+    	{
+    		var filter = [];
+    		$('.'+class_name+':checked').each(function(){
+    			filter.push($(this).val());
+    		});
+    		return filter;
+    	}
 
-	$(document).on("click", ".pagination li a", function(event){
-		event.preventDefault();
-		var page = $(this).data("ci-pagination-page");
-		filter_data(page);
-	});
+    	$(document).on("click", ".pagination li a", function(event){
+    		event.preventDefault();
+    		var page = $(this).data("ci-pagination-page");
+    		filter_data(page);
+    	});
 
-	$('.common_selector').click(function(){
-        filter_data(1);
+    	$('.common_selector').click(function(){
+            filter_data(1);
+        });
     });
-
-
-
-});
 </script>
 
 

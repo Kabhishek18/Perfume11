@@ -63,8 +63,7 @@ class SHOP extends CI_Controller {
 		$data['Quantity'] =$this->input->post('Quantity');
 		//Fetch data
 		if ($set['ItemId']){
-			$product =json_decode(Fragnance_getProductById(Fragnancex_accesstoken(),$set['ItemId']),true);
-
+			$product =$this->home_model->GetAllProduct($set['ItemId']);
 			$data =array(
 					 'id' =>$product['ItemId'] , 
 					 'qty'	=> $data['Quantity'],
@@ -88,7 +87,7 @@ class SHOP extends CI_Controller {
 		}
 	}
 
-	//quantity update
+	//Quantity update
 	public function UpdateItemQty()
 	{
 	
@@ -112,8 +111,8 @@ class SHOP extends CI_Controller {
 		}
 	}
 
-
-	 function AjaxupdateItemQty(){
+	function AjaxupdateItemQty()
+	{
         $var['rowid'] =$this->input->post('rowid');
 		$var['qty'] =$this->input->post('qty');
 
@@ -132,10 +131,7 @@ class SHOP extends CI_Controller {
 		}else{
 				echo "failed with Post" ;
 		}
-        
     }
-
-
 
 	//Apply Coupon
 	public function ApplyCoupon()
@@ -178,21 +174,21 @@ class SHOP extends CI_Controller {
 		} 
 	}
 
-	function DestroyCart()
+	public function DestroyCart()
 	{
 		$this->cart->destroy();
 		$this->session->set_flashdata('success', 'Cart Removed Successfully');
 		redirect('');
 	}
 
-	function Coupondestroy()
+	public function Coupondestroy()
 	{
 		$this->session->unset_userdata('coupon');	
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	function Checkout()
-	{	
+	public function Checkout()
+	{
 		if ($this->cart->total_items()>0) {
 		$var['ship'] =$this->shipping_charge;	
 		$this->load->view('front/inc/header');
@@ -206,7 +202,7 @@ class SHOP extends CI_Controller {
 	}
 
 	public function TotalValueCart()
-	{	
+	{
 		$var['total'] =$this->cart->total(); 
 		if($this->cart->total() < 150){
 			$var['ship'] = $this->shipping_charge;	
@@ -240,10 +236,33 @@ class SHOP extends CI_Controller {
 
            	$var['maintotal'] = $var['ship'] + $var['total']-$middle;
 		echo json_encode($var);
-
 	}
 
+	public function Review($data)
+	{	
+		$var =$this->home_model->GetAllProduct($data);
+		$var['meta'] ='<title>Review | Perfume</title>';
+		$this->load->view('front/inc/header',$var);
+		$this->load->view('front/inc/nav');
+		$this->load->view('front/review',$var);
+		$this->load->view('front/inc/footer');
+	}
 
+	public function ReviewSubmit()
+	{	
+		$var['Rate'] =$this->input->post('rating');
+		$var['ItemId'] =$this->input->post('ItemId');
+		$var['Description'] =$this->input->post('description');
+		$var['Status'] ='Inactive';
+		$update=$this->home_model->ReviewInsert($var);
+		if($update){
+			$this->session->set_flashdata('success', 'Thank You For Submitting Your Valuable Feedback');
+			redirect($_SERVER['HTTP_REFERER']);
+		}else{
+			$this->session->set_flashdata('warning', 'Updation Failed');
+			redirect($_SERVER['HTTP_REFERER']);
+		}
 
+	}
 
 }

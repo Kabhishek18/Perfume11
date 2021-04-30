@@ -52,11 +52,11 @@
                         <br />
                     <div class="row">
                         
-                        <div class="col-lg-6" style="border-right: 1px solid">
-                            <a href="<?=base_url()?>Men"> VIEW ALL MEN’S COLOGNE</a>
+                        <div class="col-lg-6" style="border-right: 1px solid;font-size: 25px;font-weight: 700;">
+                            <a href="<?=base_url()?>Men" style="color:#a08d64;"> <i class="fa fa-mars"></i>  MEN’S COLOGNE</a>
                         </div>
-                        <div class="col-lg-6" style="border-left: 1px solid">
-                            <a href="<?=base_url()?>Women"> VIEW ALL WOMEN’S PERFUME</a>
+                        <div class="col-lg-6" style="border-left: 1px solid;font-size: 25px;font-weight: 700;">
+                            <a href="<?=base_url()?>Women" style="color:#a08d64;"> <i class="fa fa-venus"></i> WOMEN’S PERFUME</a>
                         </div>
                         
                     </div>
