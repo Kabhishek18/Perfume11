@@ -47,10 +47,10 @@
                         <?php foreach($this->cart->contents() as $item){?>    
                             <tr>
                                 <td class="pro-thumbnail">
-                                    <a href="#"><img class="img-fluid" src="<?=$item['image']?>" alt="Product"/></a>
+                                    <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><img class="img-fluid" src="<?=$item['image']?>" alt="Product"/></a>
                                 </td>
                                 <td class="pro-title">
-                                    <a href="#"><?=$item['name']?> </a>
+                                    <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><?=$item['name']?> </a>
                                 </td>
                                 <td class="pro-price">
                                     <span>$ <?=$item['price']?></span>

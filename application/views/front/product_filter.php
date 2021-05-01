@@ -5,7 +5,7 @@
             <!-- Page Title Area Start -->
             <div class="col-6">
                 <div class="page-title-wrap">
-                    <h1><?=($this->uri->segment(1,0))?></h1>
+                    <h1><?=($this->uri->segment(2,0))?></h1>
                 </div>
             </div>
             <!-- Page Title Area End -->

@@ -7,7 +7,7 @@
         <!-- End Single Slide Item -->
 
         <!-- Start Single Slide Item -->
-        <a href="<?=base_url()?>Women">
+        <a href="<?=base_url()?>Gender/Women">
         <div class="single-slide-wrap slideBg8"></div></a>
         <!-- End Single Slide Item -->
     </div>
@@ -53,10 +53,10 @@
                     <div class="row">
                         
                         <div class="col-lg-6" style="border-right: 1px solid;font-size: 25px;font-weight: 700;">
-                            <a href="<?=base_url()?>Men" style="color:#a08d64;"> <i class="fa fa-mars"></i>  MEN’S COLOGNE</a>
+                            <a href="<?=base_url()?>Gender/Men" style="color:#a08d64;"> <i class="fa fa-mars"></i>  MEN’S COLOGNE</a>
                         </div>
                         <div class="col-lg-6" style="border-left: 1px solid;font-size: 25px;font-weight: 700;">
-                            <a href="<?=base_url()?>Women" style="color:#a08d64;"> <i class="fa fa-venus"></i> WOMEN’S PERFUME</a>
+                            <a href="<?=base_url()?>Gender/Women" style="color:#a08d64;"> <i class="fa fa-venus"></i> WOMEN’S PERFUME</a>
                         </div>
                         
                     </div>

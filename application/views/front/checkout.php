@@ -106,7 +106,7 @@
     <?php echo form_open_multipart('Shop/CheckoutSubmit','') ?> 
         <div class="row">
             <!-- Checkout Billing Details -->
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <div class="checkout-billing-details-wrap">
                     <h2>Billing Details</h2>
                     <div class="billing-form-wrap">
@@ -269,7 +269,7 @@
             </div>
 
             <!-- Order Summary Details -->
-            <div class="col-lg-6 mt-5 mt-lg-0">
+            <div class="col-lg-4 mt-5 mt-lg-0">
                 <div class="order-summary-details">
                     <h2>Your Order Summary</h2>
                     <div class="order-summary-content">
@@ -395,7 +395,7 @@
                     
                 </div>
             </div>
-            <div class="col-lg-12 " style="margin-top: 10px">
+            <div class="col-lg-8 " style="margin-top: 10px">
                 <div class="cart-table table-responsive">
                     <table class="table table-bordered">
                         <thead>
@@ -411,10 +411,10 @@
                         <?php foreach($this->cart->contents() as $item){?>    
                             <tr>
                                 <td class="pro-thumbnail">
-                                    <a href="#"><img class="img-fluid" src="<?=$item['image']?>" alt="Product"/></a>
+                                    <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><img class="img-fluid" src="<?=$item['image']?>" alt="Product"/></a>
                                 </td>
                                 <td class="pro-title">
-                                    <a href="#"><?=$item['name']?> </a>
+                                    <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><?=$item['name']?> </a>
                                 </td>
                                 <td class="pro-price">
                                     <span>$ <?=$item['price']?></span>
@@ -427,7 +427,8 @@
                                 </td>
                             </tr>
                         <?php }?>
-                        <tr> <td colspan="5"> <a href="<?=base_url()?>" class="btn btn-brand btn-full"><i class="fa fa-edit"></i> Edit This Order</a></td></tr>
+                        <tr> <td colspan="3"> <a href="<?=base_url()?>" class="btn btn-brand"><i class="fa fa-edit"></i> Edit This Order</a></td>
+                                <td colspan="2"> <input type="submit" class="btn btn-brand btn-full" value="Place Order"> </td></tr>
                     </table>
                 </div>
             </div>

@@ -30,8 +30,8 @@
             <div class="col-6 m-auto">
                 <nav class="page-breadcrumb-wrap">
                     <ul class="nav justify-content-end">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop.html" class="current">Contact</a></li>
+                        <li><a href="<?=base_url()?>">Home</a></li>
+                        <li><a href="javascript:void(0)" class="current">Contact</a></li>
                     </ul>
                 </nav>
             </div>
