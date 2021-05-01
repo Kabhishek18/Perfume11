@@ -120,7 +120,7 @@
                                 <li class="dropdown-show"><a href="<?=base_url()?>Brand">BRANDS</a>
                                 </li>
                                 
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="<?=base_url()?>Contact">Contact</a></li>
                             </ul>
                         </nav>
                     </div>

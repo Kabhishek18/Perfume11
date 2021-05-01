@@ -29,3 +29,4 @@ $route['Checkout']='Shop/Checkout';
 
 $route['Review/(:any)']='Shop/Review/$1';
 
+$route['Contact']='Home/Contact';

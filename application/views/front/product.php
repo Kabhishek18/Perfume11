@@ -24,7 +24,32 @@
     </div>
 </div>
 <!--== End Page Header ==-->
+<style type="text/css">
+    .star-rating {
+        direction: rtl;
+        display: inline-block;
+        padding: 20px
+    }
 
+    .star-rating input[type=radio] {
+        display: none
+    }
+
+    .star-rating label {
+        color: #bbb;
+        font-size: 18px;
+        padding: 0;
+        cursor: pointer;
+        -webkit-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out
+    }
+
+    .star-rating label:hover,
+    .star-rating label:hover ~ label,
+    .star-rating input[type=radio]:checked ~ label {
+        color: #f2b600
+    }
+</style>
 
 <!--== Start Shop Page Wrapper ==-->
 <div id="shop-page-wrapper">
@@ -111,6 +136,30 @@
     }
     .single-product-item{
         border-bottom:2px solid #dfdfdf;
+    }
+     .star-rating {
+        direction: rtl;
+        display: inline-block;
+        padding: 20px
+    }
+
+    .star-rating input[type=radio] {
+        display: none
+    }
+
+    .star-rating label {
+        color: #bbb;
+        font-size: 18px;
+        padding: 0;
+        cursor: pointer;
+        -webkit-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out
+    }
+
+    .star-rating label:hover,
+    .star-rating label:hover ~ label,
+    .star-rating input[type=radio]:checked ~ label {
+        color: #f2b600
     }
 
 </style>
@@ -218,96 +267,75 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="product-ratting-wrap">
+                                                    <?php  $reviews= $this->home_model->GetReviewPid($ItemId);?>
                                                     <div class="pro-avg-ratting">
-                                                        <h4>Reviewed by 663 customers </h4>
+                                                        <h4>Reviewed by <?=(!empty($reviews)?count($reviews):'0')?> customers </h4>
                                                     </div>
                                                     
                                                     <div class="rattings-wrapper">
+                                                        <?php if(!empty($reviews)){ ?>
+                                                            <?php foreach($reviews as $review){?>
+                                                                   <div class="sin-rattings">
+                                                                        <div class="ratting-author">
+                                                                            <h3><?=$review['Name']?></h3>
+                                                                            <div class="ratting-star">
+                                                                                <?php for($i=1;$i<= $review['Rate'];$i++){?>
+                                                                                    <i class="fa fa-star"></i>
+                                                                                <?php }?>
+                                                                            </div>
+                                                                        </div>
+                                                                        <p><?=$review['Description']?></p>
+                                                                         <span style="color:grey;">Submitted <?=date('F ,d D y',strtotime($review['Date_Created']))?></span>
 
-                                                        <div class="sin-rattings">
-                                                            <div class="ratting-author">
-                                                                <h3>Cristopher Lee</h3>
-                                                                <div class="ratting-star">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                            </div>
-                                                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut
-                                                                odit aut fugit, sed quia res eos qui ratione voluptatem
-                                                                sequi Neque porro quisquam est, qui dolorem ipsum quia
-                                                                dolor sit amet, consectetur, adipisci veli</p>
-															 <span style="color:grey;">Submitted 4/22/2021</span>
-
-                                                        </div>
-
-                                                        <div class="sin-rattings">
-                                                            <div class="ratting-author">
-                                                                <h3>Nirob Khan</h3>
-                                                                <div class="ratting-star">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <span>(5)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut
-                                                                odit aut fugit, sed quia res eos qui ratione voluptatem
-                                                                sequi Neque porro quisquam est, qui dolorem ipsum quia
-                                                                dolor sit amet, consectetur, adipisci veli</p>
-                                                        </div>
-
-                                                        <div class="sin-rattings">
-                                                            <div class="ratting-author">
-                                                                <h3>MD.ZENAUL ISLAM</h3>
-                                                                <div class="ratting-star">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <span>(5)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut
-                                                                odit aut fugit, sed quia res eos qui ratione voluptatem
-                                                                sequi Neque porro quisquam est, qui dolorem ipsum quia
-                                                                dolor sit amet, consectetur, adipisci veli</p>
-                                                        </div>
+                                                                    </div>
+                                                        <?php }}?>
 
                                                     </div>
                                                     <div class="ratting-form-wrapper">
                                                         <h3>Add your Comments</h3>
-                                                        <form action="#" method="post">
-                                                            <div class="ratting-form row">
+                                                       <form action="<?=base_url()?>Shop/ReviewSubmit" method="Post">
+                                                            <div class=" row">
                                                                 <div class="col-12 mb-4">
-                                                                    <h5>Rating:</h5>
-                                                                    <div class="ratting-star fix">
-                                                                        <i class="fa fa-star-o"></i>
-                                                                        <i class="fa fa-star-o"></i>
-                                                                        <i class="fa fa-star-o"></i>
-                                                                        <i class="fa fa-star-o"></i>
-                                                                        <i class="fa fa-star-o"></i>
-                                                                    </div>
+                                                                     
+                                                                        <input type="hidden" name="ItemId" value="<?=$ItemId?>">
+                                                                        <div class="star-rating">
+                                                                        <h4>Overall Ratings</h4>
+                                                                          <input id="star-5" type="radio" name="rating" value="5" />
+                                                                          <label for="star-5" title="5 stars">
+                                                                            <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                          </label>
+                                                                          <input id="star-4" type="radio" name="rating" value="4" />
+                                                                          <label for="star-4" title="4 stars">
+                                                                            <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                          </label>
+                                                                          <input id="star-3" type="radio" name="rating" value="3" />
+                                                                          <label for="star-3" title="3 stars">
+                                                                            <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                          </label>
+                                                                          <input id="star-2" type="radio" name="rating" value="2" />
+                                                                          <label for="star-2" title="2 stars">
+                                                                            <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                          </label>
+                                                                          <input id="star-1" type="radio" name="rating" value="1" checked="" />
+                                                                          <label for="star-1" title="1 star">
+                                                                            <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                          </label>
+                                                                        </div>
                                                                 </div>
-                                                                <div class="col-md-6 col-12 mb-4">
+                                                                <div class="ratting-form col-md-6 col-12 mb-4">
                                                                     <label for="name">Name:</label>
-                                                                    <input id="name" placeholder="Name" type="text">
+                                                                    <input id="name" name="Name" placeholder="Name" type="text" required="">
                                                                 </div>
-                                                                <div class="col-md-6 col-12 mb-4">
+                                                                <div class=" ratting-form col-md-6 col-12 mb-4">
                                                                     <label for="email">Email:</label>
-                                                                    <input id="email" placeholder="Email" type="text">
+                                                                    <input id="email" name="Email" placeholder="Email" type="text" required="">
                                                                 </div>
-                                                                <div class="col-12 mb-4">
+                                                                <div class="ratting-form col-12 mb-4">
                                                                     <label for="your-review">Your Review:</label>
-                                                                    <textarea name="review" id="your-review"
+                                                                    <textarea name="description" id="your-review"
                                                                               placeholder="Write a review"></textarea>
                                                                 </div>
-                                                                <div class="col-12">
+                                                                <div class="ratting-form col-12">
                                                                     <input value="add review" type="submit">
                                                                 </div>
                                                             </div>

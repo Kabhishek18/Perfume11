@@ -160,6 +160,40 @@ class Home_model extends CI_Model
         return $insert?true:false;
     }
 
+    public function GetBrandAlpha($var)
+    {
+       
+        $this->db->select('*');
+        $this->db->distinct('BrandName');
+        $this->db->from($this->products);  
+        if($var=='All'){
+
+        }else{
+          $this->db->like('BrandName', $var, 'after');
+        }    
+        $query  = $this->db->get();
+        $result = $query->result_array();
+        return !empty($result)?$result:false;
+    }
+
+
+    public function GetReviewPid($id)
+    {
+       
+        $this->db->select('*');
+        $this->db->from($this->review);
+        if($id){
+            $array = array('ItemId'=>$id);
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }else{
+            $query  = $this->db->get();
+            $result = $query->result_array();
+
+        }
+        return !empty($result)?$result:false;
+    }
 
 }
 

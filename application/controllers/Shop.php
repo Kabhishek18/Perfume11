@@ -250,8 +250,11 @@ class SHOP extends CI_Controller {
 
 	public function ReviewSubmit()
 	{	
+		$var['Name'] =$this->input->post('Name');
+		$var['Email'] =$this->input->post('Email');
 		$var['Rate'] =$this->input->post('rating');
 		$var['ItemId'] =$this->input->post('ItemId');
+		$var['date_Created'] =date('Y-m-d H:i:s');
 		$var['Description'] =$this->input->post('description');
 		$var['Status'] ='Inactive';
 		$update=$this->home_model->ReviewInsert($var);
@@ -264,5 +267,30 @@ class SHOP extends CI_Controller {
 		}
 
 	}
+
+
+	public function PaginationAjax()
+	{
+		if ($this->input->post('id')) {
+
+			$data =$this->home_model->GetBrandAlpha($this->input->post('id'));
+			if(!empty($data)){
+				$pull =[];
+				foreach ($data as $key ) {
+					$pull[] =$key['BrandName'];
+				}
+				$pulled = array_unique($pull);
+				echo json_encode(array_unique($pulled));
+			}
+			else{
+				echo "Query fail";
+		
+			}
+		}else{
+			echo "Input id Failed";
+		}
+	}
+
+
 
 }

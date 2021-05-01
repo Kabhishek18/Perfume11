@@ -275,13 +275,38 @@ class Home extends CI_Controller {
 	}
 
 
-
-
-   	public function Test()
+	public function Contact()
 	{
+		$var['meta'] ='<title> Contact | Perfume </title>';
+		$this->load->view('front/inc/header',$var);
+		$this->load->view('front/inc/nav');
+		$this->load->view('front/contact');
+		$this->load->view('front/inc/footer');
+	}
 
-        dd($this->home_model->GetAllProductLimit(15,'BrandName'));
-
+   	public function ContactSubmit()
+	{
+		
+		 $from_email = "your@example.com"; 
+         $to_email = $this->input->post('contact_email'); 
+   
+         //Load email library 
+         $this->load->library('email'); 
+   
+         $this->email->from($from_email, $this->input->post('first_name').' '.$this->input->post('last_name')); 
+         $this->email->to($to_email);
+         $this->email->subject($this->input->post('contact_subject')); 
+         $this->email->message($this->input->post('contact_message')); 
+   
+         //Send mail 
+         if($this->email->send()) {
+         		$this->session->set_flashdata('success', 'Thanks for Sharing, We Will Be Contacting You Soon ');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+         else{ 
+         		$this->session->set_flashdata('info', 'We Will Be Contacting You Soon ');
+         		redirect($_SERVER['HTTP_REFERER']);
+         	}	
     }
 
 

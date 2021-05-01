@@ -27,7 +27,7 @@
 
     <!-- Bootstrap Core CSS -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
-<script src="<?=base_url()?>resources/assets/js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="<?=base_url()?>resources/assets/js/vendor/jquery-3.3.1.min.js"></script>
 
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -47,7 +47,7 @@
                             <div class="sidebar-list">
         						<input type="hidden" id="hidden_minimum_price" value="0" />
         						<input type="hidden" id="hidden_maximum_price" value="200" />
-        						<p id="price_show">1 - 300</p>
+        						<p id="price_show">1 - 15</p>
         		                <div id="price_range"></div>
                             </div>
                          </div>   
@@ -100,7 +100,6 @@
                     	<div class="products-wrapper product-grid-view physicianList">
 							
 			                <div class="row filter_data">
-			                
 			                </div>
 
 
@@ -118,10 +117,9 @@
     </div>
    </div> 
 <style>
-#loading
+.loading
 {
-	text-align:center; 
-	background: url('<?php echo base_url(); ?>asset/loader.gif') no-repeat center; 
+    margin-left:40%;
 	height: 150px;
 }
 </style>
@@ -133,7 +131,7 @@
 
     	function filter_data(page)
     	{
-    		$('.filter_data').html('<div id="loading" style="" ></div>');
+            $('.filter_data').html('<img class="loading" src="<?php echo base_url(); ?>asset/loader.gif">');
     		var action = 'fetch_data';
     		//var page = 1;
     	
@@ -150,6 +148,7 @@
     			data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price, brand:brand, type:type, gender:gender},
     			success:function(data)
     			{
+                    window.scrollTo(5,0);
     				$('.filter_data').html(data.product_list);
     				$('#pagination_link').html(data.pagination_link);
     			}
