@@ -135,7 +135,7 @@
                             <div class="special-product-carousel">
                                 <!-- Start Single Product -->
 
-                                <?php $products = $this->home_model->GetByBrand(10,$item['BrandName']);?>
+                                <?php $products = $this->home_model->GetByBrand(6,$item['BrandName']);?>
                                 <?php foreach($products as $product){ ?>
                                 <div class="single-product-item">
                                     <!-- Product Thumbnail -->
@@ -151,8 +151,8 @@
 
                                     <!-- Product Details -->
                                     <div class="product-details">
-                                        <a href="javascript:void(0)" class="product-cat-name"><?=$product['Type']?></a>
-                                        <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$product['ItemId']?>/<?=$product['ProductName']?>"><?=$product['ProductName']?></a></h2>
+                                        <a href="javascript:void(0)" class="product-cat-name"><?=$product['Type']?> For <?=$product['Gender']?></a>
+                                        <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$product['ItemId']?>/<?=$product['ProductName']?>"><?=$product['Type']?><?=$product['ProductName']?></a></h2>
                                       
                                     </div>
                                 </div>

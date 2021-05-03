@@ -427,7 +427,7 @@
                                 </td>
                             </tr>
                         <?php }?>
-                        <tr> <td colspan="3"> <a href="<?=base_url()?>" class="btn btn-brand"><i class="fa fa-edit"></i> Edit This Order</a></td>
+                        <tr> <td colspan="3"> <a href="<?=base_url()?>Cart" class="btn btn-brand"><i class="fa fa-edit"></i> Edit This Order</a></td>
                                 <td colspan="2"> <input type="submit" class="btn btn-brand btn-full" value="Place Order"> </td></tr>
                     </table>
                 </div>
