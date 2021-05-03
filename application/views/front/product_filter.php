@@ -46,7 +46,7 @@
                             <div class="sidebar-list" style="border-right: 3px solid #dfdfdf; padding: 10px;">
         						<input type="hidden" id="hidden_minimum_price" value="1" />
         						<input type="hidden" id="hidden_maximum_price" value="200" />
-        						<p id="price_show">$1 - $15</p>
+        						<p id="price_show">$1 - $80</p>
         		                <div id="price_range"></div>
                             </div>
                          </div>   

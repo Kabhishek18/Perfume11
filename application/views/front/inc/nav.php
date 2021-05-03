@@ -43,7 +43,7 @@
 <!--== Start Header Section ===-->
 <header id="header-area" class="headerFour ">
  <!-- Start PreHeader Area -->
-    <div class="preheader-area fixed-top" >
+    <div class="preheader-area" >
         <div class="container-fluid" >
             <div class="row" >
                 <div class="col-md-4 text-center text-md-left">
@@ -56,12 +56,10 @@
                 </div>
                 <div class="col-md-4 mt-3 mt-md-0">
                     <!--== Start Search box Wrapper ==-->
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-                        <form action="<?=base_url()?>Home/Search" method="POST" class="search-form-area" style="display: flex;">
+                  
 
                               <input id="autocomplete" name="search"  type="search" class="form-control" placeholder="Search here">
-                            <button type="submit" class="btn btn-brand btn-clay btn-search"><i class="fa fa-search"></i></button>
-                        </form>
+                      
                          
                     <!--== End Search box Wrapper ==-->
                 </div>

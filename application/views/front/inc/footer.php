@@ -211,7 +211,7 @@
             range:true,
             min:1,
             max:250,
-            values:[1, 15],
+            values:[1, 80],
             step: 2,
             stop:function(event, ui){
                 //$('#price_show').show();
