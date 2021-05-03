@@ -196,6 +196,18 @@ class Home_model extends CI_Model
     }
 
 
+    public function Brandlike($var)
+    {
+       
+         $query = "
+        SELECT *, COUNT(brandname)  FROM tbl_products  
+        where status ='Active' like '".$var."%' GROUP BY brandname HAVING COUNT(brandname)>1";
+        $query  = $this->db->query($query);
+        $result = $query->result_array();
+        return !empty($result)?$result:false;
+    }
+
+
     public function GetAllBrand()
     {
         $query = "

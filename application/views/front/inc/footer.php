@@ -168,6 +168,115 @@
 <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
 <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+    
+    var base_url = '<?=base_url()?>';
+        $(document).ready(
+        function() {
 
+           
+
+          //Product Filter 
+
+        filter_data(1);
+
+        function filter_data(page)
+        {
+            $('.filter_data').html('<div class="renderit"><img class="loading" src="<?php echo base_url(); ?>asset/loader.gif"></div>');
+            var action = 'fetch_data';
+            //var page = 1;
+        
+            var gender = get_filter('gender');
+            var minimum_price = $('#hidden_minimum_price').val();
+            var maximum_price = $('#hidden_maximum_price').val();
+            var brand = get_filter('brand');
+            var type = get_filter('type');
+            
+            $.ajax({
+                url:"<?php echo base_url(); ?>product_filter/fetch_data/"+page,
+                method:"POST",
+                dataType:"JSON",
+                data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price, brand:brand, type:type, gender:gender},
+                success:function(data)
+                {
+                    window.scrollTo(5,0);
+                    $('.filter_data').html(data.product_list);
+                    $('#pagination_link').html(data.pagination_link);
+                }
+            })
+        }
+
+        $('#price_range').slider({
+            range:true,
+            min:1,
+            max:250,
+            values:[1, 15],
+            step: 2,
+            stop:function(event, ui){
+                //$('#price_show').show();
+                $('#price_show').html(' $ ' +ui.values[0] + ' - ' +' $ ' + ui.values[1]);
+                $('#hidden_minimum_price').val(ui.values[0]);
+                $('#hidden_maximum_price').val(ui.values[1]);
+                filter_data(1);
+            }
+        });
+
+        function get_filter(class_name)
+        {
+            var filter = [];
+            $('.'+class_name+':checked').each(function(){
+                filter.push($(this).val());
+            });
+            return filter;
+        }
+
+        $(document).on("click", ".pagination li a", function(event){
+            event.preventDefault();
+            var page = $(this).data("ci-pagination-page");
+            filter_data(page);
+        });
+
+        $('.common_selector').click(function(){
+            filter_data(1);
+        });
+
+
+
+        // Search
+
+         $.ajax({
+            url: base_url + 'Home/AjxGetBrand',
+            type: 'post',
+            success: function (msg) {
+               OnSearch(msg);
+            },
+            error: function (error) {
+            }
+        });
+        });
+  
+    function OnSearch(data) {
+        products =JSON.parse(data);
+        var brandname =new Array();
+        var products = jQuery.parseJSON(data);
+        $.each(products, function(key,value) {
+          brandname.push(value.BrandName);
+        }); 
+
+        $(function() {
+        $( "#autocomplete" ).autocomplete({
+          source: brandname,
+          select: showLabel,
+        });
+      function showLabel(event, ui) {
+             var surl = base_url+"Search/"+encodeURI(ui.item.value);
+            $(location).attr('href',surl);
+        }
+    })
+ 
+    }
+
+</script>
 </body>
 </html>

@@ -28,7 +28,19 @@ class Product_filter extends CI_Controller {
 		$this->load->view('front/inc/header',$var);
 		$this->load->view('front/inc/nav');
 		$this->load->view('front/product_filter', $data);
-		//$this->load->view('front/inc/footer'); It has its own Footer
+		$this->load->view('front/inc/footer'); 
+	}
+
+	function Search()
+	{
+		$data['BrandName'] = $this->product_filter_model->fetch_filter_type('BrandName',15);
+		$data['Type'] = $this->product_filter_model->fetch_filter_type('Type',15);
+		$data['Gender'] = $this->product_filter_model->fetch_filter_type('Gender',15);
+		$var['meta'] ='<title>Perfume Product Filter</title>';
+		$this->load->view('front/inc/header',$var);
+		$this->load->view('front/inc/nav');
+		$this->load->view('front/search', $data);
+		$this->load->view('front/inc/footer'); 
 	}
 
 	function fetch_data()

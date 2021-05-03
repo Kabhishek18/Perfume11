@@ -250,9 +250,12 @@ class Home extends CI_Controller {
 	public function Search()
 	{
 		if($this->input->post('search')){
+
 			$this->session->set_userdata('search',ucwords(strtolower($this->input->post('search'))));
 			$word =ucwords(strtolower($this->input->post('search')));
-			$var['result'] =$this->mongo_db2->like('ProductName',$word,'i',true,false)->get('products');
+
+			$var['result'] =$this->home_model->Brandlike($word);
+			dd($var['result']);
 			$var['search'] =ucwords(strtolower($this->input->post('search')));
 			$var['meta'] ='<title> Search | '.$var['search'].' </title>';
 			$this->load->view('front/inc/header',$var);
@@ -262,7 +265,7 @@ class Home extends CI_Controller {
 		}else{
 			$this->session->search;
 			$word =$this->session->search;
-			$var['result'] =$this->mongo_db2->like('ProductName',$word,'i',true,false)->get('products');
+			$var['result'] =$this->home_model->Brandlike($word);
 			$var['search'] =ucwords(strtolower($this->session->search));
 			$var['result'] =$this->mongo_db2->get('products');
 			$var['meta'] ='<title> Search | '.$var['search'].' </title>';

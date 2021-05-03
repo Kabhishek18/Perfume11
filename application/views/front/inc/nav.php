@@ -1,11 +1,44 @@
 <body>
 <style type="text/css">
     .btn-clay{
-        padding: 2px;
-        margin-left: 2px;
-        border-radius: 3px;
-        width: 100px;
+    padding: 2px;
+    margin-left: 2px;
+    border-radius: 3px;
+    width: 100px;
     }
+
+    
+
+    #autocomplete input, input:active {
+      outline-width: 0;
+      border-width: 0 0 1px 0;
+      border-style: dashed;
+      border-color: #777;
+      padding: 0 3px;
+    }
+    #autocomplete input:focus {
+      background-color: rgba(0,0,0,.12);
+    }
+    .ui-tooltip {
+    background: white;
+    color: #96f226;
+    border: 2px solid #454545;
+    border-radius: 0px;
+    box-shadow: 0 0 
+}
+.ui-autocomplete {
+  background: white;    
+    border-radius: 0px;
+    z-index: 150;
+    margin-top: 10px;
+}
+.ui-autocomplete.source:hover {
+    background: #bdb093;
+    color: white;
+}
+
+
+
 </style>
 <!--== Start Header Section ===-->
 <header id="header-area" class="headerFour ">
@@ -23,22 +56,10 @@
                 </div>
                 <div class="col-md-4 mt-3 mt-md-0">
                     <!--== Start Search box Wrapper ==-->
-                  
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
                         <form action="<?=base_url()?>Home/Search" method="POST" class="search-form-area" style="display: flex;">
 
-                            <input type="search" class="form-control" name="search" id="search" placeholder="Product Search"  list="browsers">
-                            
-                              <datalist class="searchspecial" id="browsers">
-                                <?php $response =$this->mongo_db2->get('products');
-                                    foreach($response as $pro){
-                                        $productname[] = $pro['ProductName'];
-                                    }
-                                    $searchdata= array_unique($productname);
-                                    asort($searchdata);
-                                foreach($searchdata as $search){ ?>
-                                  <option><?=$search?></option>
-                                <?php }?>
-                              </datalist>
+                              <input id="autocomplete" name="search"  type="search" class="form-control" placeholder="Search here">
                             <button type="submit" class="btn btn-brand btn-clay btn-search"><i class="fa fa-search"></i></button>
                         </form>
                          
@@ -183,4 +204,3 @@
     <!-- End Header Bottom  -->
 </header>
 <!--== End Header Section ===-->
-

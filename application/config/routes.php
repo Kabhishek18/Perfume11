@@ -15,7 +15,7 @@ $route['Gender/Men'] ='Product_filter/index';
 $route['Brand/(:any)'] ='Product_filter/index';
 $route['Brand'] ='Home/BrandPage';
 
-$route['Search']='Home/Search';
+$route['Search/(:any)']='Product_filter/Search';
 $route['Product_filter']='Product_filter/index';
 
 $route['Cart']='Shop/index';
