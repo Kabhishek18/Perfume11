@@ -16,7 +16,7 @@ class Product_filter_model extends CI_Model
 	function make_query($minimum_price, $maximum_price, $brand, $type, $gender)
 	{
 		$query = "
-		SELECT * FROM tbl_products  
+		SELECT *, COUNT(ParentCode)  FROM tbl_products  
 		where status ='Active'
 		";
 		
@@ -48,6 +48,7 @@ class Product_filter_model extends CI_Model
 			 AND Gender IN('".$gender_filter."')
 			";
 		}
+		$query .="GROUP BY ParentCode HAVING COUNT(ParentCode)>1";
 		return $query;
 	}
 

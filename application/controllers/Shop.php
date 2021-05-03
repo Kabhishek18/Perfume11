@@ -73,16 +73,16 @@ class SHOP extends CI_Controller {
 					 'options' => $product
 					);
 			if($this->cart->insert($data)){
-			 	$this->session->set_flashdata('success', $product['ProductName'].' Added In Cart');
+			 	//$this->session->set_flashdata('success', $product['ProductName'].' Added In Cart');
 				redirect(base_url().'Cart'); 
 		 	}
 		 	else{
-		 		$this->session->set_flashdata('warning', 'Somethings Misfortune Happens In Cart!');
+		 		//$this->session->set_flashdata('warning', 'Somethings Misfortune Happens In Cart!');
 				redirect($_SERVER['HTTP_REFERER']); 
 		 	}
 		}
 		else {
-			$this->session->set_flashdata('warning', 'Somethings Misfortune Happens Product Item Id!');
+			//$this->session->set_flashdata('warning', 'Somethings Misfortune Happens Product Item Id!');
 			redirect($_SERVER['HTTP_REFERER']); 
 		}
 	}
@@ -99,14 +99,14 @@ class SHOP extends CI_Controller {
 
 			$update=$this->cart->update($var);
 			if($update){
-				$this->session->set_flashdata('success', 'Updated Successfully');
+				//$this->session->set_flashdata('success', 'Updated Successfully');
 				redirect($_SERVER['HTTP_REFERER']);
 			}else{
-				$this->session->set_flashdata('warning', 'Updation Failed');
+				//$this->session->set_flashdata('warning', 'Updation Failed');
 				redirect($_SERVER['HTTP_REFERER']);
 			}
 		}else{
-			$this->session->set_flashdata('warning', 'Somethings Misfortune Happens');
+			//$this->session->set_flashdata('warning', 'Somethings Misfortune Happens');
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
@@ -291,6 +291,9 @@ class SHOP extends CI_Controller {
 		}
 	}
 
-
+	public function PerfumeSearch()
+	{
+		
+	}
 
 }

@@ -35,7 +35,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th class="pro-thumbnail">Thumbnail</th>
+                            <th class="pro-thumbnail">Image</th>
                             <th class="pro-title">Product </th>
                             <th class="pro-price">Price</th>
                             <th class="pro-quantity">Quantity</th>
@@ -50,7 +50,7 @@
                                     <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><img class="img-fluid" src="<?=$item['image']?>" alt="Product"/></a>
                                 </td>
                                 <td class="pro-title">
-                                    <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><?=$item['name']?> </a>
+                                    <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><?=($item['options']['Size'].' '.$item['options']['Type'].' '.$item['name'])?> </a>
                                 </td>
                                 <td class="pro-price">
                                     <span>$ <?=$item['price']?></span>

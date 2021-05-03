@@ -1,10 +1,10 @@
 <body>
 <style type="text/css">
     .btn-clay{
-            padding: 2px;
-    margin-left: 2px;
-    border-radius: 3px;
-    width: 100px;
+        padding: 2px;
+        margin-left: 2px;
+        border-radius: 3px;
+        width: 100px;
     }
 </style>
 <!--== Start Header Section ===-->
@@ -131,10 +131,7 @@
                 <div class="col-lg-3 col-sm-8 m-auto">
                     <div class="header-configure-area d-flex justify-content-center justify-content-sm-end align-items-center">
                         <!-- Start Search Box -->
-                        <div class="search-box-wrap">
-                            <button class="srch-icon animate-modal-popup" data-mfp-src="#search-box-popup"><i
-                                    class="fa fa-search fa-rotate-270"></i></button>
-                        </div>
+                     
                         <!-- End Search Box -->
 
                         <!-- Start Mini Cart Area -->
@@ -187,50 +184,3 @@
 </header>
 <!--== End Header Section ===-->
 
-
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-<?php if($this->session->flashdata('success')){ ?>
-    <script type="text/javascript">
-        swal({
-        title: 'Success',
-        text: '<?=($this->session->flashdata('success'))?>',
-        timer: 2000,
-        buttons: false
-        })
-    </script>
-<?php unset($_SESSION['success']);}?>
-  
-<?php if($this->session->flashdata('danger')){ ?>
-     <script type="text/javascript">
-        swal({
-        title: 'Danger',
-        text: '<?=($this->session->flashdata('danger'))?>',
-        timer: 2000,
-        buttons: false
-        })
-    </script>
-<?php }?>
-   
-<?php if($this->session->flashdata('warning')){ ?>
-     <script type="text/javascript">
-        swal({
-        title: 'Warning',
-        text: '<?=($this->session->flashdata('warning'))?>',
-        timer: 2000,
-        buttons: false
-        })
-    </script>
-<?php }?>
-   
-<?php if($this->session->flashdata('info')){ ?>
-    <script type="text/javascript">
-        swal({
-        title: 'Information',
-        text: '<?=($this->session->flashdata('info'))?>',
-        timer: 2000,
-        buttons: false
-        })
-    </script>
-<?php }?>
-  

@@ -48,28 +48,30 @@ class Product_filter extends CI_Controller {
 		$config["use_page_numbers"] = TRUE;
 		$config["full_tag_open"] = '<ul class="pagination">';
 		$config["full_tag_close"] = '</ul>';
-		$config["first_tag_open"] = '<li>';
+		$config["first_tag_open"] = '<li class="page-item">';
 		$config["first_tag_close"] = '</li>';
-		$config["last_tag_open"] = '<li>';
+		$config["last_tag_open"] = '<li class="page-item">';
 		$config["last_tag_close"] = '</li>';
-		$config['next_link'] = '&gt;';
-		$config["next_tag_open"] = '<li>';
+		$config['next_link'] = '&raquo;';
+		$config["next_tag_open"] = '<li class="page-item">';
 		$config["next_tag_close"] = '</li>';
-		$config["prev_link"] = "&lt;";
-		$config["prev_tag_open"] = "<li>";
+		$config["prev_link"] = '&laquo;';
+		$config["prev_tag_open"] = '<li class="page-item">';
 		$config["prev_tag_close"] = "</li>";
-		$config["cur_tag_open"] = "<li class='active'><a href='#'>";
+		$config["cur_tag_open"] = "<li class='page-item active'><a class='page-link' href='#'>";
 		$config["cur_tag_close"] = "</a></li>";
-		$config["num_tag_open"] = "<li>";
+		$config["num_tag_open"] = '<li class="page-item">';
 		$config["num_tag_close"] = "</li>";
-		$config["num_links"] = 3;
+		$config['attributes'] = array('class' => 'page-link');
+		$config["num_links"] = 6;
 		$this->pagination->initialize($config);
 		$page = $this->uri->segment('3');
 		$start = ($page - 1) * $config["per_page"];
 		
 		$output = array(
-			'pagination_link'		=>	$this->pagination->create_links(),
-			'product_list'			=>	$this->product_filter_model->fetch_data($config["per_page"], $start, $minimum_price, $maximum_price, $brand, $type, $gender)
+			
+			'product_list'			=>	$this->product_filter_model->fetch_data($config["per_page"], $start, $minimum_price, $maximum_price, $brand, $type, $gender),
+			'pagination_link'		=>	$this->pagination->create_links()
 		);
 		echo json_encode($output);
 	}

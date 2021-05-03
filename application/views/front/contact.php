@@ -69,17 +69,22 @@
 
                         <div class="single-contact-info">
                             <h3><i class="fa fa-envelope"></i> Mail</h3>
-                            <a href="mailto:your@email.here">your@email.here</a>
+                            <a href="mailto:your@email.here">info@perfume11.com</a>
                         </div>
 
                         <div class="single-contact-info">
                             <h3><i class="fa fa-map-marker"></i> Address</h3>
-                            <a href="#" target="_blank">San Francisco, CA 94111, United States</a>
+                            <a href=""><strong>USA Headquarter</strong> :
+                                Perfume E11even Inc.,2903 Jerusalem Road, East Meadow, NY, 11554 
+                            </a><br/>
+                            <a href=""><strong>Canada </strong> :                               
+                                Perfume E11even Inc., 10 George st North, Brampton, ON,  L6x1r2
+                            </a>
                         </div>
 
                         <div class="single-contact-info">
                             <h3><i class="fa fa-clock-o"></i> Working Hours</h3>
-                            <a href="#" target="_blank"><b>Monday – Saturday:</b> 08AM – 22PM</a>
+                            <a href="#" target="_blank"><b> 24*7 Hrs</b></a>
                         </div>
                     </div>
                 </div>

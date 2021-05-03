@@ -287,7 +287,7 @@ class Home extends CI_Controller {
    	public function ContactSubmit()
 	{
 		
-		 $from_email = "your@example.com"; 
+		 $from_email = "info@perfume11.com"; 
          $to_email = $this->input->post('contact_email'); 
    
          //Load email library 
@@ -341,6 +341,15 @@ class Home extends CI_Controller {
 		$products = $this->home_model->GetAllProductLimit($limit,'Gender');
 		return $products;
 	}
+
+	public function AjxGetBrand()
+	{
+		$brandname = $this->home_model->GetAllBrand();
+		echo json_encode($brandname);
+	}
+
+
+
 
 }
 ?>	

@@ -31,7 +31,6 @@
 
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
  	<link href = "<?php echo base_url(); ?>asset/jquery-ui.css" rel = "stylesheet">
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>asset/style.css" rel="stylesheet">
@@ -44,10 +43,10 @@
 				    <div class="single-sidebar-wrap">
 						 <h2 class="sidebar-title">Fragrances by Price</h2>
                          <div class="sidebar-body">
-                            <div class="sidebar-list">
-        						<input type="hidden" id="hidden_minimum_price" value="0" />
+                            <div class="sidebar-list" style="border-right: 3px solid #dfdfdf; padding: 10px;">
+        						<input type="hidden" id="hidden_minimum_price" value="1" />
         						<input type="hidden" id="hidden_maximum_price" value="200" />
-        						<p id="price_show">1 - 15</p>
+        						<p id="price_show">$1 - $15</p>
         		                <div id="price_range"></div>
                             </div>
                          </div>   
@@ -103,9 +102,8 @@
 			                </div>
 
 
-			                <div align="center" id="pagination_link">
-
-							</div>
+			                <nav class="nav" id="pagination_link">
+							</nav>
 
 			               </div> 
 		            	</div>
@@ -117,11 +115,29 @@
     </div>
    </div> 
 <style>
-.loading
-{
-    margin-left:40%;
-	height: 150px;
-}
+    .nav{
+        padding: 10px;
+        text-align: center;
+        margin-top: 10px;    
+    }
+    .page-link a{
+        color: #bdb093;
+    }
+    .page-link a:hover {
+        background-color: #bdb093;
+            color: #000;
+    }    
+    .renderit
+    {
+        margin-top: 50px;
+        padding: 200px;
+        margin-bottom: 50px    
+    }
+    .loading
+    {
+        margin-left:40%;
+        height: 100px;
+    }
 </style>
 
 <script>
@@ -131,7 +147,7 @@
 
     	function filter_data(page)
     	{
-            $('.filter_data').html('<img class="loading" src="<?php echo base_url(); ?>asset/loader.gif">');
+            $('.filter_data').html('<div class="renderit"><img class="loading" src="<?php echo base_url(); ?>asset/loader.gif"></div>');
     		var action = 'fetch_data';
     		//var page = 1;
     	
@@ -159,11 +175,11 @@
     		range:true,
     		min:1,
     		max:250,
-    		values:[1, 250],
+    		values:[1, 15],
     		step: 2,
     		stop:function(event, ui){
     			//$('#price_show').show();
-    			$('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+    			$('#price_show').html(' $ ' +ui.values[0] + ' - ' +' $ ' + ui.values[1]);
     			$('#hidden_minimum_price').val(ui.values[0]);
     			$('#hidden_maximum_price').val(ui.values[1]);
     			filter_data(1);
