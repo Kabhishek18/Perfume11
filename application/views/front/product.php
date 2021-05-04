@@ -184,14 +184,15 @@
                                         <!-- Product Details -->
                                         <div class="product-details align-items-center">
                                             <a href="#" class="product-cat-name">Item #<?=$items['ItemId']?>  </a>
-                                            <h2 class="product-name"><a href="#"><?=$items['MetricSize']?> <?=$items['Type']?></a></h2>
+                                            <h2 class="product-name"><a href="#"><b><?=$items['MetricSize']?> <?=$items['Type']?></b></a></h2>
                                             <a href="#" class="product-cat-name"><?=$items['BrandName']?> For <?=$items['Gender']?>  </a>
                                             <h2 class="text-success"><?=($items['Instock']?'Instock':'')?></h2>
-                                            <h2 class="text-danger"><?=($items['Instock']?'':'Outstock')?></h2>
+                                            
+                                            <h3 class="text-danger"><?=($items['QuantityAvailable']>20?'':'Hurry '.$items['QuantityAvailable'].' Stock Available !!')?></h3>
                                             
                                          </div>
                                             <div class="sepera align-items-right" style="
-                                            float: right;margin-left: 150px">
+                                            float: right;margin-left: 250px">
                                                 <h2 > $ <?=number_format($items['WholesalePriceUSD'],2)?></h2>
                                                 <form method="post" action="<?=base_url()?>Shop/AddToCart">
                                                     <div class="product-quantity align-items-center" style="padding: 10px;">
@@ -224,10 +225,12 @@
                 </div>
 
                 <!-- Start Products Content Wrapper -->
+                <h2 style="margin-top: 50px;font-size: 30px;">Similar Product</h2><br>
                 <div class="row">
                     <div class="col-lg-12 ">
                         <div class="products-wrapper">
                             <div class="feature-product-carousel" style="margin-top: 50px;">
+
                                 <?php foreach($similarname as $items){?>
                                 <!-- Start Single Product -->
                                 <div class="single-product-item">
@@ -245,7 +248,7 @@
                                     <!-- Product Details -->
                                     <div class="product-details">
                                             <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>">
-                                                <?=$items['ProductName']?></a>
+                                                <?=$items['Size']?> <?=$items['Type']?></a>
                                             </h2>
                                     </div>
                                 </div>

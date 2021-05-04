@@ -89,13 +89,14 @@
                <div class="row editview">
                             
                         <?php 
-                        $bodybrand = $this->home_model->GetAllProductLimit(0,'BrandName');?>   
+                        $bodybrand = $this->home_model->GetAllProductLimit(0,'BrandName');sort($bodybrand );  ?> 
+
                         <?php foreach($bodybrand as $items){?>
                             <div class="col-md-3 hideview">
                             <div class= "card">
                                 <div class="card-body">
                                    <h3> 
-                                    <a class="text-default" href="<?=base_url()?>Brand/<?=(urlencode($items['BrandName']))?>"><?=$items['BrandName']?></a>
+                                    <a class="text-default" href="<?=base_url()?>Search/<?=(urlencode($items['BrandName']))?>"><?=$items['BrandName']?></a>
                                     </h3>
                                 </div>
                             </div>
@@ -139,7 +140,7 @@ function onSuccess(data) {
                             <div class= "card">
                                 <div class="card-body">
                                    <h3> 
-                                    <a class="text-default" href="Brand/${encodeURI(value)}">${value}</a>
+                                    <a class="text-default" href="Search/${encodeURI(value)}">${value}</a>
                                     </h3>
                                 </div>
                             </div>

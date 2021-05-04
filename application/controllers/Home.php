@@ -151,7 +151,7 @@ class Home extends CI_Controller {
 				}else{
 					$this->session->set_userdata('user_account', $user_account);
 					$this->session->set_flashdata('success', 'Welcome '.$auth['UserName']);
-					redirect($_SERVER['HTTP_REFERER']);	
+					redirect('dashboard');	
 				}
 				
 			}else{
@@ -224,7 +224,7 @@ class Home extends CI_Controller {
 		$var = $this->home_model->GetAllProduct($id);
 		$var['similarname'] = $this->home_model->SimliarProductName($var['ProductName']);
 		rsort($var['similarname']);
-		$var['similar'] = $this->home_model->SimliarProduct($var['ProductName'],$var['Type']);
+		$var['similar'] = $this->home_model->SimliarProduct($var['ProductName'],$var['ParentCode'],$var['Type']);
 		$var['meta'] ='<title> '.$var['ProductName'].' </title>';
 		$this->load->view('front/inc/header',$var);
 		$this->load->view('front/inc/nav');
@@ -347,8 +347,9 @@ class Home extends CI_Controller {
 
 	public function AjxGetBrand()
 	{
-		$brandname = $this->home_model->GetAllBrand();
-		echo json_encode($brandname);
+		$var['productname'] = $this->home_model->GetAllProductD();
+		$var['brandname'] = $this->home_model->GetAllBrand();
+		echo json_encode($var);
 	}
 
 

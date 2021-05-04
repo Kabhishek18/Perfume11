@@ -280,6 +280,7 @@ class SHOP extends CI_Controller {
 					$pull[] =$key['BrandName'];
 				}
 				$pulled = array_unique($pull);
+				sort($pulled);
 				echo json_encode(array_unique($pulled));
 			}
 			else{

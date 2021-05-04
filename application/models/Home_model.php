@@ -66,11 +66,11 @@ class Home_model extends CI_Model
         return !empty($result)?$result:false;
     }
 
-    public function SimliarProduct($ProductName,$Type)
+    public function SimliarProduct($ProductName,$ParentCode,$Type)
     {
        $this->db->select('*');
         $this->db->from($this->products);
-        $array = array('ProductName' => $ProductName, 'Type' => $Type);
+        $array = array('ProductName' => $ProductName, 'ParentCode' => $ParentCode,'Type' => $Type);
         $this->db->where($array);
         $query  = $this->db->get();
         $result = $query->result_array();
@@ -200,8 +200,8 @@ class Home_model extends CI_Model
     {
        
          $query = "
-        SELECT *, COUNT(brandname)  FROM tbl_products  
-        where status ='Active' like '".$var."%' GROUP BY brandname HAVING COUNT(brandname)>1";
+        SELECT *, COUNT(BrandName)  FROM tbl_products  
+        where status ='Active' like '".$var."%' GROUP BY BrandName HAVING COUNT(BrandName)>1";
         $query  = $this->db->query($query);
         $result = $query->result_array();
         return !empty($result)?$result:false;
@@ -211,8 +211,17 @@ class Home_model extends CI_Model
     public function GetAllBrand()
     {
         $query = "
-        SELECT *, COUNT(brandname)  FROM tbl_products  
-        where status ='Active' GROUP BY brandname HAVING COUNT(brandname)>1";
+        SELECT Distinct BrandName  FROM tbl_products  
+        where status ='Active' GROUP BY BrandName HAVING COUNT(BrandName)>1";
+        $query  = $this->db->query($query);
+        $result = $query->result_array();
+        return !empty($result)?$result:false;
+    }
+    public function GetAllProductD()
+    {
+        $query = "
+        SELECT Distinct ParentCode,BrandName,ProductName FROM tbl_products  
+        where status ='Active' GROUP BY ProductName HAVING COUNT(ProductName)>1";
         $query  = $this->db->query($query);
         $result = $query->result_array();
         return !empty($result)?$result:false;

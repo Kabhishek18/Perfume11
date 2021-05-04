@@ -62,10 +62,7 @@
                         Choose our communication soruces. We will love to hear from you.</p>
 
                     <div class="contact-info-items">
-                        <div class="single-contact-info">
-                            <h3><i class="fa fa-phone"></i> Call</h3>
-                            <a href="tel:+23140596971">+231 40596971</a>
-                        </div>
+                       
 
                         <div class="single-contact-info">
                             <h3><i class="fa fa-envelope"></i> Mail</h3>
@@ -74,12 +71,18 @@
 
                         <div class="single-contact-info">
                             <h3><i class="fa fa-map-marker"></i> Address</h3>
-                            <a href=""><strong>USA Headquarter</strong> :
-                                Perfume E11even Inc.,2903 Jerusalem Road, East Meadow, NY, 11554 
-                            </a><br/>
-                            <a href=""><strong>Canada </strong> :                               
-                                Perfume E11even Inc., 10 George st North, Brampton, ON,  L6x1r2
-                            </a>
+                               <div class="row">
+                                    <div class="col-lg-6">
+                                         <a href=""><strong>USA Headquarter</strong> :
+                                            Perfume E11even Inc.,2903 Jerusalem Road, East Meadow, NY, 11554 
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <a href=""><strong>Canada </strong> :                               
+                                                Perfume E11even Inc., 10 George st North, Brampton, ON,  L6x1r2
+                                        </a>
+                                    </div>
+                               </div>
                         </div>
 
                         <div class="single-contact-info">

@@ -245,7 +245,7 @@
 
         // Search
 
-         $.ajax({
+    $.ajax({
             url: base_url + 'Home/AjxGetBrand',
             type: 'post',
             success: function (msg) {
@@ -254,20 +254,35 @@
             error: function (error) {
             }
         });
-        });
+    });
   
-    function OnSearch(data) {
-        products =JSON.parse(data);
-        var brandname =new Array();
+    function OnSearch(data) {  
+          
+        var brandname = [];
+        var productname = [];
         var products = jQuery.parseJSON(data);
-        $.each(products, function(key,value) {
-          brandname.push(value.BrandName);
+        $.each(products['brandname'], function(key,value) {
+            brandname.push({
+                    label: value.BrandName+' Sell all by this brand', 
+                    value:  value.BrandName
+                });
+        }); 
+         $.each(products['productname'], function(key,value) {
+          
+            productname.push({
+                    label: value.ProductName+' by '+value.BrandName, 
+                    value:  value.BrandName
+                });
         }); 
 
+        $.merge( brandname, productname );
+
+        console.log(brandname);
         $(function() {
         $( "#autocomplete" ).autocomplete({
           source: brandname,
           select: showLabel,
+          maxLength:10,
         });
       function showLabel(event, ui) {
              var surl = base_url+"Search/"+encodeURI(ui.item.value);

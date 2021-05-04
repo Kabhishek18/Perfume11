@@ -25,20 +25,17 @@
     border: 2px solid #454545;
     border-radius: 0px;
     box-shadow: 0 0 
-}
-.ui-autocomplete {
-  background: white;    
-    border-radius: 0px;
-    z-index: 150;
-    margin-top: 10px;
-}
-.ui-autocomplete.source:hover {
-    background: #bdb093;
-    color: white;
-}
-
-
-
+    }
+    .ui-autocomplete {
+      background: white;    
+        border-radius: 0px;
+        z-index: 150;
+        margin-top: 10px;
+    }
+    .ui-autocomplete.source:hover {
+        background: #bdb093;
+        color: white;
+    }
 </style>
 <!--== Start Header Section ===-->
 <header id="header-area" class="headerFour ">

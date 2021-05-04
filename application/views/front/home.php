@@ -86,9 +86,9 @@
 
                             <!-- Product Details -->
                             <div class="product-details">
-                                    <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>">
-                                        <?=$items['ProductName']?></a>
-                                    </h2>
+                                 <a href="javascript:void(0)" class="product-cat-name"><?=$items['Type']?> </a>
+                                        <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>"><?=$items['Size']?> <?=$items['ProductName']?></a></h2>
+                                   
                             </div>
                         </div>
                     
@@ -112,7 +112,7 @@
             <!-- Start Special Product Tab Menu -->
             <div class="col-md-3">
                 <div class="special-products-menu-area">
-                    <h2>Fragrances by Type</h2>
+                    <h2>Fragrances by Brand</h2>
                     <div class="special-products-menu nav flex-column" role="tablist">
                         
                         <?php $i=1; foreach($brandname as $item){?>
@@ -151,8 +151,8 @@
 
                                     <!-- Product Details -->
                                     <div class="product-details">
-                                        <a href="javascript:void(0)" class="product-cat-name"><?=$product['Type']?> For <?=$product['Gender']?></a>
-                                        <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$product['ItemId']?>/<?=$product['ProductName']?>"><?=$product['Type']?><?=$product['ProductName']?></a></h2>
+                                        <a href="javascript:void(0)" class="product-cat-name"><?=$product['Type']?> </a>
+                                        <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$product['ItemId']?>/<?=$product['ProductName']?>"><?=$product['Size']?> <?=$product['ProductName']?></a></h2>
                                       
                                     </div>
                                 </div>
