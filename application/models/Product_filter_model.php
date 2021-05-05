@@ -82,7 +82,7 @@ class Product_filter_model extends CI_Model
                             <div class="d-flex justify-content-center">
                             <div class="product-details ">
                             	<h2 class="product-name"><a href="'.base_url().'Products/'.$row['ItemId'].'/'.$row['ProductName'].'" >'.$row['ProductName'].'</a></h2>
-                                <a href="'.base_url().'Brand/'.$row['BrandName'].'" class="product-cat-name"> By '.$row['BrandName'].'</a> <br>
+                                <a href="'.base_url().'Search/'.$row['BrandName'].'" class="product-cat-name"> By '.$row['BrandName'].'</a> <br>
                                 <a href ='.base_url().'Gender/'.$row['Gender'].' class="product-cat-name"> '.$row['Gender'].' </a>
                                 
                                 <div class="product-prices">

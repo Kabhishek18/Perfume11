@@ -49,8 +49,18 @@
                                 <td class="pro-thumbnail">
                                     <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><img class="img-fluid" src="<?=$item['image']?>" alt="Product"/></a>
                                 </td>
-                                <td class="pro-title">
-                                    <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><?=($item['options']['MetricSize'].' '.$item['options']['Type'].' '.$item['name'])?> </a>(<?=($item['options']['Gender'])?>)
+                                <td class="pro-title" style="text-align: justify;">
+                                    
+                                       
+
+                                        <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>" class="product-cat-name" style="color: #bdb093;">Item #<?=$item['options']['ItemId']?>  </a>
+                                        <h4 class="product-name"><a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>" style="color: #bdb093;"><b><?=$item['options']['MetricSize']?> <?=$item['options']['Type']?></b></a></h4>
+                                        <a href="<?=base_url()?>Search/<?=$item['options']['BrandName']?>" class="product-cat-name" style="color: #bdb093;"><?=$item['options']['BrandName']?> For <?=$item['options']['Gender']?>  </a>
+                                        <h2 class="text-success"><?=($item['options']['Instock']?'Instock':'')?></h2>
+                                        
+                                        <h5 class="text-danger"><?=($item['options']['QuantityAvailable']>20?'':'Hurry '.$item['options']['QuantityAvailable'].' Stock Available !!')?></h5>
+                                      
+
                                 </td>
                                 <td class="pro-price">
                                     <span>$ <?=$item['price']?></span>

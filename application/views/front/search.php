@@ -5,7 +5,7 @@
             <!-- Page Title Area Start -->
             <div class="col-6">
                 <div class="page-title-wrap">
-                    <h1>Search</h1>
+                    <h1><?=(!empty($this->uri->segment(2,0))?urldecode($this->uri->segment(2,0)):'')?></h1>
                 </div>
             </div>
             <!-- Page Title Area End -->

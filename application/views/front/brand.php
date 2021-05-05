@@ -6,7 +6,7 @@
             <!-- Page Title Area Start -->
             <div class="col-6">
                 <div class="page-title-wrap">
-                    <h1><?=(!empty($brandname)?$brandname:'ALL Brand')?></h1>
+                    <h1><?=(!empty($brandname)?urldecode($brandname):'ALL Brand')?></h1>
                 </div>
             </div>
             <!-- Page Title Area End -->
