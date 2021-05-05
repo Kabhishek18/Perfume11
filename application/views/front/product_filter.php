@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-md-3">
 				<div id="sidebar-area-wrap">
-				    <div class="single-sidebar-wrap">
+				    <div class="single-sidebar-wrap" style="display: none;">
 						 <h2 class="sidebar-title">Fragrances by Price</h2>
                          <div class="sidebar-body">
                             <div class="sidebar-list" style="border-right: 3px solid #dfdfdf; padding: 10px;">
@@ -102,8 +102,11 @@
 			                </div>
 
 
-			                <nav class="nav" id="pagination_link">
-							</nav>
+			                <div class="d-flex justify-content-center nav">
+                              
+                                <div class="nav" id="pagination_link">
+                                </div>
+                            </div>
 
 			               </div> 
 		            	</div>
@@ -116,17 +119,25 @@
    </div> 
 <style>
     .nav{
-        padding: 10px;
-        text-align: center;
-        margin-top: 10px;    
+        padding: 20px;  margin-top: 10px;    
     }
-    .page-link a{
+        
+     .page-link {
+        position: relative;
+        display: block;
+        padding: .5rem .75rem;
+        margin-left: -1px;
+        line-height: 1.25;
         color: #bdb093;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
     }
-    .page-link a:hover {
-        background-color: #bdb093;
-            color: #000;
-    }    
+    .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #bdb093;
+    border-color: #bdb093;
+}
     .renderit
     {
         margin-top: 50px;

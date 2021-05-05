@@ -66,7 +66,7 @@
 
                         <div class="single-contact-info">
                             <h3><i class="fa fa-envelope"></i> Mail</h3>
-                            <a href="mailto:your@email.here">info@perfume11.com</a>
+                            <a href="mailto:info@perfume11.com">info@perfume11.com</a>
                         </div>
 
                         <div class="single-contact-info">

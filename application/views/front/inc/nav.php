@@ -78,8 +78,8 @@
                                 <?php }else{?>
                                         <li class="dropdown-show"><a  class="arrow-toggle" href="javascript:void(0)"><i class="fa fa-users"></i>Sign in/up</a>
                                         <ul class="dropdown-nav">
-                                        <li><a href="LoginRegister">Register</a></li>
-                                        <li><a href="LoginRegister">Login</a></li>
+                                        <li><a href="<?=base_url()?>LoginRegister">Register</a></li>
+                                        <li><a href="<?=base_url()?>LoginRegister">Login</a></li>
                                     </ul>
                                         </li>
                                 <?php }?>    

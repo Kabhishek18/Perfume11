@@ -55,7 +55,7 @@
 <div id="shop-page-wrapper">
     <div class="container" style="max-width:1260px;">
 	
-        <div class="row">
+        <div class="row ">
 		<div class="shop-page-products-wrap" style="margin-bottom:50px;" >
             <div class="products-wrapper product-list-view">
                 <div class="row">
@@ -88,7 +88,7 @@
             </div>
         </div>
         <!-- Sidebar Area Start -->
-           <div class="col-lg-3">
+           <div class="col-lg-3 col-md-3 .d-none .d-sm-block ">
                 <div id="sidebar-area-wrap">
                     <!-- Single Sidebar Item Start -->
                     <?php $sidenavbrand =$this->home_model->GetAllProductLimit(15,'BrandName')?>
@@ -164,7 +164,7 @@
 
 </style>
         <!-- Start Shop Page Content -->
-        <div class="col-lg-9 order-first order-lg-last">
+        <div class="col-lg-9 col-md-9 col-sm-12">
             <div class="shop-page-content-wrap">
              
                 <div class="shop-page-products-wrap">
@@ -174,25 +174,26 @@
                             <?php foreach($similar as $items){?>
 
 
-
+                                <?php if(number_format($items['WholesalePriceUSD'],2)>1){ ?>
                                 <div class="col-lg-6 col-sm-6" >
 
-                                    <div class="single-product-item">
+                                    <div class="d-flex justify-content-between" style="margin-top:20px;border-bottom: 2px solid #f0e3c5">
                                     <!-- Product Thumbnail -->
-                                        <img class="img-responsive" src="<?=$items['SmallImageUrl']?>" alt="<?=$items['ProductName']?>"/>
+                                        <div class="d-flex justify-content-start">
+                                            <img class="img-responsive" src="<?=$items['SmallImageUrl']?>" alt="<?=$items['ProductName']?>"/>
 
-                                        <!-- Product Details -->
-                                        <div class="product-details align-items-center">
-                                            <a href="#" class="product-cat-name">Item #<?=$items['ItemId']?>  </a>
-                                            <h2 class="product-name"><a href="#"><b><?=$items['MetricSize']?> <?=$items['Type']?></b></a></h2>
-                                            <a href="#" class="product-cat-name"><?=$items['BrandName']?> For <?=$items['Gender']?>  </a>
-                                            <h2 class="text-success"><?=($items['Instock']?'Instock':'')?></h2>
-                                            
-                                            <h3 class="text-danger"><?=($items['QuantityAvailable']>20?'':'Hurry '.$items['QuantityAvailable'].' Stock Available !!')?></h3>
-                                            
-                                         </div>
-                                            <div class="sepera align-items-right" style="
-                                            float: right;margin-left: 250px">
+                                            <!-- Product Details -->
+                                            <div class="align-items-left" style="padding: 20px">
+                                                <a href="#" class="product-cat-name" style="color: #bdb093;">Item #<?=$items['ItemId']?>  </a>
+                                                <h2 class="product-name"><a href="#" style="color: #bdb093;"><b><?=$items['MetricSize']?> <?=$items['Type']?></b></a></h2>
+                                                <a href="#" class="product-cat-name" style="color: #bdb093;"><?=$items['BrandName']?> For <?=$items['Gender']?>  </a>
+                                                <h2 class="text-success"><?=($items['Instock']?'Instock':'')?></h2>
+                                                
+                                                <h3 class="text-danger"><?=($items['QuantityAvailable']>20?'':'Hurry '.$items['QuantityAvailable'].' Stock Available !!')?></h3>
+                                                
+                                             </div>
+                                        </div>     
+                                            <div class="sepera align-items-right">
                                                 <h2 > $ <?=number_format($items['WholesalePriceUSD'],2)?></h2>
                                                 <form method="post" action="<?=base_url()?>Shop/AddToCart">
                                                     <div class="product-quantity align-items-center" style="padding: 10px;">
@@ -215,7 +216,7 @@
                                         
                                     </div>
                                 </div>
-                            <?php }?>
+                            <?php }}?>
                             <!-- Single Product End -->
 
 
@@ -246,9 +247,9 @@
                                     </figure>
 
                                     <!-- Product Details -->
-                                    <div class="product-details">
+                                    <div class="product-details" style="    padding-top: 10px;   padding-bottom: 20px;">
                                             <h2 class="product-name"><a href="<?=base_url()?>Products/<?=$items['ItemId']?>/<?=$items['ProductName']?>">
-                                                <?=$items['Size']?> <?=$items['Type']?></a>
+                                                <?=$items['Size']?> <?=$items['Type']?> For <?=$items['Gender']?></a>
                                             </h2>
                                     </div>
                                 </div>

@@ -69,7 +69,7 @@ class Product_filter_model extends CI_Model
 					  <div class="col-lg-3 col-sm-6" >
                                 
                         <div class="single-product-item">
-                            <!-- Product Thumbnail -->
+
                             <figure class="product-thumbnail">
                                 <a href="'.base_url().'Products/'.$row['ItemId'].'/'.$row['ProductName'].'" class="d-block">
                                     <img class="primary-thumb" src="'.$row['SmallImageUrl'].'"
@@ -79,10 +79,12 @@ class Product_filter_model extends CI_Model
                                 </a>
                             </figure>
 
-                            <!-- Product Details -->
-                            <div class="product-details">
-                                <a href="#" class="product-cat-name">'.$row['BrandName'].' For '.$row['Gender'].'</a>
-                                <h2 class="product-name"><a href="'.base_url().'Products/'.$row['ItemId'].'/'.$row['ProductName'].'" >'.$row['ProductName'].'</a></h2>
+                            <div class="d-flex justify-content-center">
+                            <div class="product-details ">
+                            	<h2 class="product-name"><a href="'.base_url().'Products/'.$row['ItemId'].'/'.$row['ProductName'].'" >'.$row['ProductName'].'</a></h2>
+                                <a href="'.base_url().'Brand/'.$row['BrandName'].'" class="product-cat-name"> By '.$row['BrandName'].'</a> <br>
+                                <a href ='.base_url().'Gender/'.$row['Gender'].' class="product-cat-name"> '.$row['Gender'].' </a>
+                                
                                 <div class="product-prices">
                                     
                                     <span class="price">$ '.number_format($row['WholesalePriceUSD'],2).'</span>
@@ -90,6 +92,8 @@ class Product_filter_model extends CI_Model
 
                                 
                             </div>
+                            </div>
+
                         </div>
                           
                     </div>

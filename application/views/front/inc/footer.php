@@ -47,9 +47,8 @@
                             <p style="text-align:justify;">At Perfume11, our goal is to provide you with the largest selection of perfume and cologne at the lowest prices. Our discount fragrance selection consists of over 9,500 brands of perfume, cologne, body lotion, and after shaves, including many discontinued perfumes and colognes. </p>
 
                             <address>
-                                <p>205 Arapahoe St, Schoenchen, KS 69696</p>
-                                <p>Email: <a href="mailto:care@perfume11.com">care@perfume11.com</a></p>
-                                <p>Phone: <a href="tel:+11234566789">+1 123-456-6789</a></p>
+                                <p> Perfume E11even Inc.,2903 Jerusalem Road, East Meadow, NY, 11554</p>
+                                <p>Email:  <a href="mailto:info@perfume11.com">info@perfume11.com</a></p>
                             </address>
                         </div>
                     </div>
@@ -62,13 +61,11 @@
 
                             <div class="widget-body">
                                 <ul class="widget-list">
-                                    <li><a href="#">Women's Perfume</a></li>
-                                    <li><a href="#">Men's Cologne</a></li>
-                                    <li><a href="#">Top Sellers</a></li>
-                                    <li><a href="#">New Arrivals</a></li>
-                                    <li><a href="#">Celebrity Scents</a></li>
-                                    <li><a href="#">Hard To Find</a></li>
-                                    <li><a href="#">Brands</a></li>
+                                    <li><a href="<?=base_url()?>Gender/Women">Women's Perfume</a></li>
+                                    <li><a href="<?=base_url()?>Gender/Men">Men's Cologne</a></li>
+                            
+                                    <li><a href="<?=base_url()?>Brand">Brands</a></li>
+                                    <li><a href="<?=base_url()?>Contact">Contact</a></li>
 
                                 </ul>
                             </div>
@@ -84,7 +81,7 @@
                             <div class="widget-body">
                                 <ul class="widget-list">
                                     <li><a href="#">Order Status</a></li>
-                                    <li><a href="#">My Account</a></li>
+                                    <li><a href="<?=base_url()?><?=($this->session->user_account)?'Dashboard':'LoginRegister'?>">My Account</a></li>
                                     <li><a href="#">Shipping Info</a></li>
                                     <li><a href="#">Return Info</a></li>
                                     <li><a href="#">Contact Info</a></li>
@@ -200,7 +197,6 @@
                 data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price, brand:brand, type:type, gender:gender},
                 success:function(data)
                 {
-                    window.scrollTo(5,0);
                     $('.filter_data').html(data.product_list);
                     $('#pagination_link').html(data.pagination_link);
                 }
@@ -211,8 +207,8 @@
             range:true,
             min:1,
             max:250,
-            values:[1, 80],
-            step: 2,
+            values:[1, 250],
+            step: 20,
             stop:function(event, ui){
                 //$('#price_show').show();
                 $('#price_show').html(' $ ' +ui.values[0] + ' - ' +' $ ' + ui.values[1]);

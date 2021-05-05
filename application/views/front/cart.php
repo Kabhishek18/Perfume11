@@ -50,7 +50,7 @@
                                     <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><img class="img-fluid" src="<?=$item['image']?>" alt="Product"/></a>
                                 </td>
                                 <td class="pro-title">
-                                    <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><?=($item['options']['Size'].' '.$item['options']['Type'].' '.$item['name'])?> </a>
+                                    <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><?=($item['options']['MetricSize'].' '.$item['options']['Type'].' '.$item['name'])?> </a>(<?=($item['options']['Gender'])?>)
                                 </td>
                                 <td class="pro-price">
                                     <span>$ <?=$item['price']?></span>
@@ -59,7 +59,7 @@
                                     <form method="post" action="<?=base_url()?>Cart/Update" id="cart-update-<?=$item['id']?>">
                                          <input type="hidden"  name ="rowid" value="<?=$item['rowid']?>">
                                         <div class="pro-qty">
-                                            <input type="text" name="qty" data-id="<?=$item['rowid']?>" value="<?=$item['qty']?>">
+                                            <input type="text" name="qty" data-id="<?=$item['rowid']?>" value="<?=$item['qty']?>" readonly>
                                            
                                         </div>
                                     </form>
@@ -93,10 +93,10 @@
 
         <div class="row">
             <div class="col-lg-6">
-                 <div class="cart-calculator-wrapper">
+                 <div class="cart-calculator-wrapper" style="background-color: #ffffff;">
                     <div class="cart-calculate-items">
                         <div class="form-group">
-                            <a class="btn btn-brand" href="<?=$_SERVER['HTTP_REFERER']?>">Continue Shopping</a>
+                            <a class="btn btn-brand" href="<?=$_SERVER['HTTP_REFERER']?>"> Continue Shopping</a>
                         </div>
                     </div>
                  </div>   

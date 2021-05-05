@@ -55,7 +55,7 @@ class Product_filter extends CI_Controller {
 		$config = array();
 		$config["base_url"] = "#";
 		$config["total_rows"] = $this->product_filter_model->count_all($minimum_price, $maximum_price, $brand, $type, $gender);
-		$config["per_page"] = 30;
+		$config["per_page"] = 32;
 		$config["uri_segment"] = 3;
 		$config["use_page_numbers"] = TRUE;
 		$config["full_tag_open"] = '<ul class="pagination">';
