@@ -46,7 +46,7 @@
         <div class="row">
             <div class="col-lg-12 m-auto text-center">
                 <div class="section-title-wrap">
-                    <h2>BEST SELLING FRAGRANCES</h2>
+                    <h2>MOST SELLING BRANDS</h2>
                     <p>Browse the collection of our best selling and top interesting products. You’ll definitely find
                         what you are looking for.</p>
                         <br />

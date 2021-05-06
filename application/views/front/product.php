@@ -49,6 +49,12 @@
     .star-rating input[type=radio]:checked ~ label {
         color: #f2b600
     }
+    .zoom:hover {
+      transform: scale(1.5); 
+      cursor: zoom-in;
+      box-shadow: 1px 2px 3px #000;
+      border-radius: 5px;
+    }
 </style>
 
 <!--== Start Shop Page Wrapper ==-->
@@ -56,25 +62,20 @@
     <div class="container" style="max-width:1260px;">
 	
         <div class="row ">
-                    <div class="col-lg-12 col-sm-6 " style="margin-bottom: 50px">
+                    <div class="col-lg-12 col-sm-6 " style="margin-bottom: 50px;font-size: 14px">
                         <div class="single-product-item d-flex justify-content-start">
                             <!-- Product Thumbnail -->
-                            <figure class="product-thumbnail">
-                                <a href="#" class="d-block">
-                                    <img class="primary-thumb" src="<?=$SmallImageUrl?>"
-                                         alt="Product"/>
-                                    <img class="secondary-thumb" src="<?=$SmallImageUrl?>"
-                                         alt="Product"/>
-                                </a>
-                                
-                            </figure>
+                              <img  src="<?=$SmallImageUrl?>" alt="<?=$ProductName?>"/>
 
                             <!-- Product Details -->
-                            <div class="product-details">
+                            <div class="product-details" style="padding:10px;margin-bottom: 50px;font-size: 16px">
                                 <h2 class="product-name" style="margin-bottom:5px;"><?=$ProductName?></h2>
-                                By   <a href="<?=base_url()?>Brand/<?=(urlencode($BrandName))?>" class="product-cat-name"><?=$BrandName?></a> For <?=$Gender?>
+                                By   <a href="<?=base_url()?>Brand/<?=(urlencode($BrandName))?>" class="product-cat-name"><u><?=$BrandName?></u></a> For <?=$Gender?>
 
+                               <div style="font-size: 16px">
                                 <p style="margin-top:5px;"><?=$Description?></p>
+                                <p style="margin-top:5px;"><?=$Description?></p>
+                               </div>
                             </div>
                         </div>
                     </div>
@@ -152,7 +153,6 @@
     .star-rating input[type=radio]:checked ~ label {
         color: #f2b600
     }
-
 </style>
         <!-- Start Shop Page Content -->
         <div class="col-lg-9 col-md-9 col-sm-12">
@@ -171,12 +171,12 @@
                                     <div class="d-flex justify-content-between" style="margin-top:20px;border-bottom: 2px solid #f0e3c5">
                                     <!-- Product Thumbnail -->
                                         <div class="d-flex justify-content-start">
-                                            <img class="img-responsive" src="<?=$items['SmallImageUrl']?>" alt="<?=$items['ProductName']?>"/>
+                                            <img class="img-responsive zoom" src="<?=$items['SmallImageUrl']?>" alt="<?=$items['ProductName']?>"/>
 
                                             <!-- Product Details -->
                                             <div class="align-items-left" style="padding: 20px">
                                                 <a href="#" class="product-cat-name" style="color: #bdb093;">Item #<?=$items['ItemId']?>  </a>
-                                                <h2 class="product-name"><a href="#" style="color: #bdb093;"><b><?=$items['MetricSize']?> <?=$items['Type']?></b></a></h2>
+                                                <h2 class="product-name"><a href="#" style="color: #444444;"><b><?=$items['MetricSize']?> <?=$items['Type']?></b></a></h2>
                                                 <a href="#" class="product-cat-name" style="color: #bdb093;"><?=$items['BrandName']?> For <?=$items['Gender']?>  </a>
                                                 <h2 class="text-success"><?=($items['Instock']?'Instock':'')?></h2>
                                                 
@@ -196,7 +196,7 @@
                                                         </div>
 
                                                        <div class="form-group" style="padding: 10px">
-                                                            <button type="submit" class="btn btn-transparent btn-semi-round" style="background-color: #bdb093;color: white"><i
+                                                            <button type="submit" class="btn btn-brand btn-semi-round"><i
                                                                 class="fa fa-shopping-cart"></i> Add to Cart</button>
                                                        </div>
                                                     </div>
@@ -295,7 +295,7 @@
                                                                         <input type="hidden" name="ItemId" value="<?=$ItemId?>">
                                                                         <div class="star-rating">
                                                                         <h4>Overall Ratings</h4>
-                                                                          <input id="star-5" type="radio" name="rating" value="5" />
+                                                                          <input id="star-5" type="radio" name="rating" value="5" checked="" />
                                                                           <label for="star-5" title="5 stars">
                                                                             <i class="active fa fa-star" aria-hidden="true"></i>
                                                                           </label>
@@ -311,7 +311,7 @@
                                                                           <label for="star-2" title="2 stars">
                                                                             <i class="active fa fa-star" aria-hidden="true"></i>
                                                                           </label>
-                                                                          <input id="star-1" type="radio" name="rating" value="1" checked="" />
+                                                                          <input id="star-1" type="radio" name="rating" value="1" />
                                                                           <label for="star-1" title="1 star">
                                                                             <i class="active fa fa-star" aria-hidden="true"></i>
                                                                           </label>

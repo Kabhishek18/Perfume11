@@ -128,7 +128,7 @@
         padding: 20px;  margin-top: 10px;    
     }
         
-     .page-link {
+    .page-link {
         position: relative;
         display: block;
         padding: .5rem .75rem;
@@ -139,11 +139,11 @@
         border: 1px solid #dee2e6;
     }
     .page-item.active .page-link {
-    z-index: 1;
-    color: #fff;
-    background-color: #bdb093;
-    border-color: #bdb093;
-}
+        z-index: 1;
+        color: #fff;
+        background-color: #bdb093;
+        border-color: #bdb093;
+    }
     .renderit
     {
         margin-top: 50px;

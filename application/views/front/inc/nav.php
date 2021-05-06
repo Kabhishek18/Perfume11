@@ -19,6 +19,12 @@
     #autocomplete input:focus {
       background-color: rgba(0,0,0,.12);
     }
+    .ui-menu .ui-widget .ui-widget-content .ui-autocomplete .ui-front{
+        z-index: 99999;
+    }
+    #ui-id-1{
+         z-index: 99999;
+    }
     .ui-tooltip {
     background: white;
     color: #96f226;
@@ -36,11 +42,14 @@
         background: #bdb093;
         color: white;
     }
+    .searchfont .form-control{
+        font-size: 1.5rem;
+    }
 </style>
 <!--== Start Header Section ===-->
 <header id="header-area" class="headerFour ">
  <!-- Start PreHeader Area -->
-    <div class="preheader-area" >
+    <div class="preheader-area fixed-top" >
         <div class="container-fluid" >
             <div class="row" >
                 <div class="col-md-4 text-center text-md-left">
@@ -51,7 +60,7 @@
                     </div>
                     <!-- End PreHeader Left -->
                 </div>
-                <div class="col-md-4 mt-3 mt-md-0">
+                <div class="col-md-4 mt-3 mt-md-0 searchfont">
                     <!--== Start Search box Wrapper ==-->
                   
 

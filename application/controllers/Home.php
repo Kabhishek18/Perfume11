@@ -40,7 +40,12 @@ class Home extends CI_Controller {
 
 	public function index()
 	{	
-		$var['bestsell'] = $this->GetAllProducts(10);
+		$variable =['423463','548275','447568','489697','533718','480451','556493','536021','515023','457245'];
+		$i=0;
+		foreach ($variable as $item) {
+			$var['bestsell'][$i] = $this->home_model->GetAllProduct($item);
+			$i++;	
+		}
 		$var['brandname'] =$this->GetBrand(10);
 		$var['meta'] ='<title>Perfume Home</title>';
 		$this->load->view('front/inc/header',$var);

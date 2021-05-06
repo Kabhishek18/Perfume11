@@ -918,6 +918,7 @@ Start Header Area
 }
 
 .header-bottom-area {
+    margin-top: 49px;
     background-color: #fff;
     padding: 30px 0;
     -webkit-transition: all 0.4s ease-out 0.2s;

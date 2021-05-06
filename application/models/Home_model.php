@@ -115,7 +115,7 @@ class Home_model extends CI_Model
 
        $this->db->distinct(); 
        $this->db->select($var);
-        $this->db->from($this->products);
+       $this->db->from($this->products);
         if($limit==0){
 
         }else{

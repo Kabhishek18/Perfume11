@@ -259,7 +259,7 @@
         var products = jQuery.parseJSON(data);
         $.each(products['brandname'], function(key,value) {
             brandname.push({
-                    label: value.BrandName+' Sell all by this brand', 
+                    label: value.BrandName+' See all by this brand', 
                     value:  value.BrandName
                 });
         }); 
@@ -272,13 +272,11 @@
         }); 
 
         $.merge( brandname, productname );
-
-        console.log(brandname);
         $(function() {
         $( "#autocomplete" ).autocomplete({
           source: brandname,
           select: showLabel,
-          maxLength:10,
+          max:10,
         });
       function showLabel(event, ui) {
              var surl = base_url+"Search/"+encodeURI(ui.item.value);

@@ -43,9 +43,7 @@
 
 <!-- Start Map Area Wrapper -->
 <div class="map-area-wrapper">
-    <div id="map_content" data-lat="23.763491" data-lng="90.431167" data-zoom="8" data-maptitle="HasTech"
-         data-mapaddress="Floor# 4, House# 5, Block# C </br> Banasree Main Rd, Dhaka">
-    </div>
+   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.920351412605!2d-73.58580168434436!3d40.7197698450767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c27d9528680001%3A0xa6a3f0d547c8334a!2s626%20RXR%20Plaza%206th%20Floor%2C%20Uniondale%2C%20NY%2011556%2C%20USA!5e0!3m2!1sen!2sin!4v1620313432911!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 <!-- End Map Area Wrapper -->
 
@@ -74,7 +72,7 @@
                                <div class="row">
                                     <div class="col-lg-6">
                                          <a href=""><strong>USA Headquarter</strong> :
-                                            Perfume E11even Inc.,2903 Jerusalem Road, East Meadow, NY, 11554 
+                                            Perfume E11even 626 Rexcorp plaza 6th floor Uniondale, NY 11556
                                         </a>
                                     </div>
                                     <div class="col-lg-6">

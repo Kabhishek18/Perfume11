@@ -592,7 +592,7 @@
                 maxZoom: 18,
                 id: 'mapbox.streets',
                 scrollWheelZoom: false,
-                accessToken: 'pk.eyJ1Ijoic2hha2lsYWhtbWVlZCIsImEiOiJjamk4anF6NDgwMGd5M3BwM2c4eHU5dmIzIn0.yBLGUAB8kV1I1yGGonxzzg'
+                accessToken: 'pk.eyJ1IjoicGVyZnVtZTExIiwiYSI6ImNrb2NqaTlsczAxMHUzMG54eW9rcDRmNXEifQ.mM1nLWU8IaBYN88qkWE8JA'
             }).addTo(mymap);
 
             var marker = L.marker([$lat, $lng]).addTo(mymap);
