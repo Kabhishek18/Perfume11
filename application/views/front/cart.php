@@ -40,7 +40,6 @@
                             <th class="pro-price">Price</th>
                             <th class="pro-quantity">Quantity</th>
                             <th class="pro-subtotal">Total</th>
-                            <th class="pro-remove"> Remove</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,14 +51,13 @@
                                 <td class="pro-title" style="text-align: justify;">
                                     
                                        
-
+                                          <h4 class="product-name"><a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>" style="color: #bdb093;"><b><?=$item['name']?> By <?=$item['options']['BrandName']?> <?=$item['options']['MetricSize']?> <?=$item['options']['Type']?>  For <?=$item['options']['Gender']?> </b></a></h4>
                                         <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>" class="product-cat-name" style="color: #bdb093;">Item #<?=$item['options']['ItemId']?>  </a>
-                                        <h4 class="product-name"><a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>" style="color: #bdb093;"><b><?=$item['options']['MetricSize']?> <?=$item['options']['Type']?></b></a></h4>
-                                        <a href="<?=base_url()?>Search/<?=$item['options']['BrandName']?>" class="product-cat-name" style="color: #bdb093;"><?=$item['options']['BrandName']?> For <?=$item['options']['Gender']?>  </a>
+                                      
                                         <h2 class="text-success"><?=($item['options']['Instock']?'Instock':'')?></h2>
                                         
                                         <h5 class="text-danger"><?=($item['options']['QuantityAvailable']>20?'':'Hurry '.$item['options']['QuantityAvailable'].' Stock Available !!')?></h5>
-                                      
+                                       <a href="<?=base_url()?>Cart/Remove/<?=$item['rowid']?>">Remove</i></a>
 
                                 </td>
                                 <td class="pro-price">
@@ -78,9 +76,7 @@
                                     <span id="subtotal-<?=$item['rowid']?>">$ <?=($item['subtotal'])?></span>
                                     <span class="editview-radio-box-<?=$item['rowid']?>"> </span>
                                 </td>
-                                <td class="pro-remove">
-                                    <a href="<?=base_url()?>Cart/Remove/<?=$item['rowid']?>"><i class="fa fa-trash-o"></i></a>
-                                </td>
+                              
                             </tr>
                         <?php }?>
                     </table>

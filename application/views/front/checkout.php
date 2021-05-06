@@ -395,15 +395,14 @@
                     
                 </div>
             </div>
-            <div class="col-lg-8 " style="margin-top: 10px">
+            <div class="col-lg-9 " style="margin-top: 10px">
                 <div class="cart-table table-responsive">
                     <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th class="pro-thumbnail">Thumbnail</th>
                             <th class="pro-title">Product </th>
-                            <th class="pro-price">Price</th>
-                            <th class="pro-quantity">Quantity</th>
+                            <th class="pro-price">Price * Quantity</th>
                             <th class="pro-subtotal">Total</th>
                         </tr>
                         </thead>
@@ -413,13 +412,19 @@
                                 <td class="pro-thumbnail">
                                     <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><img class="img-fluid" src="<?=$item['image']?>" alt="Product"/></a>
                                 </td>
-                                <td class="pro-title">
-                                   <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>"><?=($item['options']['Size'].' '.$item['options']['Type'].' '.$item['name'])?> </a>
+                                 <td class="pro-title" style="text-align: justify;">
+                                    
+                                       
+                                          <h4 class="product-name"><a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>" style="color: #bdb093;"><b><?=$item['name']?> By <?=$item['options']['BrandName']?> <br><?=$item['options']['MetricSize']?> <?=$item['options']['Type']?>  For <?=$item['options']['Gender']?> </b></a></h4>
+                                        <a href="<?=base_url()?>Products/<?=$item['id']?>/<?=$item['name']?>" class="product-cat-name" style="color: #bdb093;">Item #<?=$item['options']['ItemId']?>  </a>
+                                      
+                                        <h2 class="text-success"><?=($item['options']['Instock']?'Instock':'')?></h2>
+                                        
+                                        <h5 class="text-danger"><?=($item['options']['QuantityAvailable']>20?'':'Hurry '.$item['options']['QuantityAvailable'].' Stock Available !!')?></h5>
+
                                 </td>
                                 <td class="pro-price">
-                                    <span>$ <?=$item['price']?></span>
-                                </td>
-                                <td class="pro-quantity">
+                                    <span>$ <?=$item['price']?></span> *
                                     <?=$item['qty']?>
                                 </td>
                                 <td class="pro-subtotal">
@@ -427,7 +432,7 @@
                                 </td>
                             </tr>
                         <?php }?>
-                        <tr> <td colspan="3"> <a href="<?=base_url()?>Cart" class="btn btn-brand"><i class="fa fa-edit"></i> Edit This Order</a></td>
+                        <tr> <td colspan="2"> <a href="<?=base_url()?>Cart" class="btn btn-brand"><i class="fa fa-edit"></i> Edit This Order</a></td>
                                 <td colspan="2"> <input type="submit" class="btn btn-brand btn-full" value="Place Order"> </td></tr>
                     </table>
                 </div>

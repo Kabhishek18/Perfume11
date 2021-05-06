@@ -36,7 +36,7 @@
     <link href="<?php echo base_url(); ?>asset/style.css" rel="stylesheet">
    <!-- Page Content -->
    <div id="shop-page-wrapper" class="page-padding">
-    <div class="container">
+    <div class="container-fluid" style="padding-left: 60px;padding-right: 60px;">
         <div class="row">
             <div class="col-md-3">
 				<div id="sidebar-area-wrap">

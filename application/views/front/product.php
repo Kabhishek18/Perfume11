@@ -56,12 +56,8 @@
     <div class="container" style="max-width:1260px;">
 	
         <div class="row ">
-		<div class="shop-page-products-wrap" style="margin-bottom:50px;" >
-            <div class="products-wrapper product-list-view">
-                <div class="row">
-                    <!-- Single Product Start -->
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single-product-item">
+                    <div class="col-lg-12 col-sm-6 " style="margin-bottom: 50px">
+                        <div class="single-product-item d-flex justify-content-start">
                             <!-- Product Thumbnail -->
                             <figure class="product-thumbnail">
                                 <a href="#" class="d-block">
@@ -76,17 +72,12 @@
                             <!-- Product Details -->
                             <div class="product-details">
                                 <h2 class="product-name" style="margin-bottom:5px;"><?=$ProductName?></h2>
-                                By   <a href="<?=base_url()?>Brand/<?=(str_replace(" ","-",$BrandName))?>" class="product-cat-name"><?=$BrandName?></a> For <?=$Gender?>
-                                <p class="product-desc"><?=$Description?></p>
+                                By   <a href="<?=base_url()?>Brand/<?=(urlencode($BrandName))?>" class="product-cat-name"><?=$BrandName?></a> For <?=$Gender?>
+
+                                <p style="margin-top:5px;"><?=$Description?></p>
                             </div>
                         </div>
                     </div>
-                    <!-- Single Product End -->
-
-                    
-                </div>
-            </div>
-        </div>
         <!-- Sidebar Area Start -->
            <div class="col-lg-3 col-md-3 .d-none .d-sm-block ">
                 <div id="sidebar-area-wrap">
