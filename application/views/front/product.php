@@ -263,10 +263,11 @@
                                             <div class="col-lg-12">
                                                 <div class="product-ratting-wrap">
                                                     <?php  $reviews= $this->home_model->GetReviewPid($ItemId);?>
+                                                    <?php if(!empty($reviews)) {?>
                                                     <div class="pro-avg-ratting">
                                                         <h4>Reviewed by <?=(!empty($reviews)?count($reviews):'0')?> customers </h4>
                                                     </div>
-                                                    
+                                                    <?php }?>
                                                     <div class="rattings-wrapper">
                                                         <?php if(!empty($reviews)){ ?>
                                                             <?php foreach($reviews as $review){?>
@@ -275,7 +276,7 @@
                                                                             <h3><?=$review['Name']?></h3>
                                                                             <div class="ratting-star">
                                                                                 <?php for($i=1;$i<= $review['Rate'];$i++){?>
-                                                                                    <i class="fa fa-star"></i>
+                                                                                     <i class="fa fa-star"></i>
                                                                                 <?php }?>
                                                                             </div>
                                                                         </div>

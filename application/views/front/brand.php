@@ -49,7 +49,7 @@
         color: white;
     }
     .text-default{
-        color: #bdb093;
+        color: #343a40;
         font-size: 15px;
     }
     .text-default:hover{

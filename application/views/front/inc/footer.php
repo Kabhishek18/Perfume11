@@ -47,7 +47,7 @@
                             <p style="text-align:justify;">At Perfume11, our goal is to provide you with the largest selection of perfume and cologne at the lowest prices. Our discount fragrance selection consists of over 9,500 brands of perfume, cologne, body lotion, and after shaves, including many discontinued perfumes and colognes. </p>
 
                             <address>
-                                <p> Perfume E11even Inc.,2903 Jerusalem Road, East Meadow, NY, 11554</p>
+                                <p> Perfume E11even 626 Rexcorp plaza 6th floor Uniondale, NY 11556</p>
                                 <p>Email:  <a href="mailto:info@perfume11.com">info@perfume11.com</a></p>
                             </address>
                         </div>
